@@ -1,0 +1,17 @@
+﻿@model PageModel
+@{ 
+    Layout = "~/Views/Shared/_Root.cshtml";
+}
+<div>
+    <div id="header">#header</div>
+
+    <div id="topBar">#topBar</div>
+
+    <div id="leftSection">#sideLeft</div>
+
+    <div id="mainSection">@RenderBody()</div>
+    
+    <div id="rightSection">#sideRight</div>
+
+    <div id="footer">#footer</div>
+</div>

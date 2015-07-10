@@ -1,0 +1,25 @@
+﻿@using Brigita.Web.Models.Menu;
+@using Brigita.Core.Infrastructure.Trees;
+
+@model CategoryMenuModel
+
+@helper Node2ListItems(SimpleTreeNode<CategoryMenuItem> node) {
+    CategoryMenuItem item = node.Value;
+    <li>
+        <a href="@item.Uri">@item.Name</a>
+    @if(node.Children.Any()) {
+        <ul>
+        @foreach(var childNode in node.Children) {
+            @Node2ListItems(childNode);  
+        }
+        </ul>
+    }    
+    </li>
+}
+
+<ul id="categoryMenu">
+@foreach(var rootNode in Model.MenuItemTree.Roots) {
+    @Node2ListItems(rootNode);
+}
+</ul>
+

@@ -1,0 +1,19 @@
+﻿@model PageModel
+@{
+    string themeRoot = "~/BrigitasBodite/Themes/Brigita";
+
+    var browser = Request.Browser;
+    if (browser.Browser == "IE" && browser.MajorVersion == 6)
+    {
+        Model.Page.CssLinks.Add("{0}/Content/ie6.css", themeRoot);
+    }
+    else if (browser.Browser == "IE" && browser.MajorVersion == 7)
+    {
+        Model.Page.CssLinks.Add("{0}/Content/ie7.css", themeRoot);
+    }
+
+    Model.Page.CssLinks.Add("{0}/Content/responsiveness.css", themeRoot);
+    Model.Page.CssLinks.Add("{0}/Content/styles.css", themeRoot);
+}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--HEYUP JASON!!!-->

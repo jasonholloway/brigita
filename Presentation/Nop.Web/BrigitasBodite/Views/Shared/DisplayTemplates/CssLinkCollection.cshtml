@@ -1,0 +1,5 @@
+﻿@model CssLinkCollection
+@foreach(var cssLink in Model)
+{
+    <link type="text/css" rel="stylesheet" href="@Url.Content(cssLink)" />
+}

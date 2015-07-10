@@ -1,0 +1,53 @@
+﻿@model PageModel
+@{ 
+    Layout = "~/Views/Shared/_Root.cshtml";
+}
+<div>
+    <div id="header">
+        <div id="headerLeft">
+            #headerLeft
+        </div>
+
+        <div id="headerCentre">
+            #headerCentre
+        </div>
+
+        <div id="headerRight">
+            #headerRight
+        </div>
+    </div>
+
+    <div id="bar">
+        <div id="barLeft">
+            #barLeft
+        </div>
+
+        <div id="barCentre">
+            #barCentre
+        </div>
+
+        <div id="barRight">
+            #barRight
+        </div>
+    </div>
+
+    <div id="main">
+        <div id="mainLeft">
+            <!-- Render menu here (should be via child action cached by parameter -->
+            @{Html.RenderAction("CategoryMenu", "Menu"/*, new { categoryID = 0 }*/);}
+            @RenderSection("leftSide")
+        </div>
+
+        <div id="mainCentre">
+            @RenderBody()
+        </div>
+
+        <div id="mainRight">
+            @RenderSection("rightSide")
+        </div>
+    </div>
+
+    <div id="footer">
+        #footer
+    </div>
+</div>

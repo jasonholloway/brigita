@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{41F345B2-E198-4E4A-B8B3-9F99F5BA1D8D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Nop.Brigita</RootNamespace>
+    <AssemblyName>Nop.Brigita</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>4.0</OldToolsVersion>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\..\..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Images\background.jpg" />
+    <Content Include="Scripts\less-1.5.1.js" />
+    <Content Include="Scripts\less-1.5.1.min.js" />
+    <Content Include="Themes\Brigita\Content\ie6.css" />
+    <Content Include="Themes\Brigita\Content\ie7.css" />
+    <Content Include="Themes\Brigita\Content\images\ajax_loader_large.gif" />
+    <Content Include="Themes\Brigita\Content\images\ajax_loader_small.gif" />
+    <Content Include="Themes\Brigita\Content\images\arrow-up.png" />
+    <Content Include="Themes\Brigita\Content\images\bbeditor-button-bg.gif" />
+    <Content Include="Themes\Brigita\Content\images\bullet-left.gif" />
+    <Content Include="Themes\Brigita\Content\images\bullet-right.gif" />
+    <Content Include="Themes\Brigita\Content\images\download-sample-bg.gif" />
+    <Content Include="Themes\Brigita\Content\images\forum-footer-bg.gif" />
+    <Content Include="Themes\Brigita\Content\images\forum-header-bg.gif" />
+    <Content Include="Themes\Brigita\Content\images\free-shipping.png" />
+    <Content Include="Themes\Brigita\Content\images\ico-arrow-r.gif" />
+    <Content Include="Themes\Brigita\Content\images\ico-close-notification-bar.png" />
+    <Content Include="Themes\Brigita\Content\images\ico-delete.gif" />
+    <Content Include="Themes\Brigita\Content\images\ico-edit.gif" />
+    <Content Include="Themes\Brigita\Content\images\ico-forum-post-add.gif" />
+    <Content Include="Themes\Brigita\Content\images\ico-forum-post-high.gif" />
+    <Content Include="Themes\Brigita\Content\images\ico-forum-post.gif" />
+    <Content Include="Themes\Brigita\Content\images\ico-forum-watch.gif" />
+    <Content Include="Themes\Brigita\Content\images\ico-forum.gif" />
+    <Content Include="Themes\Brigita\Content\images\ico-move-topic.gif" />
+    <Content Include="Themes\Brigita\Content\images\ico-pm.png" />
+    <Content Include="Themes\Brigita\Content\images\ico-rss.gif" />
+    <Content Include="Themes\Brigita\Content\images\logo.gif" />
+    <Content Include="Themes\Brigita\Content\images\mobile-menu-collapse.png" />
+    <Content Include="Themes\Brigita\Content\images\mobile-menu-expand.png" />
+    <Content Include="Themes\Brigita\Content\images\progress-step-active.gif" />
+    <Content Include="Themes\Brigita\Content\images\progress-step-inactive.gif" />
+    <Content Include="Themes\Brigita\Content\images\star-x-active.png" />
+    <Content Include="Themes\Brigita\Content\images\star-x-inactive.png" />
+    <Content Include="Themes\Brigita\Content\images\top-menu-background.png" />
+    <Content Include="Themes\Brigita\Content\images\top-menu-divider.png" />
+    <Content Include="Themes\Brigita\Content\images\top-menu-list-image-hover.png" />
+    <Content Include="Themes\Brigita\Content\images\top-menu-list-image.png" />
+    <Content Include="Themes\Brigita\Content\images\top-menu-triangle.png" />
+    <Content Include="Themes\Brigita\Content\responsive.css" />
+    <Content Include="Themes\Brigita\Content\styles.css" />
+    <Content Include="Themes\Brigita\Content\styles.rtl.css" />
+    <Content Include="Themes\Brigita\preview.jpg" />
+    <Content Include="Themes\DefaultClean\Content\ie6.css" />
+    <Content Include="Themes\DefaultClean\Content\ie7.css" />
+    <Content Include="Themes\DefaultClean\Content\images\ajax_loader_large.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\ajax_loader_small.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\arrow-up.png" />
+    <Content Include="Themes\DefaultClean\Content\images\bbeditor-button-bg.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\bullet-left.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\bullet-right.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\download-sample-bg.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\forum-footer-bg.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\forum-header-bg.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\free-shipping.png" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-arrow-r.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-close-notification-bar.png" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-delete.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-edit.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-forum-post-add.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-forum-post-high.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-forum-post.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-forum-watch.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-forum.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-move-topic.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-pm.png" />
+    <Content Include="Themes\DefaultClean\Content\images\ico-rss.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\logo.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\mobile-menu-collapse.png" />
+    <Content Include="Themes\DefaultClean\Content\images\mobile-menu-expand.png" />
+    <Content Include="Themes\DefaultClean\Content\images\progress-step-active.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\progress-step-inactive.gif" />
+    <Content Include="Themes\DefaultClean\Content\images\star-x-active.png" />
+    <Content Include="Themes\DefaultClean\Content\images\star-x-inactive.png" />
+    <Content Include="Themes\DefaultClean\Content\images\top-menu-background.png" />
+    <Content Include="Themes\DefaultClean\Content\images\top-menu-divider.png" />
+    <Content Include="Themes\DefaultClean\Content\images\top-menu-list-image-hover.png" />
+    <Content Include="Themes\DefaultClean\Content\images\top-menu-list-image.png" />
+    <Content Include="Themes\DefaultClean\Content\images\top-menu-triangle.png" />
+    <Content Include="Themes\DefaultClean\Content\responsive.css" />
+    <Content Include="Themes\DefaultClean\Content\styles.css" />
+    <Content Include="Themes\DefaultClean\Content\styles.rtl.css" />
+    <Content Include="Themes\DefaultClean\preview.jpg" />
+    <Content Include="Themes\print.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="BrigitaAreaRegistration.cs" />
+    <Compile Include="Controllers\BrigitaBaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="HtmlHelpers.cs" />
+    <Compile Include="Infrastructure\ScriptLinkCollection.cs" />
+    <Compile Include="Infrastructure\CssLinkCollection.cs" />
+    <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Models\ShopModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Home\index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="packages.config" />
+    <Content Include="Views\Shared\_Root.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CssLinkCollection.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ScriptLinkCollection.cshtml" />
+    <Content Include="Themes\Brigita\theme.config" />
+    <Content Include="Themes\Brigita\Views\Shared\Head.cshtml" />
+    <Content Include="Themes\Brigita\Views\Web.config" />
+    <Content Include="Themes\DefaultClean\theme.config" />
+    <Content Include="Themes\DefaultClean\Views\Shared\Head.cshtml" />
+    <Content Include="Themes\DefaultClean\Views\Web.config" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Brigita.Domain\Brigita.Domain.csproj">
+      <Project>{c3cdc67c-92c8-4ed7-8ba5-62523aa47fbd}</Project>
+      <Name>Brigita.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\Nop.Core\Nop.Core.csproj">
+      <Project>{6bda8332-939f-45b7-a25e-7a797260ae59}</Project>
+      <Name>Nop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\Nop.Data\Nop.Data.csproj">
+      <Project>{ccd7f2c9-6a2c-4cf0-8e89-076b8fc0f144}</Project>
+      <Name>Nop.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Libraries\Nop.Services\Nop.Services.csproj">
+      <Project>{210541ad-f659-47da-8763-16f36c5cd2f4}</Project>
+      <Name>Nop.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nop.Web.Framework\Nop.Web.Framework.csproj">
+      <Project>{75fd4163-333c-4dd5-854d-2ef294e45d94}</Project>
+      <Name>Nop.Web.Framework</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nop.Web.csproj">
+      <Project>{4f1f649c-1020-45be-a487-f416d9297ff3}</Project>
+      <Name>Nop.Web</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>60460</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>http://www.nopcommerce.com/</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>md "$(ProjectDir)bin"
+del "$(ProjectDir)*"
+copy "$(TargetDir)*.dll" "$(ProjectDir)bin\*.dll" /y</PostBuildEvent>
+  </PropertyGroup>
+</Project>

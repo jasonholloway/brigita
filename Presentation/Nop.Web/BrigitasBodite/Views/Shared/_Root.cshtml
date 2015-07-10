@@ -1,0 +1,45 @@
+﻿@model PageModel
+@{ 
+    Model.Page.CssLinks.Add("~/Content/jquery-ui-themes/smoothness/jquery-ui-1.10.3.custom.min.css");
+
+    Model.Page.ScriptLinks.Add("~/Scripts/public.ajaxcart.js");
+    Model.Page.ScriptLinks.Add("~/Scripts/public.common.js");
+    Model.Page.ScriptLinks.Add("~/Scripts/jquery-migrate-1.2.1.min.js");
+    Model.Page.ScriptLinks.Add("~/Scripts/jquery-ui-1.10.3.custom.min.js");
+    Model.Page.ScriptLinks.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
+    Model.Page.ScriptLinks.Add("~/Scripts/jquery.validate.min.js");
+    Model.Page.ScriptLinks.Add("~/Scripts/jquery-1.10.2.min.js");
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@Model.Page.Title</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
+    <meta name="description" content="@Model.Page.MetaDescription" />
+    <meta name="keywords" content="@Model.Page.MetaKeywords" />
+    @Model.Page.HeadCustom
+    @*This is used so that themes can inject content into the header*@
+    @Html.Partial("Head")
+    @*@Html.Widget("head_html_tag")*@
+    @Html.DisplayFor(m => m.Page.CssLinks)
+    @Html.DisplayFor(m => m.Page.ScriptLinks)
+    @Model.Page.CanonicalURLs
+    @{ 
+        Html.NopAction("RssHeaderLink", "News");
+        Html.NopAction("RssHeaderLink", "Blog");
+        Html.NopAction("Favicon", "Common");
+    }
+    @if(Model.Page.DisplayProfiler)
+    {
+        @StackExchange.Profiling.MiniProfiler.RenderIncludes()
+    }
+</head>
+<body>
+    @RenderBody()
+    @Html.DisplayFor(m => m.Page.FooterCssLinks)
+    @Html.DisplayFor(m => m.Page.FooterScriptLinks)
+</body>
+</html>

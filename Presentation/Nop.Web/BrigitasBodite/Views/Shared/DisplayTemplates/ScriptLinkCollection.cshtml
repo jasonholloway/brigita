@@ -1,0 +1,5 @@
+﻿@model ScriptLinkCollection
+@foreach(var scriptLink in Model)
+{
+    <script src="@Url.Content(scriptLink)"></script>
+}
