@@ -43,14 +43,21 @@ namespace Brigita.Services.Categories
 
 
 
-        public ICategory GetByID(int id) {
+        public ICategory FindCat(string name) {
+            throw new NotImplementedException();
+        }
+        
+        public ICategory FindCat(int id) {
             throw new NotImplementedException();
         }
 
-        public ICategory GetByName(string name) {
-            throw new NotImplementedException();
-        }
+        public ICategory[] FindCatFamily(int id) {
+            var headNode = Tree.Flatten().FirstOrDefault(n => n.Value.ID == id); //this should be indexed
 
+            return headNode != null
+                    ? headNode.Flatten().Select(n => n.Value).ToArray()
+                    : new ICategory[0];
+        }
 
     }
 }

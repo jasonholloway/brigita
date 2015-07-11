@@ -10,8 +10,7 @@ namespace Brigita.Services.Categories
     public class ScopedCategory : IScopedCategory
     {
         ICategory _baseCat;
-
-
+        
         public ScopedCategory(ICategory baseCat, bool isActive, bool isActiveParent) {
             _baseCat = baseCat;
 

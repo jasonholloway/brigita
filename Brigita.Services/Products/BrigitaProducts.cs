@@ -16,48 +16,60 @@ namespace Brigita.Services.Products
     public class BrigitaProducts : IProducts
     {
         IRepository<Product> _repo;
-        ICategories _categories;
+        ICategories _cats;
 
-        public BrigitaProducts(IRepository<Product> repo) {
+        public BrigitaProducts(IRepository<Product> repo, ICategories cats) {
             _repo = repo;
+            _cats = cats;
         }
         
         [Cache("ByCategory")]
-        public Product[] GetByCategoryID(int catalogID) {            
+        public Product[] GetByCategoryID(int catalogID) 
+        {          
+            var catHash = new HashSet<int>(_cats.FindCatFamily(catalogID)
+                                                    .Select(c => c.ID));
+            
             return _repo.TableNoTracking
-                        .Where(p => p.ProductCategories.Any(c => c.CategoryId == catalogID))
+                        .Where(p => p.ProductCategories.Any(c => catHash.Contains(c.CategoryId)))
                         .ToArray();                                                            
         }
         
 
         [Cache("TeasersByCategory")]
-        public ListPage<ProductTeaser> GetProductTeasersByCategory(int categoryID, int page) {
+        public ListPage<IProductTeaser> GetTeasersByCategoryID(int categoryID, int page) 
+        {
+            var catHash = new HashSet<int>(_cats.FindCatFamily(categoryID)
+                                                    .Select(c => c.ID));
+            
             var teasers = _repo.TableNoTracking
                                     .Where(p => p.ProductCategories
-                                                    .Any(pc => pc.CategoryId == categoryID))
-                                    .Select(p => new _ProductTeaser(
-                                                                p.ID,
-                                                                p.Name,
-                                                                p.ShortDescription))
+                                                    .Any(pc => catHash.Contains(pc.CategoryId)))
+                                    .Select(p => new _ProductTeaser(p))                                                            
                                     .ToArray();
 
-            return new ListPage<ProductTeaser>(teasers, 1, 1);            
+            return new ListPage<IProductTeaser>(teasers, 1, 1); //!!!!!!!!!!!!!  
         }
 
 
 
-        class _ProductTeaser : ProductTeaser 
+
+
+        class _ProductTeaser : IProductTeaser 
         {
-            public _ProductTeaser(
-                        int id,
-                        string name,
-                        string shortDesc
-                        ) 
-            {
-                ID = id;
-                Name = name;
-                ShortDescription = shortDesc;
+
+            public _ProductTeaser(Product product) {
+                ID = product.ID;
+                Name = product.Name;
+                ShortDescription = product.ShortDescription;
+                Price = product.Price;
+                //Picture = 
             }
+
+            public int ID { get; set; }
+            public string Name { get; set; }
+            public string ShortDescription { get; set; }
+            public decimal Price { get; set; }
+            public object Picture { get; set; }
         }
 
     }

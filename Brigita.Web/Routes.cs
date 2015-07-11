@@ -7,6 +7,7 @@ using System.Web.Routing;
 
 namespace Brigita.Web
 {
+    
     public static class Routes
     {
         public static void Register(RouteCollection routes) {
@@ -16,18 +17,15 @@ namespace Brigita.Web
             //var routePublisher = EngineContext.Current.Resolve<IRoutePublisher>();
             //routePublisher.RegisterRoutes(routes);
 
-            var route = routes.MapRoute(
+            //should have nice short URLs to categories
+            //...
+            
+            routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional },
                 new[] { "Brigita.Web.Controllers" }
-            );
-
-            route.DataTokens["UseNamespaceFallback"] = false;
-
-
-            //there should be a generic way to access categories...
-
+            ).DataTokens["UseNamespaceFallback"] = false;
         }
 
     }

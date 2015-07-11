@@ -14,7 +14,9 @@ namespace Brigita.Services.Categories
         ICategory[] All { get; }
         SimpleTree<ICategory> Tree { get; }
 
-        ICategory GetByID(int id);
-        ICategory GetByName(string name);
+        ICategory FindCat(int id);
+        ICategory FindCat(string name);
+
+        ICategory[] FindCatFamily(int id);
     }
 }

@@ -1,0 +1,37 @@
+﻿<#@ template  debug="true" hostSpecific="true" #>
+<#@ output extension=".cs" #>
+<#@ Assembly Name="System.Core" #>
+<#@ assembly name="$(SolutionDir)Brigita.Domain\bin\debug\brigita.domain.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #> 
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="Brigita.Domain" #>
+<#+
+	void GenerateDto<TInt>(string @namespace, string name) {		
+		var tInt = typeof(TInt);
+
+		//should check interface here...
+
+		var intNamespace = tInt.Namespace;
+		var intName = tInt.Name;
+
+#>
+using <#=tInt.Namespace#>;
+
+namespace <#=@namespace#> {
+
+	class <#=name#> : <#=tInt.Name#>
+	{
+<#+
+		foreach(var prop in tInt.GetProperties()) {
+#>
+		public <#=prop.PropertyType.FullName#> <#=prop.Name#> { get; set; }
+<#+
+        }
+		#>
+	}
+}
+<#+
+    }
+#>

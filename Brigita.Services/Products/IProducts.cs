@@ -10,7 +10,8 @@ namespace Brigita.Services.Products
 {
     public interface IProducts
     {
-        ListPage<ProductTeaser> GetProductTeasersByCategory(int categoryID, int page);
+        IProducts[] GetByCategoryID(int catID);
+        ListPage<IProductTeaser> GetTeasersByCategoryID(int catID, int page);
 
         //...
 
