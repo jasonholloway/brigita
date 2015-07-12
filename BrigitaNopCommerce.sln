@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brigita.Services.Test", "Br
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brigita.Domain", "Brigita.Domain\Brigita.Domain.csproj", "{C3CDC67C-92C8-4ED7-8BA5-62523AA47FBD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Brigita.Domain.Test", "Brigita.Domain.Test\Brigita.Domain.Test.csproj", "{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -163,6 +165,16 @@ Global
 		{C3CDC67C-92C8-4ED7-8BA5-62523AA47FBD}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{C3CDC67C-92C8-4ED7-8BA5-62523AA47FBD}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{C3CDC67C-92C8-4ED7-8BA5-62523AA47FBD}.Release|x86.ActiveCfg = Release|Any CPU
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -180,6 +192,7 @@ Global
 		{F6C49DE9-1A3B-42B9-B1E6-60E55E326EEC} = {35DEB2DD-61C4-41C2-A403-8341526B4D1A}
 		{8367EAA4-DDF4-4788-9197-9AAD467E2716} = {35DEB2DD-61C4-41C2-A403-8341526B4D1A}
 		{C3CDC67C-92C8-4ED7-8BA5-62523AA47FBD} = {35DEB2DD-61C4-41C2-A403-8341526B4D1A}
+		{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB} = {35DEB2DD-61C4-41C2-A403-8341526B4D1A}
 	EndGlobalSection
 	GlobalSection(NDepend) = preSolution
 		Project = ".\NopCommerce.ndproj"

@@ -1,3 +1,6 @@
-﻿<#@ include file="$(SolutionDir)Brigita.Domain\DtoGen.tt" once="true" #>
+﻿<#@ include file="$(SolutionDir)Brigita.Domain\Dtos\DtoGen.tt" once="true" #>
 <#@ import namespace="Brigita.Domain.Products" #>
-<#  GenerateDto<IProduct>("Brigita.Services.Products", "Product"); #>
+<#  GenerateDto<IProduct>(
+					"Product", 
+					"Brigita.Services.Products", 
+					new[] { "System" }); #>

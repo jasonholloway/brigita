@@ -1,104 +1,105 @@
 ﻿ 
 
 using Brigita.Domain.Products;
+using System;
 
 namespace Brigita.Services.Products {
 
 	class Product : IProduct
 	{
-		public System.Int32 ProductTypeId { get; set; }
-		public System.Int32 ParentGroupedProductId { get; set; }
-		public System.Boolean VisibleIndividually { get; set; }
-		public System.String Name { get; set; }
-		public System.String ShortDescription { get; set; }
-		public System.String FullDescription { get; set; }
-		public System.String AdminComment { get; set; }
-		public System.Int32 ProductTemplateId { get; set; }
-		public System.Int32 VendorId { get; set; }
-		public System.Boolean ShowOnHomePage { get; set; }
-		public System.String MetaKeywords { get; set; }
-		public System.String MetaDescription { get; set; }
-		public System.String MetaTitle { get; set; }
-		public System.Boolean AllowCustomerReviews { get; set; }
-		public System.Int32 ApprovedRatingSum { get; set; }
-		public System.Int32 NotApprovedRatingSum { get; set; }
-		public System.Int32 ApprovedTotalReviews { get; set; }
-		public System.Int32 NotApprovedTotalReviews { get; set; }
-		public System.Boolean SubjectToAcl { get; set; }
-		public System.Boolean LimitedToStores { get; set; }
-		public System.String Sku { get; set; }
-		public System.String ManufacturerPartNumber { get; set; }
-		public System.String Gtin { get; set; }
-		public System.Boolean IsGiftCard { get; set; }
-		public System.Int32 GiftCardTypeId { get; set; }
-		public System.Boolean RequireOtherProducts { get; set; }
-		public System.String RequiredProductIds { get; set; }
-		public System.Boolean AutomaticallyAddRequiredProducts { get; set; }
-		public System.Boolean IsDownload { get; set; }
-		public System.Int32 DownloadId { get; set; }
-		public System.Boolean UnlimitedDownloads { get; set; }
-		public System.Int32 MaxNumberOfDownloads { get; set; }
-		public System.Nullable`1[[System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] DownloadExpirationDays { get; set; }
-		public System.Int32 DownloadActivationTypeId { get; set; }
-		public System.Boolean HasSampleDownload { get; set; }
-		public System.Int32 SampleDownloadId { get; set; }
-		public System.Boolean HasUserAgreement { get; set; }
-		public System.String UserAgreementText { get; set; }
-		public System.Boolean IsRecurring { get; set; }
-		public System.Int32 RecurringCycleLength { get; set; }
-		public System.Int32 RecurringCyclePeriodId { get; set; }
-		public System.Int32 RecurringTotalCycles { get; set; }
-		public System.Boolean IsRental { get; set; }
-		public System.Int32 RentalPriceLength { get; set; }
-		public System.Int32 RentalPricePeriodId { get; set; }
-		public System.Boolean IsShipEnabled { get; set; }
-		public System.Boolean IsFreeShipping { get; set; }
-		public System.Boolean ShipSeparately { get; set; }
+		public int ProductTypeId { get; set; }
+		public int ParentGroupedProductId { get; set; }
+		public bool VisibleIndividually { get; set; }
+		public string Name { get; set; }
+		public string ShortDescription { get; set; }
+		public string FullDescription { get; set; }
+		public string AdminComment { get; set; }
+		public int ProductTemplateId { get; set; }
+		public int VendorId { get; set; }
+		public bool ShowOnHomePage { get; set; }
+		public string MetaKeywords { get; set; }
+		public string MetaDescription { get; set; }
+		public string MetaTitle { get; set; }
+		public bool AllowCustomerReviews { get; set; }
+		public int ApprovedRatingSum { get; set; }
+		public int NotApprovedRatingSum { get; set; }
+		public int ApprovedTotalReviews { get; set; }
+		public int NotApprovedTotalReviews { get; set; }
+		public bool SubjectToAcl { get; set; }
+		public bool LimitedToStores { get; set; }
+		public string Sku { get; set; }
+		public string ManufacturerPartNumber { get; set; }
+		public string Gtin { get; set; }
+		public bool IsGiftCard { get; set; }
+		public int GiftCardTypeId { get; set; }
+		public bool RequireOtherProducts { get; set; }
+		public string RequiredProductIds { get; set; }
+		public bool AutomaticallyAddRequiredProducts { get; set; }
+		public bool IsDownload { get; set; }
+		public int DownloadId { get; set; }
+		public bool UnlimitedDownloads { get; set; }
+		public int MaxNumberOfDownloads { get; set; }
+		public System.Nullable`1 DownloadExpirationDays { get; set; }
+		public int DownloadActivationTypeId { get; set; }
+		public bool HasSampleDownload { get; set; }
+		public int SampleDownloadId { get; set; }
+		public bool HasUserAgreement { get; set; }
+		public string UserAgreementText { get; set; }
+		public bool IsRecurring { get; set; }
+		public int RecurringCycleLength { get; set; }
+		public int RecurringCyclePeriodId { get; set; }
+		public int RecurringTotalCycles { get; set; }
+		public bool IsRental { get; set; }
+		public int RentalPriceLength { get; set; }
+		public int RentalPricePeriodId { get; set; }
+		public bool IsShipEnabled { get; set; }
+		public bool IsFreeShipping { get; set; }
+		public bool ShipSeparately { get; set; }
 		public System.Decimal AdditionalShippingCharge { get; set; }
-		public System.Int32 DeliveryDateId { get; set; }
-		public System.Boolean IsTaxExempt { get; set; }
-		public System.Int32 TaxCategoryId { get; set; }
-		public System.Boolean IsTelecommunicationsOrBroadcastingOrElectronicServices { get; set; }
-		public System.Int32 ManageInventoryMethodId { get; set; }
-		public System.Boolean UseMultipleWarehouses { get; set; }
-		public System.Int32 WarehouseId { get; set; }
-		public System.Int32 StockQuantity { get; set; }
-		public System.Boolean DisplayStockAvailability { get; set; }
-		public System.Boolean DisplayStockQuantity { get; set; }
-		public System.Int32 MinStockQuantity { get; set; }
-		public System.Int32 LowStockActivityId { get; set; }
-		public System.Int32 NotifyAdminForQuantityBelow { get; set; }
-		public System.Int32 BackorderModeId { get; set; }
-		public System.Boolean AllowBackInStockSubscriptions { get; set; }
-		public System.Int32 OrderMinimumQuantity { get; set; }
-		public System.Int32 OrderMaximumQuantity { get; set; }
-		public System.String AllowedQuantities { get; set; }
-		public System.Boolean AllowAddingOnlyExistingAttributeCombinations { get; set; }
-		public System.Boolean DisableBuyButton { get; set; }
-		public System.Boolean DisableWishlistButton { get; set; }
-		public System.Boolean AvailableForPreOrder { get; set; }
-		public System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] PreOrderAvailabilityStartDateTimeUtc { get; set; }
-		public System.Boolean CallForPrice { get; set; }
+		public int DeliveryDateId { get; set; }
+		public bool IsTaxExempt { get; set; }
+		public int TaxCategoryId { get; set; }
+		public bool IsTelecommunicationsOrBroadcastingOrElectronicServices { get; set; }
+		public int ManageInventoryMethodId { get; set; }
+		public bool UseMultipleWarehouses { get; set; }
+		public int WarehouseId { get; set; }
+		public int StockQuantity { get; set; }
+		public bool DisplayStockAvailability { get; set; }
+		public bool DisplayStockQuantity { get; set; }
+		public int MinStockQuantity { get; set; }
+		public int LowStockActivityId { get; set; }
+		public int NotifyAdminForQuantityBelow { get; set; }
+		public int BackorderModeId { get; set; }
+		public bool AllowBackInStockSubscriptions { get; set; }
+		public int OrderMinimumQuantity { get; set; }
+		public int OrderMaximumQuantity { get; set; }
+		public string AllowedQuantities { get; set; }
+		public bool AllowAddingOnlyExistingAttributeCombinations { get; set; }
+		public bool DisableBuyButton { get; set; }
+		public bool DisableWishlistButton { get; set; }
+		public bool AvailableForPreOrder { get; set; }
+		public System.Nullable`1 PreOrderAvailabilityStartDateTimeUtc { get; set; }
+		public bool CallForPrice { get; set; }
 		public System.Decimal Price { get; set; }
 		public System.Decimal OldPrice { get; set; }
 		public System.Decimal ProductCost { get; set; }
-		public System.Nullable`1[[System.Decimal, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] SpecialPrice { get; set; }
-		public System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] SpecialPriceStartDateTimeUtc { get; set; }
-		public System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] SpecialPriceEndDateTimeUtc { get; set; }
-		public System.Boolean CustomerEntersPrice { get; set; }
+		public System.Nullable`1 SpecialPrice { get; set; }
+		public System.Nullable`1 SpecialPriceStartDateTimeUtc { get; set; }
+		public System.Nullable`1 SpecialPriceEndDateTimeUtc { get; set; }
+		public bool CustomerEntersPrice { get; set; }
 		public System.Decimal MinimumCustomerEnteredPrice { get; set; }
 		public System.Decimal MaximumCustomerEnteredPrice { get; set; }
-		public System.Boolean HasTierPrices { get; set; }
-		public System.Boolean HasDiscountsApplied { get; set; }
+		public bool HasTierPrices { get; set; }
+		public bool HasDiscountsApplied { get; set; }
 		public System.Decimal Weight { get; set; }
 		public System.Decimal Length { get; set; }
 		public System.Decimal Width { get; set; }
 		public System.Decimal Height { get; set; }
-		public System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] AvailableStartDateTimeUtc { get; set; }
-		public System.Nullable`1[[System.DateTime, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]] AvailableEndDateTimeUtc { get; set; }
-		public System.Int32 DisplayOrder { get; set; }
-		public System.Boolean Published { get; set; }
-		public System.Boolean Deleted { get; set; }
+		public System.Nullable`1 AvailableStartDateTimeUtc { get; set; }
+		public System.Nullable`1 AvailableEndDateTimeUtc { get; set; }
+		public int DisplayOrder { get; set; }
+		public bool Published { get; set; }
+		public bool Deleted { get; set; }
 		public System.DateTime CreatedOnUtc { get; set; }
 		public System.DateTime UpdatedOnUtc { get; set; }
 	}

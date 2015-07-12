@@ -7,17 +7,27 @@
 <#@ import namespace="System.Collections.Generic" #> 
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="Brigita.Domain" #>
+<#@ import namespace="Brigita.Domain.Dtos" #>
 <#+
-	void GenerateDto<TInt>(string @namespace, string name) {		
+	void GenerateDto<TInt>(string name, string @namespace, string[] otherNamespaces = null) 
+	{		
 		var tInt = typeof(TInt);
+
+		var typeScriber = new TypeScriber(
+									new[] { @namespace }
+									.Concat(new[] { tInt.Namespace })
+									.Concat(otherNamespaces ?? new string[0]));
+
+
 
 		//should check interface here...
 
-		var intNamespace = tInt.Namespace;
-		var intName = tInt.Name;
+		foreach(var ns in typeScriber.Namespaces.Skip(1).OrderBy(s => s)) {
+#>using <#=ns#>;
+<#+
+        }
 
 #>
-using <#=tInt.Namespace#>;
 
 namespace <#=@namespace#> {
 
@@ -26,7 +36,7 @@ namespace <#=@namespace#> {
 <#+
 		foreach(var prop in tInt.GetProperties()) {
 #>
-		public <#=prop.PropertyType.FullName#> <#=prop.Name#> { get; set; }
+		public <#=typeScriber.WriteType(prop.PropertyType)#> <#=prop.Name#> { get; set; }
 <#+
         }
 		#>
