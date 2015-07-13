@@ -1,4 +1,5 @@
 ﻿using Brigita.Core.Infrastructure.Pages;
+using Brigita.Domain.Products;
 using Nop.Core.Domain.Catalog;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace Brigita.Services.Products
 {
     public interface IProducts
     {
-        IProducts[] GetByCategoryID(int catID);
+        IProduct[] GetByCategoryID(int catID);
         ListPage<IProductTeaser> GetTeasersByCategoryID(int catID, int page);
 
         //...

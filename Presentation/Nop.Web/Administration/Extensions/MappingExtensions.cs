@@ -67,17 +67,17 @@ namespace Nop.Admin.Extensions
         
         #region Category
 
-        public static CategoryModel ToModel(this Category entity)
+        public static CategoryModel ToModel(this NopCategory entity)
         {
-            return entity.MapTo<Category, CategoryModel>();
+            return entity.MapTo<NopCategory, CategoryModel>();
         }
 
-        public static Category ToEntity(this CategoryModel model)
+        public static NopCategory ToEntity(this CategoryModel model)
         {
-            return model.MapTo<CategoryModel, Category>();
+            return model.MapTo<CategoryModel, NopCategory>();
         }
 
-        public static Category ToEntity(this CategoryModel model, Category destination)
+        public static NopCategory ToEntity(this CategoryModel model, NopCategory destination)
         {
             return model.MapTo(destination);
         }
@@ -124,17 +124,17 @@ namespace Nop.Admin.Extensions
 
         #region Products
 
-        public static ProductModel ToModel(this Product entity)
+        public static ProductModel ToModel(this NopProduct entity)
         {
-            return entity.MapTo<Product, ProductModel>();
+            return entity.MapTo<NopProduct, ProductModel>();
         }
 
-        public static Product ToEntity(this ProductModel model)
+        public static NopProduct ToEntity(this ProductModel model)
         {
-            return model.MapTo<ProductModel, Product>();
+            return model.MapTo<ProductModel, NopProduct>();
         }
 
-        public static Product ToEntity(this ProductModel model, Product destination)
+        public static NopProduct ToEntity(this ProductModel model, NopProduct destination)
         {
             return model.MapTo(destination);
         }

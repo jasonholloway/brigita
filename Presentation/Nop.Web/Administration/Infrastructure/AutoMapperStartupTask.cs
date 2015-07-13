@@ -180,7 +180,7 @@ namespace Nop.Admin.Infrastructure
             Mapper.CreateMap<TopicModel, Topic>();
 
             //category
-            Mapper.CreateMap<Category, CategoryModel>()
+            Mapper.CreateMap<NopCategory, CategoryModel>()
                 .ForMember(dest => dest.AvailableCategoryTemplates, mo => mo.Ignore())
                 .ForMember(dest => dest.Locales, mo => mo.Ignore())
                 .ForMember(dest => dest.Breadcrumb, mo => mo.Ignore())
@@ -193,7 +193,7 @@ namespace Nop.Admin.Infrastructure
                 .ForMember(dest => dest.AvailableStores, mo => mo.Ignore())
                 .ForMember(dest => dest.SelectedStoreIds, mo => mo.Ignore())
                 .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
-            Mapper.CreateMap<CategoryModel, Category>()
+            Mapper.CreateMap<CategoryModel, NopCategory>()
                 .ForMember(dest => dest.HasDiscountsApplied, mo => mo.Ignore())
                 .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore())
                 .ForMember(dest => dest.UpdatedOnUtc, mo => mo.Ignore())
@@ -224,7 +224,7 @@ namespace Nop.Admin.Infrastructure
                 .ForMember(dest => dest.Deleted, mo => mo.Ignore());
 
             //products
-            Mapper.CreateMap<Product, ProductModel>()
+            Mapper.CreateMap<NopProduct, ProductModel>()
                 .ForMember(dest => dest.ProductTypeName, mo => mo.Ignore())
                 .ForMember(dest => dest.AssociatedToProductId, mo => mo.Ignore())
                 .ForMember(dest => dest.AssociatedToProductName, mo => mo.Ignore())
@@ -259,7 +259,7 @@ namespace Nop.Admin.Infrastructure
                 .ForMember(dest => dest.AvailableDeliveryDates, mo => mo.Ignore())
                 .ForMember(dest => dest.AvailableWarehouses, mo => mo.Ignore())
                 .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
-            Mapper.CreateMap<ProductModel, Product>()
+            Mapper.CreateMap<ProductModel, NopProduct>()
                 .ForMember(dest => dest.ProductTags, mo => mo.Ignore())
                 .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore())
                 .ForMember(dest => dest.UpdatedOnUtc, mo => mo.Ignore())

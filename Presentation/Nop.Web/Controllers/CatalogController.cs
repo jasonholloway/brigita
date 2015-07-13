@@ -379,7 +379,7 @@ namespace Nop.Web.Controllers
         }
 
         [NonAction]
-        protected virtual IEnumerable<ProductOverviewModel> PrepareProductOverviewModels(IEnumerable<Product> products,
+        protected virtual IEnumerable<ProductOverviewModel> PrepareProductOverviewModels(IEnumerable<NopProduct> products,
             bool preparePriceModel = true, bool preparePictureModel = true,
             int? productThumbPictureSize = null, bool prepareSpecificationAttributes = false,
             bool forceRedirectionAfterAddingToCart = false)
@@ -534,7 +534,7 @@ namespace Nop.Web.Controllers
             if (!_catalogSettings.IgnoreFeaturedProducts)
             {
                 //We cache a value indicating whether we have featured products
-                IPagedList<Product> featuredProducts = null;
+                IPagedList<NopProduct> featuredProducts = null;
                 string cacheKey = string.Format(ModelCacheEventConsumer.CATEGORY_HAS_FEATURED_PRODUCTS_KEY, categoryId,
                     string.Join(",", customerRolesIds), _storeContext.CurrentStore.ID);
                 var hasFeaturedProductsCache = _cacheManager.Get<bool?>(cacheKey);
@@ -809,7 +809,7 @@ namespace Nop.Web.Controllers
             //featured products
             if (!_catalogSettings.IgnoreFeaturedProducts)
             {
-                IPagedList<Product> featuredProducts = null;
+                IPagedList<NopProduct> featuredProducts = null;
 
                 //We cache a value indicating whether we have featured products
                 var customerRolesIds = _workContext.CurrentCustomer.CustomerRoles
@@ -1283,7 +1283,7 @@ namespace Nop.Web.Controllers
                     });
             }
 
-            IPagedList<Product> products = new PagedList<Product>(new List<Product>(), 0, 1);
+            IPagedList<NopProduct> products = new PagedList<NopProduct>(new List<NopProduct>(), 0, 1);
             // only search if query string search keyword is set (used to avoid searching or displaying search term min length error message on /search page load)
             if (Request.Params["q"] != null)
             {

@@ -171,7 +171,7 @@ namespace Nop.Web.Controllers
         #region Utilities
 
         [NonAction]
-        protected virtual IEnumerable<ProductOverviewModel> PrepareProductOverviewModels(IEnumerable<Product> products,
+        protected virtual IEnumerable<ProductOverviewModel> PrepareProductOverviewModels(IEnumerable<NopProduct> products,
             bool preparePriceModel = true, bool preparePictureModel = true,
             int? productThumbPictureSize = null, bool prepareSpecificationAttributes = false,
             bool forceRedirectionAfterAddingToCart = false)
@@ -188,7 +188,7 @@ namespace Nop.Web.Controllers
         }
 
         [NonAction]
-        protected virtual ProductDetailsModel PrepareProductDetailsPageModel(Product product, 
+        protected virtual ProductDetailsModel PrepareProductDetailsPageModel(NopProduct product, 
             ShoppingCartItem updatecartitem = null, bool isAssociatedProduct = false)
         {
             if (product == null)
@@ -838,7 +838,7 @@ namespace Nop.Web.Controllers
         }
 
         [NonAction]
-        protected virtual void PrepareProductReviewsModel(ProductReviewsModel model, Product product)
+        protected virtual void PrepareProductReviewsModel(ProductReviewsModel model, NopProduct product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");

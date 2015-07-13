@@ -1,4 +1,5 @@
 ﻿using Brigita.Core.Infrastructure.Pages;
+using Brigita.Domain.Products;
 using Brigita.Services.Cache;
 using Brigita.Services.Categories;
 using Nop.Core.Data;
@@ -15,22 +16,23 @@ namespace Brigita.Services.Products
     [CacheZone("Products")]
     public class BrigitaProducts : IProducts
     {
-        IRepository<Product> _repo;
+        IRepository<NopProduct> _repo;
         ICategories _cats;
 
-        public BrigitaProducts(IRepository<Product> repo, ICategories cats) {
+        public BrigitaProducts(IRepository<NopProduct> repo, ICategories cats) {
             _repo = repo;
             _cats = cats;
         }
         
         [Cache("ByCategory")]
-        public Product[] GetByCategoryID(int catalogID) 
+        public IProduct[] GetByCategoryID(int catalogID) 
         {          
-            var catHash = new HashSet<int>(_cats.FindCatFamily(catalogID)
-                                                    .Select(c => c.ID));
+            var cats = _cats.FindCatFamily(catalogID) //array for EF's sake
+                                    .Select(c => c.ID)
+                                    .ToArray();
             
             return _repo.TableNoTracking
-                        .Where(p => p.ProductCategories.Any(c => catHash.Contains(c.CategoryId)))
+                        .Where(p => p.ProductCategories.Any(c => cats.Contains(c.CategoryId)))
                         .ToArray();                                                            
         }
         
@@ -38,12 +40,13 @@ namespace Brigita.Services.Products
         [Cache("TeasersByCategory")]
         public ListPage<IProductTeaser> GetTeasersByCategoryID(int categoryID, int page) 
         {
-            var catHash = new HashSet<int>(_cats.FindCatFamily(categoryID)
-                                                    .Select(c => c.ID));
+            var cats = _cats.FindCatFamily(categoryID)
+                                    .Select(c => c.ID)
+                                    .ToArray();
             
             var teasers = _repo.TableNoTracking
                                     .Where(p => p.ProductCategories
-                                                    .Any(pc => catHash.Contains(pc.CategoryId)))
+                                                    .Any(pc => cats.Contains(pc.CategoryId)))
                                     .Select(p => new _ProductTeaser(p))                                                            
                                     .ToArray();
 
@@ -57,7 +60,7 @@ namespace Brigita.Services.Products
         class _ProductTeaser : IProductTeaser 
         {
 
-            public _ProductTeaser(Product product) {
+            public _ProductTeaser(IProduct product) {
                 ID = product.ID;
                 Name = product.Name;
                 ShortDescription = product.ShortDescription;

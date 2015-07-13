@@ -37,7 +37,7 @@ namespace Nop.Services.Orders
         /// <param name="automaticallyAddRequiredProductsIfEnabled">Automatically add required products if enabled</param>
         /// <returns>Warnings</returns>
         IList<string> GetRequiredProductWarnings(Customer customer,
-            ShoppingCartType shoppingCartType, Product product,
+            ShoppingCartType shoppingCartType, NopProduct product,
             int storeId, bool automaticallyAddRequiredProductsIfEnabled);
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Nop.Services.Orders
         /// <param name="quantity">Quantity</param>
         /// <returns>Warnings</returns>
         IList<string> GetStandardWarnings(Customer customer, ShoppingCartType shoppingCartType,
-            Product product, string attributesXml,
+            NopProduct product, string attributesXml,
             decimal customerEnteredPrice, int quantity);
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Nop.Services.Orders
         /// <returns>Warnings</returns>
         IList<string> GetShoppingCartItemAttributeWarnings(Customer customer, 
             ShoppingCartType shoppingCartType,
-            Product product,
+            NopProduct product,
             int quantity = 1,
             string attributesXml = "",
             bool ignoreNonCombinableAttributes = false);
@@ -79,7 +79,7 @@ namespace Nop.Services.Orders
         /// <param name="attributesXml">Attributes in XML format</param>
         /// <returns>Warnings</returns>
         IList<string> GetShoppingCartItemGiftCardWarnings(ShoppingCartType shoppingCartType,
-            Product product, string attributesXml);
+            NopProduct product, string attributesXml);
 
         /// <summary>
         /// Validates shopping cart item for rental products
@@ -88,7 +88,7 @@ namespace Nop.Services.Orders
         /// <param name="rentalStartDate">Rental start date</param>
         /// <param name="rentalEndDate">Rental end date</param>
         /// <returns>Warnings</returns>
-        IList<string> GetRentalProductWarnings(Product product,
+        IList<string> GetRentalProductWarnings(NopProduct product,
             DateTime? rentalStartDate = null, DateTime? rentalEndDate = null);
 
         /// <summary>
@@ -111,7 +111,7 @@ namespace Nop.Services.Orders
         /// <param name="getRentalWarnings">A value indicating whether we should validate rental properties</param>
         /// <returns>Warnings</returns>
         IList<string> GetShoppingCartItemWarnings(Customer customer, ShoppingCartType shoppingCartType,
-            Product product, int storeId,
+            NopProduct product, int storeId,
             string attributesXml, decimal customerEnteredPrice,
             DateTime? rentalStartDate = null, DateTime? rentalEndDate = null,
             int quantity = 1, bool automaticallyAddRequiredProductsIfEnabled = true,
@@ -142,7 +142,7 @@ namespace Nop.Services.Orders
         /// <returns>Found shopping cart item</returns>
         ShoppingCartItem FindShoppingCartItemInTheCart(IList<ShoppingCartItem> shoppingCart,
             ShoppingCartType shoppingCartType,
-            Product product,
+            NopProduct product,
             string attributesXml = "",
             decimal customerEnteredPrice = decimal.Zero,
             DateTime? rentalStartDate = null,
@@ -163,7 +163,7 @@ namespace Nop.Services.Orders
         /// <param name="quantity">Quantity</param>
         /// <param name="automaticallyAddRequiredProductsIfEnabled">Automatically add required products if enabled</param>
         /// <returns>Warnings</returns>
-        IList<string> AddToCart(Customer customer, Product product,
+        IList<string> AddToCart(Customer customer, NopProduct product,
             ShoppingCartType shoppingCartType, int storeId, string attributesXml = null,
             decimal customerEnteredPrice = decimal.Zero, 
             DateTime? rentalStartDate = null, DateTime? rentalEndDate = null,

@@ -76,7 +76,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="customer">Customer</param>
         /// <returns>Discounts</returns>
-        protected virtual IList<Discount> GetAllowedDiscounts(Product product, 
+        protected virtual IList<Discount> GetAllowedDiscounts(NopProduct product, 
             Customer customer)
         {
             var allowedDiscounts = new List<Discount>();
@@ -131,7 +131,7 @@ namespace Nop.Services.Catalog
         /// <param name="customer">Customer</param>
         /// <param name="quantity">Quantity</param>
         /// <returns>Price</returns>
-        protected virtual decimal? GetMinimumTierPrice(Product product, Customer customer, int quantity)
+        protected virtual decimal? GetMinimumTierPrice(NopProduct product, Customer customer, int quantity)
         {
             if (!product.HasTierPrices)
                 return decimal.Zero;
@@ -169,7 +169,7 @@ namespace Nop.Services.Catalog
         /// <param name="productPriceWithoutDiscount">Already calculated product price without discount</param>
         /// <param name="appliedDiscount">Applied discount</param>
         /// <returns>Discount amount</returns>
-        protected virtual decimal GetDiscountAmount(Product product,
+        protected virtual decimal GetDiscountAmount(NopProduct product,
             Customer customer,
             decimal productPriceWithoutDiscount,
             out Discount appliedDiscount)
@@ -219,7 +219,7 @@ namespace Nop.Services.Catalog
         /// <param name="includeDiscounts">A value indicating whether include discounts or not for final price computation</param>
         /// <param name="quantity">Shopping cart item quantity</param>
         /// <returns>Final price</returns>
-        public virtual decimal GetFinalPrice(Product product,
+        public virtual decimal GetFinalPrice(NopProduct product,
             Customer customer,
             decimal additionalCharge = decimal.Zero,
             bool includeDiscounts = true,
@@ -241,7 +241,7 @@ namespace Nop.Services.Catalog
         /// <param name="discountAmount">Applied discount amount</param>
         /// <param name="appliedDiscount">Applied discount</param>
         /// <returns>Final price</returns>
-        public virtual decimal GetFinalPrice(Product product, 
+        public virtual decimal GetFinalPrice(NopProduct product, 
             Customer customer,
             decimal additionalCharge, 
             bool includeDiscounts,
@@ -267,7 +267,7 @@ namespace Nop.Services.Catalog
         /// <param name="discountAmount">Applied discount amount</param>
         /// <param name="appliedDiscount">Applied discount</param>
         /// <returns>Final price</returns>
-        public virtual decimal GetFinalPrice(Product product, 
+        public virtual decimal GetFinalPrice(NopProduct product, 
             Customer customer,
             decimal additionalCharge, 
             bool includeDiscounts,
@@ -418,7 +418,7 @@ namespace Nop.Services.Catalog
         /// <param name="discountAmount">Applied discount amount</param>
         /// <param name="appliedDiscount">Applied discount</param>
         /// <returns>Shopping cart unit price (one item)</returns>
-        public virtual decimal GetUnitPrice(Product product,
+        public virtual decimal GetUnitPrice(NopProduct product,
             Customer customer, 
             ShoppingCartType shoppingCartType,
             int quantity,
@@ -576,7 +576,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="attributesXml">Shopping cart item attributes in XML</param>
         /// <returns>Product cost (one item)</returns>
-        public virtual decimal GetProductCost(Product product, string attributesXml)
+        public virtual decimal GetProductCost(NopProduct product, string attributesXml)
         {
             if (product == null)
                 throw new ArgumentNullException("product");

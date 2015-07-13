@@ -2,7 +2,7 @@ using Nop.Core.Domain.Catalog;
 
 namespace Nop.Data.Mapping.Catalog
 {
-    public partial class ProductMap : NopEntityTypeConfiguration<Product>
+    public partial class ProductMap : NopEntityTypeConfiguration<NopProduct>
     {
         public ProductMap()
         {

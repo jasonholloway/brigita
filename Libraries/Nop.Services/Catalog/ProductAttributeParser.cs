@@ -310,7 +310,7 @@ namespace Nop.Services.Catalog
         /// <param name="attributesXml">Attributes in XML format</param>
         /// <param name="ignoreNonCombinableAttributes">A value indicating whether we should ignore non-combinable attributes</param>
         /// <returns>Found product attribute combination</returns>
-        public virtual ProductAttributeCombination FindProductAttributeCombination(Product product,
+        public virtual ProductAttributeCombination FindProductAttributeCombination(NopProduct product,
             string attributesXml, bool ignoreNonCombinableAttributes = true)
         {
             if (product == null)
@@ -327,7 +327,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="ignoreNonCombinableAttributes">A value indicating whether we should ignore non-combinable attributes</param>
         /// <returns>Attribute combinations in XML format</returns>
-        public virtual IList<string> GenerateAllCombinations(Product product, bool ignoreNonCombinableAttributes = false)
+        public virtual IList<string> GenerateAllCombinations(NopProduct product, bool ignoreNonCombinableAttributes = false)
         {
             if (product == null)
                 throw new ArgumentNullException("product");

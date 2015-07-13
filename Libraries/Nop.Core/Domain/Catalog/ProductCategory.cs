@@ -28,12 +28,12 @@ namespace Nop.Core.Domain.Catalog
         /// <summary>
         /// Gets the category
         /// </summary>
-        public virtual Category Category { get; set; }
+        public virtual NopCategory Category { get; set; }
 
         /// <summary>
         /// Gets the product
         /// </summary>
-        public virtual Product Product { get; set; }
+        public virtual NopProduct Product { get; set; }
 
     }
 

@@ -216,7 +216,7 @@ namespace Nop.Admin.Controllers
         }
 
         [NonAction]
-        protected virtual bool HasAccessToProduct(Product product)
+        protected virtual bool HasAccessToProduct(NopProduct product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");

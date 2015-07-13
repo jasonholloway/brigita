@@ -14,7 +14,7 @@ namespace Nop.Core.Domain.Catalog
         /// </summary>
         /// <param name="product">Product</param>
         /// <returns>A list of required product IDs</returns>
-        public static int[] ParseRequiredProductIds(this Product product)
+        public static int[] ParseRequiredProductIds(this NopProduct product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -41,7 +41,7 @@ namespace Nop.Core.Domain.Catalog
         /// </summary>
         /// <param name="product">Product</param>
         /// <returns>Result</returns>
-        public static bool IsAvailable(this Product product)
+        public static bool IsAvailable(this NopProduct product)
         {
             return IsAvailable(product, DateTime.UtcNow);
         }
@@ -52,7 +52,7 @@ namespace Nop.Core.Domain.Catalog
         /// <param name="product">Product</param>
         /// <param name="dateTime">Datetime to check</param>
         /// <returns>Result</returns>
-        public static bool IsAvailable(this Product product, DateTime dateTime)
+        public static bool IsAvailable(this NopProduct product, DateTime dateTime)
         {
             if (product == null)
                 throw new ArgumentNullException("product");

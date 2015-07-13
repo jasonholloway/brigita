@@ -16,7 +16,7 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="product">Product</param>
         /// <returns>Special price; null if product does not have special price specified</returns>
-        public static decimal? GetSpecialPrice(this Product product)
+        public static decimal? GetSpecialPrice(this NopProduct product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -81,7 +81,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="localizationService">Localization service</param>
         /// <returns>The stock message</returns>
-        public static string FormatStockMessage(this Product product, ILocalizationService localizationService)
+        public static string FormatStockMessage(this NopProduct product, ILocalizationService localizationService)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -139,7 +139,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="productTagId">Product tag identifier</param>
         /// <returns>Result</returns>
-        public static bool ProductTagExists(this Product product,
+        public static bool ProductTagExists(this NopProduct product,
             int productTagId)
         {
             if (product == null)
@@ -154,7 +154,7 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="product">Product</param>
         /// <returns>Result</returns>
-        public static int[] ParseAllowedQuatities(this Product product)
+        public static int[] ParseAllowedQuatities(this NopProduct product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -191,7 +191,7 @@ namespace Nop.Services.Catalog
         /// Used only with "multiple warehouses" enabled.
         /// </param>
         /// <returns>Result</returns>
-        public static int GetTotalStockQuantity(this Product product, 
+        public static int GetTotalStockQuantity(this NopProduct product, 
             bool useReservedQuantity = true, int warehouseId = 0)
         {
             if (product == null)
@@ -228,7 +228,7 @@ namespace Nop.Services.Catalog
         /// <param name="startDate">Start date</param>
         /// <param name="endDate">End date</param>
         /// <returns>Number of rental periods</returns>
-        public static int GetRentalPeriods(this Product product,
+        public static int GetRentalPeriods(this NopProduct product,
             DateTime startDate, DateTime endDate)
         {
             if (product == null)
@@ -295,7 +295,7 @@ namespace Nop.Services.Catalog
         /// <param name="sku">SKU</param>
         /// <param name="manufacturerPartNumber">Manufacturer part number</param>
         /// <param name="gtin">GTIN</param>
-        private static void GetSkuMpnGtin(this Product product, string attributesXml, IProductAttributeParser productAttributeParser,
+        private static void GetSkuMpnGtin(this NopProduct product, string attributesXml, IProductAttributeParser productAttributeParser,
             out string sku, out string manufacturerPartNumber, out string gtin)
         {
             if (product == null)
@@ -337,7 +337,7 @@ namespace Nop.Services.Catalog
         /// <param name="attributesXml">Attributes in XML format</param>
         /// <param name="productAttributeParser">Product attribute service (used when attributes are specified)</param>
         /// <returns>SKU</returns>
-        public static string FormatSku(this Product product, string attributesXml = null, IProductAttributeParser productAttributeParser = null)
+        public static string FormatSku(this NopProduct product, string attributesXml = null, IProductAttributeParser productAttributeParser = null)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -359,7 +359,7 @@ namespace Nop.Services.Catalog
         /// <param name="attributesXml">Attributes in XML format</param>
         /// <param name="productAttributeParser">Product attribute service (used when attributes are specified)</param>
         /// <returns>Manufacturer part number</returns>
-        public static string FormatMpn(this Product product, string attributesXml = null, IProductAttributeParser productAttributeParser = null)
+        public static string FormatMpn(this NopProduct product, string attributesXml = null, IProductAttributeParser productAttributeParser = null)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -381,7 +381,7 @@ namespace Nop.Services.Catalog
         /// <param name="attributesXml">Attributes in XML format</param>
         /// <param name="productAttributeParser">Product attribute service (used when attributes are specified)</param>
         /// <returns>GTIN</returns>
-        public static string FormatGtin(this Product product, string attributesXml = null, IProductAttributeParser productAttributeParser = null)
+        public static string FormatGtin(this NopProduct product, string attributesXml = null, IProductAttributeParser productAttributeParser = null)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -402,7 +402,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="date">Date</param>
         /// <returns>Formatted date</returns>
-        public static string FormatRentalDate(this Product product, DateTime date)
+        public static string FormatRentalDate(this NopProduct product, DateTime date)
         {
             if (product == null)
                 throw new ArgumentNullException("product");

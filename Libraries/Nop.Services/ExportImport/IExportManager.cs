@@ -31,14 +31,14 @@ namespace Nop.Services.ExportImport
         /// </summary>
         /// <param name="products">Products</param>
         /// <returns>Result in XML format</returns>
-        string ExportProductsToXml(IList<Product> products);
+        string ExportProductsToXml(IList<NopProduct> products);
 
         /// <summary>
         /// Export products to XLSX
         /// </summary>
         /// <param name="stream">Stream</param>
         /// <param name="products">Products</param>
-        void ExportProductsToXlsx(Stream stream, IList<Product> products);
+        void ExportProductsToXlsx(Stream stream, IList<NopProduct> products);
 
         /// <summary>
         /// Export order list to xml

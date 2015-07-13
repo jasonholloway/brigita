@@ -28,7 +28,7 @@ namespace Nop.Web.Extensions
             IWorkContext workContext,
             ISpecificationAttributeService specificationAttributeService,
             ICacheManager cacheManager,
-            Product product)
+            NopProduct product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -83,7 +83,7 @@ namespace Nop.Web.Extensions
             ICacheManager cacheManager,
             CatalogSettings catalogSettings,
             MediaSettings mediaSettings,
-            IEnumerable<Product> products,
+            IEnumerable<NopProduct> products,
             bool preparePriceModel = true, bool preparePictureModel = true,
             int? productThumbPictureSize = null, bool prepareSpecificationAttributes = false,
             bool forceRedirectionAfterAddingToCart = false)
@@ -143,7 +143,7 @@ namespace Nop.Web.Extensions
                                             {
                                                 //find a minimum possible price
                                                 decimal? minPossiblePrice = null;
-                                                Product minPriceProduct = null;
+                                                NopProduct minPriceProduct = null;
                                                 foreach (var associatedProduct in associatedProducts)
                                                 {
                                                     //calculate for the maximum quantity (in case if we have tier prices)

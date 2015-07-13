@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Brigita.Domain.Products
 {
-    public interface IProduct
+    public interface IProduct : IEntity
     {
 
         /// <summary>

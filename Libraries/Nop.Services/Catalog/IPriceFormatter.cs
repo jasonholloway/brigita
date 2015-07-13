@@ -89,7 +89,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="price">Price</param>
         /// <returns>Rental product price with period</returns>
-        string FormatRentalProductPeriod(Product product, string price);
+        string FormatRentalProductPeriod(NopProduct product, string price);
 
 
 

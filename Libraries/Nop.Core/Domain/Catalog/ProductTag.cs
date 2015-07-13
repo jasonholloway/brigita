@@ -8,7 +8,7 @@ namespace Nop.Core.Domain.Catalog
     /// </summary>
     public partial class ProductTag : BaseEntity, ILocalizedEntity
     {
-        private ICollection<Product> _products;
+        private ICollection<NopProduct> _products;
 
         /// <summary>
         /// Gets or sets the name
@@ -18,9 +18,9 @@ namespace Nop.Core.Domain.Catalog
         /// <summary>
         /// Gets or sets the products
         /// </summary>
-        public virtual ICollection<Product> Products
+        public virtual ICollection<NopProduct> Products
         {
-            get { return _products ?? (_products = new List<Product>()); }
+            get { return _products ?? (_products = new List<NopProduct>()); }
             protected set { _products = value; }
         }
     }

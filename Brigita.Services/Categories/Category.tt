@@ -1,0 +1,6 @@
+﻿<#@ include file="$(SolutionDir)Brigita.Domain\Dtos\DtoGen.tt" once="true" #>
+<#@ import namespace="Brigita.Domain.Categories" #>
+<#  GenerateDto<ICategory>(
+					"Category", 
+					"Brigita.Services.Categories", 
+					new[] { "System" }); #>

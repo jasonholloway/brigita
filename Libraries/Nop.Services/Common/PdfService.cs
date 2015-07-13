@@ -1137,7 +1137,7 @@ namespace Nop.Services.Common
         /// </summary>
         /// <param name="stream">Stream</param>
         /// <param name="products">Products</param>
-        public virtual void PrintProductsToPdf(Stream stream, IList<Product> products)
+        public virtual void PrintProductsToPdf(Stream stream, IList<NopProduct> products)
         {
             if (stream == null)
                 throw new ArgumentNullException("stream");

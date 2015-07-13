@@ -93,7 +93,7 @@ namespace Nop.Core.Domain.Catalog
         /// <summary>
         /// Gets the product
         /// </summary>
-        public virtual Product Product { get; set; }
+        public virtual NopProduct Product { get; set; }
         
         /// <summary>
         /// Gets the product attribute values

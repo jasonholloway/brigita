@@ -49,10 +49,19 @@
     <Compile Include="Cache\CacheRegion.cs" />
     <Compile Include="Cache\ICache.cs" />
     <Compile Include="Categories\BrigitaCategories.cs" />
+    <Compile Include="Categories\ScopedCategory1.cs">
+      <DependentUpon>ScopedCategory.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Categories\ICategories.cs" />
     <Compile Include="Categories\IScopedCategories.cs" />
+    <Compile Include="Categories\Category.cs">
+      <DependentUpon>Category.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Categories\ScopedCategories.cs" />
-    <Compile Include="Categories\ScopedCategory.cs" />
     <Compile Include="Plugins\BrigitaPluginFinder.cs" />
     <Compile Include="Products\IProducts.cs" />
     <Compile Include="Products\BrigitaProducts.cs" />
@@ -91,6 +100,14 @@
     <None Include="app.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Categories\ScopedCategory.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ScopedCategory1.cs</LastGenOutput>
+    </Content>
+    <Content Include="Categories\Category.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Category.cs</LastGenOutput>
+    </Content>
     <Content Include="FodyWeavers.xml" />
     <Content Include="Products\Product.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

@@ -35,7 +35,7 @@ namespace Nop.Core.Domain.Catalog
         /// <summary>
         /// Gets or sets the product
         /// </summary>
-        public virtual Product Product { get; set; }
+        public virtual NopProduct Product { get; set; }
 
         /// <summary>
         /// Gets or sets the customer role

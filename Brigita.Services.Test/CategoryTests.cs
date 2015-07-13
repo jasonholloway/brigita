@@ -19,32 +19,38 @@ namespace Brigita.Services.Test
     [TestClass]
     public class CategoryTests
     {
-        static int[] _parentIds = Sequence.Range(0, 50).PadTo(200, 0).ToArray();
+        static ICategory[] _allCats;
 
-        static Category[] _categories = Builder<Category>
-                                            .CreateListOfSize(200)
+        static CategoryTests() {
+            var catIDs = new List<int>(new[] { 0 });
+
+            _allCats = Builder<NopCategory>.CreateListOfSize(100)
                                             .All()
-                                                .Do(c => c.ParentCategoryId = Pick<int>.RandomItemFrom(_parentIds))
-                                            .Build().ToArray();
+                                                .Do(c => c.ParentCategoryId = Pick<int>.RandomItemFrom(catIDs))
+                                                .Do(c => catIDs.Add(c.ID))
+                                            .Build()
+                                            .Cast<ICategory>().ToArray();
+        }
+        
 
         [TestMethod]
         public void ArticulateCategoryTree() 
         {
-            var repo = new RepositoryMock<Category>(_categories);
+            var repo = new RepositoryMock<NopCategory>(_allCats.Cast<NopCategory>());
             var cats = new BrigitaCategories(repo);
 
-            var tree = cats.Tree;
+            var catTree = cats.Tree;
 
 
-            var catIDsInTree = new HashSet<int>(tree.Flatten().Select(n => n.Value.ID));
+            var catIDsInTree = new HashSet<int>(catTree.Flatten().Select(n => n.Value.ID));
 
             Assert.IsTrue(
-                _categories.All(c => catIDsInTree.Contains(c.ID)),
+                _allCats.All(c => catIDsInTree.Contains(c.ID)),
                 "Some cats missing from tree!"
                 );
             
 
-            tree.ForEach(
+            catTree.ForEach(
                 (node, path) => {
                     var cat = node.Value;
 
@@ -60,12 +66,12 @@ namespace Brigita.Services.Test
         [TestMethod]
         public void ScopedCategoryTree() 
         {
-            var repo = new RepositoryMock<Category>(_categories);
+            var repo = new RepositoryMock<NopCategory>(_allCats.Cast<NopCategory>());
             var cats = new BrigitaCategories(repo);
             var scopedCats = new ScopedCategories(cats);
             
 
-            var catIDs = _categories.Select(c => c.ID);
+            var catIDs = _allCats.Select(c => c.ID);
 
             var treeTups = catIDs.Select(cid => new { 
                                                     CatID = cid,

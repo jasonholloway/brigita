@@ -69,6 +69,6 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="product">Product</param>
         /// <returns>Number of sent email</returns>
-        int SendNotificationsToSubscribers(Product product);
+        int SendNotificationsToSubscribers(NopProduct product);
     }
 }

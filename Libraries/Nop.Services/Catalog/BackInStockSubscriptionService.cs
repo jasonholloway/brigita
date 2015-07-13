@@ -175,7 +175,7 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="product">Product</param>
         /// <returns>Number of sent email</returns>
-        public virtual int SendNotificationsToSubscribers(Product product)
+        public virtual int SendNotificationsToSubscribers(NopProduct product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");

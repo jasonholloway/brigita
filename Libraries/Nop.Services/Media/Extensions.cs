@@ -49,7 +49,7 @@ namespace Nop.Services.Media
         /// <param name="pictureService">Picture service</param>
         /// <param name="productAttributeParser">Product attribute service</param>
         /// <returns>Picture</returns>
-        public static Picture GetProductPicture(this Product product, string attributesXml,
+        public static Picture GetProductPicture(this NopProduct product, string attributesXml,
             IPictureService pictureService,
             IProductAttributeParser productAttributeParser)
         {

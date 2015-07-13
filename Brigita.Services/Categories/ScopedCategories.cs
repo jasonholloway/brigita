@@ -27,12 +27,15 @@ namespace Brigita.Services.Categories
                                         (node, path) => {
                                             var cat = node.Value;
 
-                                            bool isActive = scope.CategoryID == cat.ID;
+                                            var scopedCat = new ScopedCategory() { 
+                                                                    IsActive = scope.CategoryID == cat.ID,
+                                                                    IsActiveParent = node.Flatten()
+                                                                                            .Any(n => n.Value.ID == scope.CategoryID)
+                                                                };
 
-                                            bool isActiveParent = node.Flatten()
-                                                                        .Any(n => n.Value.ID == scope.CategoryID);
-
-                                            return (IScopedCategory)new ScopedCategory(cat, isActive, isActiveParent);
+                                            scopedCat.PopulateFrom(cat);
+                                            
+                                            return (IScopedCategory)scopedCat;
                                         });
 
             return scopedTree;

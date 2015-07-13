@@ -16,9 +16,9 @@ namespace Brigita.Services.Categories
     public class BrigitaCategories
         : ICategories
     {
-        IRepository<Category> _repo;
+        IRepository<NopCategory> _repo;
         
-        public BrigitaCategories(IRepository<Category> repo) {
+        public BrigitaCategories(IRepository<NopCategory> repo) {
             _repo = repo;
         }
 

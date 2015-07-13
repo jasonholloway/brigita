@@ -21,7 +21,12 @@ namespace Brigita.Domain.Dtos
         }
 
 
-        public string WriteType(Type type) 
+
+        public string WriteFullTypeName<T>() {
+            return WriteFullTypeName(typeof(T));
+        }
+
+        public string WriteFullTypeName(Type type) 
         {
             //switch(type.FullName) {
             //    case "System.Int32":
@@ -33,19 +38,53 @@ namespace Brigita.Domain.Dtos
             //    case "System.String":
             //        return "string";
             //}
-            
-            var qParts = new Queue<string>(type.Namespace.Split('.'));
 
+            string typeName = WriteTypeName(type);
 
+            var stFore = new Stack<string>(type.Namespace.Split('.'));
 
+            var stAft = new Stack<string>(new[] { typeName });
 
-            // * * *
-            // * *
-            // *
+            while(stFore.Any() && !_namespaces.Contains(string.Join(".", stFore.Reverse().ToArray()))) 
+            {
+                stAft.Push(stFore.Pop());
+            }
 
-
-            return string.Join(".", qParts) + "." + type.Name;
+            return string.Join(".", stAft.ToArray());
         }
+
+
+        string WriteTypeName(Type type) {
+            if(type.IsGenericType && !type.IsGenericTypeDefinition) {
+                var sb = new StringBuilder();
+
+                sb.Append(new string(type.Name
+                                            .TakeWhile(c => c != '`')
+                                            .ToArray()));
+                sb.Append("<");
+
+                bool isFirst = true;
+
+                foreach(var genArg in type.GetGenericArguments()) {
+                    if(!isFirst) sb.Append(", ");
+
+                    sb.Append(WriteFullTypeName(genArg));
+
+                    isFirst = false;
+                }
+
+                sb.Append(">");
+
+                return sb.ToString();
+            }
+
+            if(type.IsArray) {
+                return WriteTypeName(type.GetElementType()) + "[]";
+            }
+
+            return type.Name;
+        }
+
 
     }
 }

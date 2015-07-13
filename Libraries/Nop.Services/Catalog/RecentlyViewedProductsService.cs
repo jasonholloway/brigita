@@ -87,9 +87,9 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="number">Number of products to load</param>
         /// <returns>"recently viewed products" list</returns>
-        public virtual IList<Product> GetRecentlyViewedProducts(int number)
+        public virtual IList<NopProduct> GetRecentlyViewedProducts(int number)
         {
-            var products = new List<Product>();
+            var products = new List<NopProduct>();
             var productIds = GetRecentlyViewedProductsIds(number);
             foreach (var product in _productService.GetProductsByIds(productIds.ToArray()))
                 if (product.Published && !product.Deleted)

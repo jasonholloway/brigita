@@ -34,11 +34,29 @@ namespace <#=@namespace#> {
 	class <#=name#> : <#=tInt.Name#>
 	{
 <#+
-		foreach(var prop in tInt.GetProperties()) {
+		foreach(var prop in PropGatherer.Gather(tInt)) {
 #>
-		public <#=typeScriber.WriteType(prop.PropertyType)#> <#=prop.Name#> { get; set; }
+		public <#=typeScriber.WriteFullTypeName(prop.PropertyType)#> <#=prop.Name#> { get; set; }
 <#+
         }
+#>
+
+<#+		
+		foreach(var baseInt in tInt.GetInterfaces()) {
+#>
+
+		public void PopulateFrom(<#=typeScriber.WriteFullTypeName(baseInt)#> input) {
+<#+
+			foreach(var prop in PropGatherer.Gather(baseInt)) {
+#>
+			this.<#=prop.Name#> = input.<#=prop.Name#>;
+<#+
+            }
+#>
+		}
+<#+
+        }
+
 		#>
 	}
 }

@@ -55,9 +55,9 @@ namespace Nop.Services.Installation
         private readonly IRepository<SpecificationAttribute> _specificationAttributeRepository;
         private readonly IRepository<CheckoutAttribute> _checkoutAttributeRepository;
         private readonly IRepository<ProductAttribute> _productAttributeRepository;
-        private readonly IRepository<Category> _categoryRepository;
+        private readonly IRepository<NopCategory> _categoryRepository;
         private readonly IRepository<Manufacturer> _manufacturerRepository;
-        private readonly IRepository<Product> _productRepository;
+        private readonly IRepository<NopProduct> _productRepository;
         private readonly IRepository<UrlRecord> _urlRecordRepository;
         private readonly IRepository<RelatedProduct> _relatedProductRepository;
         private readonly IRepository<EmailAccount> _emailAccountRepository;
@@ -98,9 +98,9 @@ namespace Nop.Services.Installation
             IRepository<SpecificationAttribute> specificationAttributeRepository,
             IRepository<CheckoutAttribute> checkoutAttributeRepository,
             IRepository<ProductAttribute> productAttributeRepository,
-            IRepository<Category> categoryRepository,
+            IRepository<NopCategory> categoryRepository,
             IRepository<Manufacturer> manufacturerRepository,
-            IRepository<Product> productRepository,
+            IRepository<NopProduct> productRepository,
             IRepository<UrlRecord> urlRecordRepository,
             IRepository<RelatedProduct> relatedProductRepository,
             IRepository<EmailAccount> emailAccountRepository,
@@ -5120,8 +5120,8 @@ namespace Nop.Services.Installation
 
 
             //categories
-            var allCategories = new List<Category>();
-            var categoryBooks = new Category
+            var allCategories = new List<NopCategory>();
+            var categoryBooks = new NopCategory
             {
                 Name = "Books",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5141,7 +5141,7 @@ namespace Nop.Services.Installation
             allCategories.Add(categoryBooks);
             _categoryRepository.Insert(categoryBooks);
 
-            var categoryComputers = new Category
+            var categoryComputers = new NopCategory
             {
                 Name = "Computers",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5159,7 +5159,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryComputers);
 
 
-            var categoryDesktops = new Category
+            var categoryDesktops = new NopCategory
             {
                 Name = "Desktops",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5179,7 +5179,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryDesktops);
 
 
-            var categoryNotebooks = new Category
+            var categoryNotebooks = new NopCategory
             {
                 Name = "Notebooks",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5198,7 +5198,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryNotebooks);
 
 
-            var categoryAccessories = new Category
+            var categoryAccessories = new NopCategory
             {
                 Name = "Accessories",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5218,7 +5218,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryAccessories);
 
 
-            var categorySoftware = new Category
+            var categorySoftware = new NopCategory
             {
                 Name = "Software & Games",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5237,7 +5237,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categorySoftware);
 
             
-            var categoryElectronics = new Category
+            var categoryElectronics = new NopCategory
             {
                 Name = "Electronics",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5255,7 +5255,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryElectronics);
 
 
-            var categoryCameraPhoto = new Category
+            var categoryCameraPhoto = new NopCategory
             {
                 Name = "Camera, photo",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5275,7 +5275,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryCameraPhoto);
 
 
-            var categoryCellPhones = new Category
+            var categoryCellPhones = new NopCategory
             {
                 Name = "Cell phones",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5294,7 +5294,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryCellPhones);
 
 
-            var categoryApparelShoes = new Category
+            var categoryApparelShoes = new NopCategory
             {
                 Name = "Apparel & Shoes",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5314,7 +5314,7 @@ namespace Nop.Services.Installation
 
 
 
-            var categoryDigitalDownloads = new Category
+            var categoryDigitalDownloads = new NopCategory
             {
                 Name = "Digital downloads",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5332,7 +5332,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryDigitalDownloads);
 
 
-            var categoryJewelry = new Category
+            var categoryJewelry = new NopCategory
             {
                 Name = "Jewelry",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5350,7 +5350,7 @@ namespace Nop.Services.Installation
             allCategories.Add(categoryJewelry);
             _categoryRepository.Insert(categoryJewelry);
 
-            var categoryGiftCards = new Category
+            var categoryGiftCards = new NopCategory
             {
                 Name = "Gift Cards",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5465,8 +5465,8 @@ namespace Nop.Services.Installation
             var sampleDownloadsPath = _webHelper.MapPath("~/content/samples/");
 
             //products
-            var allProducts = new List<Product>();
-            var product5GiftCard = new Product
+            var allProducts = new List<NopProduct>();
+            var product5GiftCard = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -5507,7 +5507,7 @@ namespace Nop.Services.Installation
 
 
 
-            var product25GiftCard = new Product
+            var product25GiftCard = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -5551,7 +5551,7 @@ namespace Nop.Services.Installation
 
 
 
-            var product50GiftCard = new Product
+            var product50GiftCard = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -5601,7 +5601,7 @@ namespace Nop.Services.Installation
 
 
 
-            var product100GiftCard = new Product
+            var product100GiftCard = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -5650,7 +5650,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productRockabillyPolka = new Product
+            var productRockabillyPolka = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -5748,7 +5748,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productAcerAspireOne = new Product
+            var productAcerAspireOne = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -5823,7 +5823,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productAdidasShoe = new Product
+            var productAdidasShoe = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -5935,7 +5935,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productAdobePhotoshop = new Product
+            var productAdobePhotoshop = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -5985,7 +5985,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productApcUps = new Product
+            var productApcUps = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6035,7 +6035,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productArrow = new Product
+            var productArrow = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6104,7 +6104,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productAsusPc1000 = new Product
+            var productAsusPc1000 = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6194,7 +6194,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productAsusPc900 = new Product
+            var productAsusPc900 = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6276,7 +6276,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productBestGrillingRecipes = new Product
+            var productBestGrillingRecipes = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6328,7 +6328,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productDiamondHeart = new Product
+            var productDiamondHeart = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6379,7 +6379,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productBlackBerry = new Product
+            var productBlackBerry = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6428,7 +6428,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productBuildComputer = new Product
+            var productBuildComputer = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6621,7 +6621,7 @@ namespace Nop.Services.Installation
 
             
             //this one is a grouped product with two associated ones
-            var productCanonCamera = new Product
+            var productCanonCamera = new NopProduct
             {
                 ProductType = ProductType.GroupedProduct,
                 VisibleIndividually = true,
@@ -6671,7 +6671,7 @@ namespace Nop.Services.Installation
                 DisplayOrder = 2,
             });
             _productRepository.Insert(productCanonCamera);
-            var productCanonCamera_associated_1 = new Product
+            var productCanonCamera_associated_1 = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = false, //hide this products
@@ -6707,7 +6707,7 @@ namespace Nop.Services.Installation
                 DisplayOrder = 1,
             });
             _productRepository.Insert(productCanonCamera_associated_1);
-            var productCanonCamera_associated_2 = new Product
+            var productCanonCamera_associated_2 = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = false, //hide this products
@@ -6748,7 +6748,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productCanonCamcoder = new Product
+            var productCanonCamcoder = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6798,7 +6798,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productCompaq = new Product
+            var productCompaq = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6848,7 +6848,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productCookingForTwo = new Product
+            var productCookingForTwo = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6900,7 +6900,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productCorel = new Product
+            var productCorel = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -6950,7 +6950,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productCustomTShirt = new Product
+            var productCustomTShirt = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -7010,7 +7010,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productDiamondEarrings = new Product
+            var productDiamondEarrings = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -7060,7 +7060,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productDiamondBracelet = new Product
+            var productDiamondBracelet = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -7116,7 +7116,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productEatingWell = new Product
+            var productEatingWell = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct, 
                 VisibleIndividually = true,
@@ -7166,7 +7166,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productEtnies = new Product
+            var productEtnies = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7283,7 +7283,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productLeatherHandbag = new Product
+            var productLeatherHandbag = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7338,7 +7338,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productHp506 = new Product
+            var productHp506 = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7396,7 +7396,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productHpPavilion1 = new Product
+            var productHpPavilion1 = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7486,7 +7486,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productHpPavilion2 = new Product
+            var productHpPavilion2 = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7549,7 +7549,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productHpPavilion3 = new Product
+            var productHpPavilion3 = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7638,7 +7638,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productHat = new Product
+            var productHat = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7724,7 +7724,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productKensington = new Product
+            var productKensington = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7774,7 +7774,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productLeviJeans = new Product
+            var productLeviJeans = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7850,7 +7850,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productBaseball = new Product
+            var productBaseball = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7900,7 +7900,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productMedalOfHonor = new Product
+            var productMedalOfHonor = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -7950,7 +7950,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productMouse = new Product
+            var productMouse = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8000,7 +8000,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productGolfBelt = new Product
+            var productGolfBelt = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8050,7 +8050,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productPanasonic = new Product
+            var productPanasonic = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8100,7 +8100,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productSunglasses = new Product
+            var productSunglasses = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8150,7 +8150,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productSamsungPhone = new Product
+            var productSamsungPhone = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8205,7 +8205,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productSonyCamcoder = new Product
+            var productSonyCamcoder = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8255,7 +8255,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productBestSkilletRecipes = new Product
+            var productBestSkilletRecipes = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8306,7 +8306,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productSatellite = new Product
+            var productSatellite = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8387,7 +8387,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productDenimShort = new Product
+            var productDenimShort = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8437,7 +8437,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productEngagementRing = new Product
+            var productEngagementRing = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8492,7 +8492,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productWoW = new Product
+            var productWoW = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8542,7 +8542,7 @@ namespace Nop.Services.Installation
 
 
 
-            var productSoccer = new Product
+            var productSoccer = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8612,7 +8612,7 @@ namespace Nop.Services.Installation
                 IsNew = true,
             };
             downloadService.InsertDownload(downloadPokerFace2);
-            var productPokerFace = new Product
+            var productPokerFace = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8684,7 +8684,7 @@ namespace Nop.Services.Installation
                 IsNew = true,
             };
             downloadService.InsertDownload(downloadSingleLadies2);
-            var productSingleLadies = new Product
+            var productSingleLadies = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -8747,7 +8747,7 @@ namespace Nop.Services.Installation
                 IsNew = true,
             };
             downloadService.InsertDownload(downloadBattleOfLa);
-            var productBattleOfLa = new Product
+            var productBattleOfLa = new NopProduct
             {
                 ProductType = ProductType.SimpleProduct,
                 VisibleIndividually = true,
@@ -9894,7 +9894,7 @@ namespace Nop.Services.Installation
             tasks.ForEach(x => _scheduleTaskRepository.Insert(x));
         }
 
-        private void AddProductTag(Product product, string tag)
+        private void AddProductTag(NopProduct product, string tag)
         {
             var productTag = _productTagRepository.Table.FirstOrDefault(pt => pt.Name == tag);
             if (productTag == null)

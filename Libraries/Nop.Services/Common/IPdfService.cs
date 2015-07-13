@@ -41,6 +41,6 @@ namespace Nop.Services.Common
         /// </summary>
         /// <param name="stream">Stream</param>
         /// <param name="products">Products</param>
-        void PrintProductsToPdf(Stream stream, IList<Product> products);
+        void PrintProductsToPdf(Stream stream, IList<NopProduct> products);
     }
 }
