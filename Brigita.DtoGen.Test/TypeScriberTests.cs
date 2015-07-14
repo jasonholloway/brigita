@@ -1,21 +1,21 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Brigita.Domain.Dtos;
+using Brigita.DtoGen;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Brigita.Domain.Test
+namespace Brigita.DtoGen.Test
 {
     [TestClass]
-    public class DtoTests
+    public class TypeScriberTests
     {
         [TestMethod]
         public void NamespacesElided() 
         {
             var types = new[] { 
                                 typeof(int),
-                                typeof(DtoTests),
+                                typeof(TypeScriberTests),
                                 typeof(System.Reflection.Assembly)
                             };
 
@@ -34,7 +34,7 @@ namespace Brigita.Domain.Test
             var ts = new TypeScriber(new[] { "System" });
             
             Assert.AreEqual("Int32", ts.WriteFullTypeName<int>());
-            Assert.AreEqual("Brigita.Domain.Test.DtoTests", ts.WriteFullTypeName<DtoTests>());
+            Assert.AreEqual("Brigita.Domain.Test.DtoTests", ts.WriteFullTypeName<TypeScriberTests>());
             Assert.AreEqual("Reflection.Assembly", ts.WriteFullTypeName<System.Reflection.Assembly>());
         }
 
@@ -51,11 +51,11 @@ namespace Brigita.Domain.Test
 
             var tests = new Dictionary<Type, string> { 
                                 { typeof(int?), "Nullable<Int32>" }, 
-                                { typeof(List<DtoTests>), "List<Test.DtoTests>" },
+                                { typeof(List<TypeScriberTests>), "List<Test.DtoTests>" },
                                 { typeof(SortedDictionary<string, float>), "SortedDictionary<String, Single>" },
                                 { typeof(byte[]), "Byte[]" },
                                 { typeof(float?[]), "Nullable<Single>[]" },
-                                { typeof(DtoTests[][][]), "Test.DtoTests[][][]" }
+                                { typeof(TypeScriberTests[][][]), "Test.DtoTests[][][]" }
                             };
             
             foreach(var test in tests) {

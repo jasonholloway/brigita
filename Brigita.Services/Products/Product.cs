@@ -103,5 +103,9 @@ namespace Brigita.Services.Products {
 		public DateTime CreatedOnUtc { get; set; }
 		public DateTime UpdatedOnUtc { get; set; }
 		public Int32 ID { get; set; }
+
+		public void PopulateFrom(Brigita.Domain.IEntity input) {
+			this.ID = input.ID;
+		}
 	}
 }

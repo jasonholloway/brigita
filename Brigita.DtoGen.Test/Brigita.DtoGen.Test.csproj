@@ -6,8 +6,8 @@
     <ProjectGuid>{11C367E2-23BC-457F-B2ED-CDBD6A4B83EB}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Brigita.Domain.Test</RootNamespace>
-    <AssemblyName>Brigita.Domain.Test</AssemblyName>
+    <RootNamespace>Brigita.DtoGen.Test</RootNamespace>
+    <AssemblyName>Brigita.DtoGen.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -50,13 +50,17 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="DtoTests.cs" />
+    <Compile Include="TypeScriberTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Brigita.Domain\Brigita.Domain.csproj">
       <Project>{c3cdc67c-92c8-4ed7-8ba5-62523aa47fbd}</Project>
       <Name>Brigita.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brigita.DtoGen\Brigita.DtoGen.csproj">
+      <Project>{4dcb1a55-bd4d-4cd6-b05f-3a7b394a9747}</Project>
+      <Name>Brigita.DtoGen</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

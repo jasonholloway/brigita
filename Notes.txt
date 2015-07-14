@@ -1,0 +1,48 @@
+
+TO DO:
+
+DtoGen to take multiple interfaces
+	/ should be checked beforehand for 1) methods/events 2) duplicate props
+
+DtoGen to take list of sub-interfaces to implement
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+****************************************************************************************
+
+Different pages should have different models (duh!)
+
+But these models should themselves be in a nice hierarchy, or rather they should implement different interfaces,
+dependent on the kind of page being constructed.
+
+Instead of serving these ambiently, through the value dictionary or whatever it's called, these should be part of the model.
+
+They could also be served via the ioc container, somewhat heavily (but not really...)
+
+But they must be served to the controller, and the controller must output its model: no magical ioc invocation in the view.
+
+
+So the controller would pull in the ambient page info, but what would decide it? Surely the controller itself... Nah.
+
+With categories, the ProductCategoryPage controller should set this prop, and then make it available for any child controllers.
+
+And how does a controller communicate with a fellow controller?
+
+*****************
+
+But controllers should do the bare minimum. To the extent of relying on a background service for deducing the page to serve?
+This is done by the routing engine, obvs, and the decision of the routing engine is expressed in the eventually-called controller.
+
+So then: the category controller should read the ambient category value as set by the page controller that contains it.

@@ -17,7 +17,7 @@ namespace Brigita.Web.Controllers
 
         public ActionResult Index()
         {
-            var model = CreatePageModel<HomeModel>();
+            var model = base.CreatePageModel<HomeModel>();
 
             model.Greeting = new HtmlString("Jason! Hello! HELLO! BOO! GRRRRRR!");
 

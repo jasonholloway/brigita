@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Brigita.Domain.Dtos
+namespace Brigita.DtoGen
 {
     public static class PropGatherer
     {

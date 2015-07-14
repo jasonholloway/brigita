@@ -1,13 +1,12 @@
 ﻿<#@ template  debug="true" hostSpecific="true" #>
 <#@ output extension=".cs" #>
 <#@ Assembly Name="System.Core" #>
-<#@ assembly name="$(SolutionDir)Brigita.Domain\bin\debug\brigita.domain.dll" #>
+<#@ assembly name="$(SolutionDir)Brigita.DtoGen\bin\debug\brigita.dtogen.dll" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Collections.Generic" #> 
 <#@ import namespace="System.Reflection" #>
-<#@ import namespace="Brigita.Domain" #>
-<#@ import namespace="Brigita.Domain.Dtos" #>
+<#@ import namespace="Brigita.DtoGen" #>
 <#+
 	void GenerateDto<TInt>(string name, string @namespace, string[] otherNamespaces = null) 
 	{		
@@ -31,7 +30,7 @@
 
 namespace <#=@namespace#> {
 
-	class <#=name#> : <#=tInt.Name#>
+	partial class <#=name#> : <#=tInt.Name#>
 	{
 <#+
 		foreach(var prop in PropGatherer.Gather(tInt)) {

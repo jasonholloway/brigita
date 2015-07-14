@@ -164,6 +164,7 @@
     <Compile Include="Models\Menu\CategoryMenuModel.cs" />
     <Compile Include="Models\Misc\FaviconModel.cs" />
     <Compile Include="Models\PageModel.cs" />
+    <Compile Include="Models\Products\ProductsPageModel.cs" />
     <Compile Include="Models\ShopModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
@@ -254,6 +255,7 @@
     <Content Include="Views\Menu\CategoryMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Models\Interfaces\" />
     <Folder Include="Views\Misc\" />
     <Folder Include="Views\Products\" />
   </ItemGroup>
@@ -262,7 +264,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
-    <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Brigita.Core\Brigita.Core.csproj">
@@ -276,6 +277,10 @@
     <ProjectReference Include="..\Brigita.Services\Brigita.Services.csproj">
       <Project>{f6c49de9-1a3b-42b9-b1e6-60e55e326eec}</Project>
       <Name>Brigita.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brigita.Web.Domain\Brigita.Web.Domain.csproj">
+      <Project>{c5cb2ebc-501a-4142-86fb-25f22ab2663f}</Project>
+      <Name>Brigita.Web.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\Libraries\Nop.Core\Nop.Core.csproj">
       <Project>{6bda8332-939f-45b7-a25e-7a797260ae59}</Project>

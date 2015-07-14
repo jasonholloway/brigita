@@ -30,5 +30,9 @@ namespace Brigita.Services.Categories {
 		public Boolean SubjectToAcl { get; set; }
 		public Boolean LimitedToStores { get; set; }
 		public Int32 ID { get; set; }
+
+		public void PopulateFrom(Brigita.Domain.IEntity input) {
+			this.ID = input.ID;
+		}
 	}
 }

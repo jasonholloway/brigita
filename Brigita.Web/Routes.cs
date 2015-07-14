@@ -14,10 +14,7 @@ namespace Brigita.Web
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //var routePublisher = EngineContext.Current.Resolve<IRoutePublisher>();
-            //routePublisher.RegisterRoutes(routes);
-
-            //should have nice short URLs to categories
+            //should have nice short URLs to categories here
             //...
             
             routes.MapRoute(

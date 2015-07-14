@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Brigita.Domain.Dtos
+namespace Brigita.DtoGen
 {
     public class TypeScriber
     {

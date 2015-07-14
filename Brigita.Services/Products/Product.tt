@@ -1,4 +1,5 @@
-﻿<#@ include file="$(SolutionDir)Brigita.Domain\Dtos\DtoGen.tt" once="true" #>
+﻿<#@ include file="$(SolutionDir)Brigita.DtoGen\DtoGen.tt" once="true" #>
+<#@ assembly name="$(SolutionDir)Brigita.Domain\bin\$(ConfigurationName)\Brigita.Domain.dll" #>
 <#@ import namespace="Brigita.Domain.Products" #>
 <#  GenerateDto<IProduct>(
 					"Product", 
