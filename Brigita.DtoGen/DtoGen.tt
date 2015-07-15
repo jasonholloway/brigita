@@ -8,13 +8,51 @@
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="Brigita.DtoGen" #>
 <#+
-	void GenerateDto<TInt>(string name, string @namespace, string[] otherNamespaces = null) 
-	{		
-		var tInt = typeof(TInt);
+	void GenerateDto<I>(string fullName, string[] otherNamespaces = null) 
+	{
+		GenerateDto(
+			new[] { typeof(I) },
+			fullName,
+			otherNamespaces
+		);
+	}
 
+	void GenerateDto<I1, I2>(string fullName, string[] otherNamespaces = null) 
+	{
+		GenerateDto(
+			new[] { typeof(I1), typeof(I2) },
+			fullName,
+			otherNamespaces
+		);
+	}
+	
+	void GenerateDto<I1, I2, I3>(string fullName, string[] otherNamespaces = null) 
+	{
+		GenerateDto(
+			new[] { typeof(I1), typeof(I2), typeof(I3) },
+			fullName,
+			otherNamespaces
+		);
+	}
+	
+	void GenerateDto<I1, I2, I3, I4>(string fullName, string[] otherNamespaces = null) 
+	{
+		GenerateDto(
+			new[] { typeof(I1), typeof(I2), typeof(I3), typeof(I4) },
+			fullName,
+			otherNamespaces
+		);
+	}
+
+
+
+	void GenerateDto(Type[] intTypes, string fullName, string[] otherNamespaces = null) 
+	{
+		var spec = DtoSpecBuilder.Build(intTypes, fullName);
+		
 		var typeScriber = new TypeScriber(
-									new[] { @namespace }
-									.Concat(new[] { tInt.Namespace })
+									new[] { spec.Namespace }
+									.Concat(spec.Interfaces.Select(i => i.Namespace).Distinct())
 									.Concat(otherNamespaces ?? new string[0]));
 
 
@@ -28,12 +66,12 @@
 
 #>
 
-namespace <#=@namespace#> {
+namespace <#=spec.Namespace#> {
 
-	partial class <#=name#> : <#=tInt.Name#>
+	partial class <#=spec.Name#> : <#=string.Join(", ", spec.Interfaces.Select(i => i.Name).ToArray())#>
 	{
 <#+
-		foreach(var prop in PropGatherer.Gather(tInt)) {
+		foreach(var prop in spec.Props) {
 #>
 		public <#=typeScriber.WriteFullTypeName(prop.PropertyType)#> <#=prop.Name#> { get; set; }
 <#+
@@ -41,12 +79,12 @@ namespace <#=@namespace#> {
 #>
 
 <#+		
-		foreach(var baseInt in tInt.GetInterfaces()) {
+		foreach(var baseInt in spec.Interfaces) {
 #>
 
 		public void PopulateFrom(<#=typeScriber.WriteFullTypeName(baseInt)#> input) {
 <#+
-			foreach(var prop in PropGatherer.Gather(baseInt)) {
+			foreach(var prop in baseInt.GatherAllProps()) {
 #>
 			this.<#=prop.Name#> = input.<#=prop.Name#>;
 <#+

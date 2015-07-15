@@ -2,6 +2,5 @@
 <#@ assembly name="$(SolutionDir)Brigita.Domain\bin\$(ConfigurationName)\Brigita.Domain.dll" #>
 <#@ import namespace="Brigita.Domain.Products" #>
 <#  GenerateDto<IProduct>(
-					"Product", 
-					"Brigita.Services.Products", 
+					"Brigita.Services.Products.Product", 
 					new[] { "System" }); #>

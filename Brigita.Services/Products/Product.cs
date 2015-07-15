@@ -1,11 +1,12 @@
 ﻿ 
 
+using Brigita.Domain;
 using Brigita.Domain.Products;
 using System;
 
 namespace Brigita.Services.Products {
 
-	class Product : IProduct
+	partial class Product : IProduct, IEntity
 	{
 		public Int32 ProductTypeId { get; set; }
 		public Int32 ParentGroupedProductId { get; set; }
@@ -104,7 +105,106 @@ namespace Brigita.Services.Products {
 		public DateTime UpdatedOnUtc { get; set; }
 		public Int32 ID { get; set; }
 
-		public void PopulateFrom(Brigita.Domain.IEntity input) {
+		public void PopulateFrom(IProduct input) {
+			this.ProductTypeId = input.ProductTypeId;
+			this.ParentGroupedProductId = input.ParentGroupedProductId;
+			this.VisibleIndividually = input.VisibleIndividually;
+			this.Name = input.Name;
+			this.ShortDescription = input.ShortDescription;
+			this.FullDescription = input.FullDescription;
+			this.AdminComment = input.AdminComment;
+			this.ProductTemplateId = input.ProductTemplateId;
+			this.VendorId = input.VendorId;
+			this.ShowOnHomePage = input.ShowOnHomePage;
+			this.MetaKeywords = input.MetaKeywords;
+			this.MetaDescription = input.MetaDescription;
+			this.MetaTitle = input.MetaTitle;
+			this.AllowCustomerReviews = input.AllowCustomerReviews;
+			this.ApprovedRatingSum = input.ApprovedRatingSum;
+			this.NotApprovedRatingSum = input.NotApprovedRatingSum;
+			this.ApprovedTotalReviews = input.ApprovedTotalReviews;
+			this.NotApprovedTotalReviews = input.NotApprovedTotalReviews;
+			this.SubjectToAcl = input.SubjectToAcl;
+			this.LimitedToStores = input.LimitedToStores;
+			this.Sku = input.Sku;
+			this.ManufacturerPartNumber = input.ManufacturerPartNumber;
+			this.Gtin = input.Gtin;
+			this.IsGiftCard = input.IsGiftCard;
+			this.GiftCardTypeId = input.GiftCardTypeId;
+			this.RequireOtherProducts = input.RequireOtherProducts;
+			this.RequiredProductIds = input.RequiredProductIds;
+			this.AutomaticallyAddRequiredProducts = input.AutomaticallyAddRequiredProducts;
+			this.IsDownload = input.IsDownload;
+			this.DownloadId = input.DownloadId;
+			this.UnlimitedDownloads = input.UnlimitedDownloads;
+			this.MaxNumberOfDownloads = input.MaxNumberOfDownloads;
+			this.DownloadExpirationDays = input.DownloadExpirationDays;
+			this.DownloadActivationTypeId = input.DownloadActivationTypeId;
+			this.HasSampleDownload = input.HasSampleDownload;
+			this.SampleDownloadId = input.SampleDownloadId;
+			this.HasUserAgreement = input.HasUserAgreement;
+			this.UserAgreementText = input.UserAgreementText;
+			this.IsRecurring = input.IsRecurring;
+			this.RecurringCycleLength = input.RecurringCycleLength;
+			this.RecurringCyclePeriodId = input.RecurringCyclePeriodId;
+			this.RecurringTotalCycles = input.RecurringTotalCycles;
+			this.IsRental = input.IsRental;
+			this.RentalPriceLength = input.RentalPriceLength;
+			this.RentalPricePeriodId = input.RentalPricePeriodId;
+			this.IsShipEnabled = input.IsShipEnabled;
+			this.IsFreeShipping = input.IsFreeShipping;
+			this.ShipSeparately = input.ShipSeparately;
+			this.AdditionalShippingCharge = input.AdditionalShippingCharge;
+			this.DeliveryDateId = input.DeliveryDateId;
+			this.IsTaxExempt = input.IsTaxExempt;
+			this.TaxCategoryId = input.TaxCategoryId;
+			this.IsTelecommunicationsOrBroadcastingOrElectronicServices = input.IsTelecommunicationsOrBroadcastingOrElectronicServices;
+			this.ManageInventoryMethodId = input.ManageInventoryMethodId;
+			this.UseMultipleWarehouses = input.UseMultipleWarehouses;
+			this.WarehouseId = input.WarehouseId;
+			this.StockQuantity = input.StockQuantity;
+			this.DisplayStockAvailability = input.DisplayStockAvailability;
+			this.DisplayStockQuantity = input.DisplayStockQuantity;
+			this.MinStockQuantity = input.MinStockQuantity;
+			this.LowStockActivityId = input.LowStockActivityId;
+			this.NotifyAdminForQuantityBelow = input.NotifyAdminForQuantityBelow;
+			this.BackorderModeId = input.BackorderModeId;
+			this.AllowBackInStockSubscriptions = input.AllowBackInStockSubscriptions;
+			this.OrderMinimumQuantity = input.OrderMinimumQuantity;
+			this.OrderMaximumQuantity = input.OrderMaximumQuantity;
+			this.AllowedQuantities = input.AllowedQuantities;
+			this.AllowAddingOnlyExistingAttributeCombinations = input.AllowAddingOnlyExistingAttributeCombinations;
+			this.DisableBuyButton = input.DisableBuyButton;
+			this.DisableWishlistButton = input.DisableWishlistButton;
+			this.AvailableForPreOrder = input.AvailableForPreOrder;
+			this.PreOrderAvailabilityStartDateTimeUtc = input.PreOrderAvailabilityStartDateTimeUtc;
+			this.CallForPrice = input.CallForPrice;
+			this.Price = input.Price;
+			this.OldPrice = input.OldPrice;
+			this.ProductCost = input.ProductCost;
+			this.SpecialPrice = input.SpecialPrice;
+			this.SpecialPriceStartDateTimeUtc = input.SpecialPriceStartDateTimeUtc;
+			this.SpecialPriceEndDateTimeUtc = input.SpecialPriceEndDateTimeUtc;
+			this.CustomerEntersPrice = input.CustomerEntersPrice;
+			this.MinimumCustomerEnteredPrice = input.MinimumCustomerEnteredPrice;
+			this.MaximumCustomerEnteredPrice = input.MaximumCustomerEnteredPrice;
+			this.HasTierPrices = input.HasTierPrices;
+			this.HasDiscountsApplied = input.HasDiscountsApplied;
+			this.Weight = input.Weight;
+			this.Length = input.Length;
+			this.Width = input.Width;
+			this.Height = input.Height;
+			this.AvailableStartDateTimeUtc = input.AvailableStartDateTimeUtc;
+			this.AvailableEndDateTimeUtc = input.AvailableEndDateTimeUtc;
+			this.DisplayOrder = input.DisplayOrder;
+			this.Published = input.Published;
+			this.Deleted = input.Deleted;
+			this.CreatedOnUtc = input.CreatedOnUtc;
+			this.UpdatedOnUtc = input.UpdatedOnUtc;
+			this.ID = input.ID;
+		}
+
+		public void PopulateFrom(IEntity input) {
 			this.ID = input.ID;
 		}
 	}

@@ -1,11 +1,12 @@
 ﻿ 
 
+using Brigita.Domain;
 using Brigita.Domain.Categories;
 using System;
 
 namespace Brigita.Services.Categories {
 
-	class Category : ICategory
+	partial class Category : ICategory, IEntity
 	{
 		public String Name { get; set; }
 		public String Description { get; set; }
@@ -31,7 +32,33 @@ namespace Brigita.Services.Categories {
 		public Boolean LimitedToStores { get; set; }
 		public Int32 ID { get; set; }
 
-		public void PopulateFrom(Brigita.Domain.IEntity input) {
+		public void PopulateFrom(ICategory input) {
+			this.Name = input.Name;
+			this.Description = input.Description;
+			this.ParentCategoryId = input.ParentCategoryId;
+			this.PictureId = input.PictureId;
+			this.DisplayOrder = input.DisplayOrder;
+			this.Published = input.Published;
+			this.Deleted = input.Deleted;
+			this.CreatedOnUtc = input.CreatedOnUtc;
+			this.UpdatedOnUtc = input.UpdatedOnUtc;
+			this.CategoryTemplateId = input.CategoryTemplateId;
+			this.MetaKeywords = input.MetaKeywords;
+			this.MetaDescription = input.MetaDescription;
+			this.MetaTitle = input.MetaTitle;
+			this.PageSize = input.PageSize;
+			this.AllowCustomersToSelectPageSize = input.AllowCustomersToSelectPageSize;
+			this.PageSizeOptions = input.PageSizeOptions;
+			this.PriceRanges = input.PriceRanges;
+			this.ShowOnHomePage = input.ShowOnHomePage;
+			this.IncludeInTopMenu = input.IncludeInTopMenu;
+			this.HasDiscountsApplied = input.HasDiscountsApplied;
+			this.SubjectToAcl = input.SubjectToAcl;
+			this.LimitedToStores = input.LimitedToStores;
+			this.ID = input.ID;
+		}
+
+		public void PopulateFrom(IEntity input) {
 			this.ID = input.ID;
 		}
 	}
