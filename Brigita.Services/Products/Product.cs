@@ -1,11 +1,9 @@
-﻿ 
-
-using Brigita.Domain;
+﻿using Brigita.Domain;
 using Brigita.Domain.Products;
 using System;
 
-namespace Brigita.Services.Products {
-
+namespace Brigita.Services.Products 
+{
 	partial class Product : IProduct, IEntity
 	{
 		public Int32 ProductTypeId { get; set; }

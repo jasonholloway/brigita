@@ -8,6 +8,20 @@
 <#@ import namespace="System.Reflection" #>
 <#@ import namespace="Brigita.DtoGen" #>
 <#+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	void GenerateDto<I>(string fullName, string[] otherNamespaces = null) 
 	{
 		GenerateDto(

@@ -160,12 +160,17 @@
     <Compile Include="Infrastructure\CssLinkCollection.cs" />
     <Compile Include="Infrastructure\ScriptLinkCollection.cs" />
     <Compile Include="Models\Home\HomeModel.cs" />
+    <Compile Include="Models\IPagedItemsModel.cs" />
+    <Compile Include="Models\IProductContextModel.cs" />
+    <Compile Include="Models\IWebPageModel.cs" />
     <Compile Include="Models\Menu\CategoryMenuItem.cs" />
     <Compile Include="Models\Menu\CategoryMenuModel.cs" />
     <Compile Include="Models\Misc\FaviconModel.cs" />
-    <Compile Include="Models\PageModel.cs" />
-    <Compile Include="Models\Products\ProductsPageModel.cs" />
-    <Compile Include="Models\ShopModel.cs" />
+    <Compile Include="Models\Products\ProductListPageModel.cs">
+      <DependentUpon>ProductListPageModel.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
   </ItemGroup>
@@ -220,6 +225,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Models\Products\ProductListPageModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ProductListPageModel.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App_Data\uas_20140809-02.ini" />
@@ -255,7 +264,6 @@
     <Content Include="Views\Menu\CategoryMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\Interfaces\" />
     <Folder Include="Views\Misc\" />
     <Folder Include="Views\Products\" />
   </ItemGroup>
@@ -298,6 +306,9 @@
       <Project>{75fd4163-333c-4dd5-854d-2ef294e45d94}</Project>
       <Name>Nop.Web.Framework</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

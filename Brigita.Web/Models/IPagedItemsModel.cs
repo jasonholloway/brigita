@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Brigita.Web.Domain.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,21 +7,21 @@ using System.Threading.Tasks;
 
 namespace Brigita.Web.Domain.Models
 {
-    public interface IListModel<TItem>
+    public interface IPagedItemsModel<TItem>
     {
-        IListInfo<TItem> List { get; }
+        IListPage<TItem> ListPage { get; }
     }
 
-
-    public interface IListInfo
+    public interface IListPage
     {
         int PageIndex { get; }
         int PageCount { get; }
         int PageSize { get; }
     }
 
-    public interface IListInfo<TItem> : IListInfo
+    public interface IListPage<TItem> : IListPage
     {
         TItem[] Items { get; }
     }
+
 }

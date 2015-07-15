@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Brigita.Web.Domain.Models
+namespace DtoDesigner.Test.Example
 {
-    public interface ICurrentCategoryModel
+    public interface IAnimal
     {
-        int CurrentCategoryID { get; }
+        int NumberOfLegs { get; }
+        bool HasTail { get; }
     }
 }

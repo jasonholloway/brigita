@@ -9,6 +9,7 @@ using Nop.Core.Domain.Seo;
 using Nop.Core.Infrastructure;
 using Nop.Web.Framework.UI;
 using Nop.Core;
+using Brigita.Web.Domain.Models;
 
 namespace Brigita.Web.Controllers
 {
@@ -31,23 +32,27 @@ namespace Brigita.Web.Controllers
 
 
         public TPageModel CreatePageModel<TPageModel>()
-            where TPageModel : PageModel, new()
+            where TPageModel : IWebPageModel, new()
         {
             var model = new TPageModel();
 
-            model.Page.Title = MvcHtmlString.Create(this._pageHeadBuilder.GenerateTitle(false));
+            
 
-            model.Page.HeadCustom = MvcHtmlString.Create(this._pageHeadBuilder.GenerateHeadCustom());
 
-            model.Page.MetaDescription = MvcHtmlString.Create(this._pageHeadBuilder.GenerateMetaDescription());
 
-            model.Page.MetaKeywords = MvcHtmlString.Create(this._pageHeadBuilder.GenerateMetaKeywords());
+            model.WebPage.Title = this._pageHeadBuilder.GenerateTitle(false));
 
-            model.Page.CanonicalURLs = MvcHtmlString.Create(this._pageHeadBuilder.GenerateCanonicalUrls());
+            model.WebPage.HeadCustom = MvcHtmlString.Create(this._pageHeadBuilder.GenerateHeadCustom());
 
-            model.Page.DisplayProfiler = this._storeInfoSettings.DisplayMiniProfilerInPublicStore;
+            model.WebPage.MetaDescription = MvcHtmlString.Create(this._pageHeadBuilder.GenerateMetaDescription());
 
-            model.Page.FaviconUrl = new HtmlString(_webHelper.GetStoreLocation() + "favicon.ico");
+            model.WebPage.MetaKeywords = MvcHtmlString.Create(this._pageHeadBuilder.GenerateMetaKeywords());
+
+            model.WebPage.CanonicalURLs = MvcHtmlString.Create(this._pageHeadBuilder.GenerateCanonicalUrls());
+
+            model.WebPage.DisplayProfiler = this._storeInfoSettings.DisplayMiniProfilerInPublicStore;
+
+            model.WebPage.FaviconUrl = new HtmlString(_webHelper.GetStoreLocation() + "favicon.ico");
 
 
 

@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Brigita.Web.Models;
 using Nop.Web.Framework;
-using Brigita.Web.Models.Home;
+using Brigita.Web.Model.Home;
 
 namespace Brigita.Web.Controllers
 {
