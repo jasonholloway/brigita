@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Brigita.Domain.Categories
+namespace Brigita.Services.Pages
 {
-    public class TinyCategory
+    public interface ILinkHelper
     {
-        public string Name { get; set; }
+        Uri BuildUrl(string relativeUrl);
     }
 }

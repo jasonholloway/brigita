@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DtoDesigner.Test.Example
+namespace Brigita.Services.Pages
 {
-    public interface IAnimal
+    public interface IPageHelper
     {
-        int NumberOfLegs { get; }
-        bool HasTail { get; }
+        string BuildPageTitle(string name);
     }
 }

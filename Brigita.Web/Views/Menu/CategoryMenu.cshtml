@@ -6,7 +6,7 @@
 @helper Node2ListItems(SimpleTreeNode<CategoryMenuItem> node) {
     CategoryMenuItem item = node.Value;
     <li>
-        <a href="@item.Uri">@item.Name</a>
+        <a href="@item.Url">@item.Name</a>
     @if(node.Children.Any()) {
         <ul>
         @foreach(var childNode in node.Children) {

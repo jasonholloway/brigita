@@ -1,4 +1,4 @@
-﻿@model PageModel
+﻿@model IWebPageModel
 @{ 
     Layout = "~/Views/Shared/_Root.cshtml";
 }
@@ -33,8 +33,14 @@
 
     <div id="main">
         <div id="mainLeft">
-            <!-- Render menu here (should be via child action cached by parameter -->
-            @{Html.RenderAction("CategoryMenu", "Menu"/*, new { categoryID = 0 }*/);}
+            @{Html.RenderAction(
+                        "CategoryMenu", 
+                        "Menu", 
+                        new { activeCatID = Model is IProductContextModel 
+                                                ? ((IProductContextModel)Model).CurrentCategoryID
+                                                : 0 }
+                        );}
+
             @RenderSection("leftSide")
         </div>
 

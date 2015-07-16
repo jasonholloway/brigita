@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Brigita.Domain.Categories
 {
-    public interface IScopedCategory : ICategory, IScopedTinyCategory
+    public interface IScopedTinyCategory : ITinyCategory
     {
-        //bool IsActive { get; }
-        //bool IsActiveParent { get; }
+        bool IsActive { get; }
+        bool IsActiveParent { get; }
     }
 }

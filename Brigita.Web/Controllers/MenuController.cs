@@ -9,29 +9,33 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Brigita.Web.Infrastructure;
+using Brigita.Services.Pages;
+using Brigita.Domain.Scope;
 
 namespace Brigita.Web.Controllers
 {
     public class MenuController : Controller
     {
-     
-        ICategories _categoryProvider;
-
-        public MenuController(ICategories categoryProvider) {
-            _categoryProvider = categoryProvider;
+        IScopedCategories _scopedCats;
+        
+        public MenuController(
+                    IScopedCategories scopedCats) 
+        {
+            _scopedCats = scopedCats;
         }
 
 
         [ChildActionOnly]
-        public ActionResult CategoryMenu(int categoryID = 0) {
-            var catTree = _categoryProvider.Tree;
+        public ActionResult CategoryMenu(int activeCatID = 0) 
+        {
+            var catTree = _scopedCats.GetTree(activeCatID);
 
             var menuTree = catTree.Project(cat => new CategoryMenuItem() {
-                                                    Name = new HtmlString(cat.Name),
-                                                    Uri = new BrigitaUri(@"http://128.0.0.1"),
-                                                    IsActive = false,
-                                                    IsActiveAncestor = false
-                                                });
+                                                            Name = cat.Name,
+                                                            Url = "socks",
+                                                            IsActive = cat.IsActive,
+                                                            IsActiveParent = cat.IsActiveParent
+                                                        });
 
             return View(new CategoryMenuModel() { 
                                     MenuItemTree = menuTree

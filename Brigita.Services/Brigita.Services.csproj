@@ -62,6 +62,10 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Categories\ScopedCategories.cs" />
+    <Compile Include="Pages\ILinkHelper.cs" />
+    <Compile Include="Pages\IPageHelper.cs" />
+    <Compile Include="Pages\LinkHelper.cs" />
+    <Compile Include="Pages\PageHelper.cs" />
     <Compile Include="Plugins\BrigitaPluginFinder.cs" />
     <Compile Include="Products\IProducts.cs" />
     <Compile Include="Products\BrigitaProducts.cs" />

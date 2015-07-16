@@ -32,6 +32,7 @@ using Nop.Web.Framework;
 using Nop.Web.Framework.UI;
 using System.Runtime.Caching;
 using System.Web;
+using Brigita.Services.Pages;
 
 namespace Brigita.Web
 {
@@ -63,6 +64,9 @@ namespace Brigita.Web
             x.Bind<ILogger, NullLogger>();
 
 
+            x.Bind<IPageHelper, PageHelper>();
+            x.Bind<ILinkHelper, LinkHelper>();
+
             //!!!!!!!! JUST FOR TESTING... !!!!!!!!!
             x.Bind(new StoreInformationSettings());
             x.Bind(new TaxSettings());
@@ -81,6 +85,7 @@ namespace Brigita.Web
             x.Bind<IStoreContext, WebStoreContext>();
 
             x.Bind<ICategories, BrigitaCategories>();
+            x.Bind<IScopedCategories, ScopedCategories>();
 
             x.Bind<ICustomerService, CustomerService>();
             x.Bind<IVendorService, VendorService>();

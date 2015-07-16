@@ -145,6 +145,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -166,11 +167,7 @@
     <Compile Include="Models\Menu\CategoryMenuItem.cs" />
     <Compile Include="Models\Menu\CategoryMenuModel.cs" />
     <Compile Include="Models\Misc\FaviconModel.cs" />
-    <Compile Include="Models\Products\ProductListPageModel.cs">
-      <DependentUpon>ProductListPageModel.tt</DependentUpon>
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <Compile Include="Models\Products\CategoryPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
   </ItemGroup>
@@ -225,10 +222,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Products\ProductListPageModel.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ProductListPageModel.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="App_Data\uas_20140809-02.ini" />
@@ -262,6 +255,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Menu\CategoryMenu.cshtml" />
+    <Content Include="Views\Category\CategoryPage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\Misc\" />

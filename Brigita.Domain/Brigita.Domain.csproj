@@ -41,7 +41,8 @@
   <ItemGroup>
     <Compile Include="Categories\ICategory.cs" />
     <Compile Include="Categories\IScopedCategory.cs" />
-    <Compile Include="Categories\TinyCategory.cs" />
+    <Compile Include="Categories\IScopedTinyCategory.cs" />
+    <Compile Include="Categories\ITinyCategory.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="Products\IProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

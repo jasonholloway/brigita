@@ -16,7 +16,15 @@ namespace Brigita.Web
 
             //should have nice short URLs to categories here
             //...
-            
+
+            routes.MapRoute(
+                "ProductLists",
+                "products/{categoryName}/{pageIndex}",
+                new { controller = "Category", action = "CategoryPage", pageIndex = UrlParameter.Optional },
+                new[] { "Brigita.Web.Controllers" }
+                );
+
+
             routes.MapRoute(
                 "Default",
                 "{controller}/{action}/{id}",

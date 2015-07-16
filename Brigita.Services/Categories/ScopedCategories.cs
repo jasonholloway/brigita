@@ -20,7 +20,7 @@ namespace Brigita.Services.Categories
         }
 
         [Cache("Tree", "Categories.Tree")]
-        public SimpleTree<IScopedCategory> GetTree(PageScope scope) {
+        public SimpleTree<IScopedCategory> GetTree(int activeCatID) {
             var catTree = _cats.Tree;
 
             var scopedTree = catTree.Project(
@@ -28,9 +28,9 @@ namespace Brigita.Services.Categories
                                             var cat = node.Value;
 
                                             var scopedCat = new ScopedCategory() { 
-                                                                    IsActive = scope.CategoryID == cat.ID,
+                                                                    IsActive = activeCatID == cat.ID,
                                                                     IsActiveParent = node.Flatten()
-                                                                                            .Any(n => n.Value.ID == scope.CategoryID)
+                                                                                            .Any(n => n.Value.ID == activeCatID)
                                                                 };
 
                                             scopedCat.PopulateFrom(cat);

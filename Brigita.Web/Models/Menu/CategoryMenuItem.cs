@@ -8,9 +8,9 @@ namespace Brigita.Web.Models.Menu
 {
     public class CategoryMenuItem
     {
-        public IHtmlString Name { get; set; }
-        public BrigitaUri Uri { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
         public bool IsActive { get; set; }
-        public bool IsActiveAncestor { get; set; }
+        public bool IsActiveParent { get; set; }
     }
 }

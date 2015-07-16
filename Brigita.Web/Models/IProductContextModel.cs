@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Brigita.Web.Domain.Models
+namespace Brigita.Web.Models
 {
     public interface IProductContextModel
     {

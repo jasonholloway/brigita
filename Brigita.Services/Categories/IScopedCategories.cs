@@ -12,7 +12,7 @@ namespace Brigita.Services.Categories
 {
     public interface IScopedCategories
     {
-        SimpleTree<IScopedCategory> GetTree(PageScope scope);
+        SimpleTree<IScopedCategory> GetTree(int activeCatID = 0);
     }
     
 }

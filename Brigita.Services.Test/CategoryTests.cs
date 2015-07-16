@@ -75,9 +75,7 @@ namespace Brigita.Services.Test
 
             var treeTups = catIDs.Select(cid => new { 
                                                     CatID = cid,
-                                                    Tree = scopedCats.GetTree(new PageScope() {
-                                                                                        CategoryID = cid
-                                                                                        })
+                                                    Tree = scopedCats.GetTree(cid)
                                                 });
 
 

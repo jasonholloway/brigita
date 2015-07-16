@@ -1,14 +1,14 @@
-﻿@model PageModel
+﻿@model IWebPageModel
 @{ 
-    Model.Page.CssLinks.Add("~/Content/jquery-ui-themes/smoothness/jquery-ui-1.10.3.custom.min.css");
+    //Model.Page.CssLinks.Add("~/Content/jquery-ui-themes/smoothness/jquery-ui-1.10.3.custom.min.css");
 
-    Model.Page.ScriptLinks.Add("~/Scripts/public.ajaxcart.js");
-    Model.Page.ScriptLinks.Add("~/Scripts/public.common.js");
-    Model.Page.ScriptLinks.Add("~/Scripts/jquery-migrate-1.2.1.min.js");
-    Model.Page.ScriptLinks.Add("~/Scripts/jquery-ui-1.10.3.custom.min.js");
-    Model.Page.ScriptLinks.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
-    Model.Page.ScriptLinks.Add("~/Scripts/jquery.validate.min.js");
-    Model.Page.ScriptLinks.Add("~/Scripts/jquery-1.10.2.min.js");
+    //Model.Page.ScriptLinks.Add("~/Scripts/public.ajaxcart.js");
+    //Model.Page.ScriptLinks.Add("~/Scripts/public.common.js");
+    //Model.Page.ScriptLinks.Add("~/Scripts/jquery-migrate-1.2.1.min.js");
+    //Model.Page.ScriptLinks.Add("~/Scripts/jquery-ui-1.10.3.custom.min.js");
+    //Model.Page.ScriptLinks.Add("~/Scripts/jquery.validate.unobtrusive.min.js");
+    //Model.Page.ScriptLinks.Add("~/Scripts/jquery.validate.min.js");
+    //Model.Page.ScriptLinks.Add("~/Scripts/jquery-1.10.2.min.js");
 }
 
 <!DOCTYPE html>
@@ -16,28 +16,28 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>@Model.Page.Title</title>
+    <title>@Model.Title</title>
     <meta http-equiv="Content-type" content="text/html;charset=UTF-8" />
-    <meta name="description" content="@Model.Page.MetaDescription" />
-    <meta name="keywords" content="@Model.Page.MetaKeywords" />
-    @Model.Page.HeadCustom
+    <meta name="description" content="@Model.MetaDescription" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    @Model.HeadCustom
     @*@Html.Widget("head_html_tag")*@
-    @Html.DisplayFor(m => m.Page.CssLinks)
-    @Html.DisplayFor(m => m.Page.ScriptLinks)
-    @Model.Page.CanonicalURLs
+    @*@Html.DisplayFor(m => m.CssLinks)
+    @Html.DisplayFor(m => m.ScriptLinks)*@
+    @Model.CanonicalURLs
     @{ 
         //Html.NopAction("RssHeaderLink", "News");
         //Html.NopAction("RssHeaderLink", "Blog");
     }
-    <link rel="shortcut icon" href="@Model.Page.FaviconUrl" />
-    @if(Model.Page.DisplayProfiler)
+    <link rel="shortcut icon" href="@Model.FaviconURL" />
+    @if(Model.DisplayProfiler)
     {
         @StackExchange.Profiling.MiniProfiler.RenderIncludes()
     }
 </head>
 <body>
     @RenderBody()
-    @Html.DisplayFor(m => m.Page.FooterCssLinks)
-    @Html.DisplayFor(m => m.Page.FooterScriptLinks)
+    @*@Html.DisplayFor(m => m.Page.FooterCssLinks)
+    @Html.DisplayFor(m => m.Page.FooterScriptLinks)*@
 </body>
 </html>

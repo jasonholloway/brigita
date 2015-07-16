@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace Brigita.Domain.Categories
 {
-    public interface ICategory : IEntity
+    public interface ICategory : ITinyCategory
     {
-        string Name { get; }
         string Description { get; }
         int ParentCategoryId { get; }
         int PictureId { get; }
