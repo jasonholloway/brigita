@@ -68,7 +68,7 @@
 
 namespace <#=spec.Namespace#> {
 
-	partial class <#=spec.Name#> : <#=string.Join(", ", spec.Interfaces.Select(i => typeScriber.WriteFullTypeName(i)).ToArray())#>
+	public partial class <#=spec.Name#> : <#=string.Join(", ", spec.Interfaces.Select(i => typeScriber.WriteFullTypeName(i)).ToArray())#>
 	{
 <#+
 		foreach(var prop in spec.Props) {

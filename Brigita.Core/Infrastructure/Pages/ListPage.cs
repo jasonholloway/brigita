@@ -7,25 +7,37 @@ using System.Threading.Tasks;
 namespace Brigita.Core.Infrastructure.Pages
 {
     public class ListPage<TItem>
-        : IEnumerable<TItem>
+        : ListPageSpec, IEnumerable<TItem>
     {
-        IEnumerable<TItem> _items;
+        TItem[] _items;
         
-        public int PageIndex { get; private set; }
         public int PageCount { get; private set; }
 
-        public ListPage(IEnumerable<TItem> items, int pageIndex, int pageCount) {
-            _items = items;
-            PageIndex = pageIndex;
+        public ListPage(IEnumerable<TItem> items, int pageIndex, int pageSize, int pageCount)
+            : base(pageIndex, pageSize) 
+        {
+            _items = items.ToArray();
             PageCount = pageCount;
         }
 
         public IEnumerator<TItem> GetEnumerator() {
-            return _items.GetEnumerator();
+            return ((IEnumerable<TItem>)_items).GetEnumerator();
         }
 
         System.Collections.IEnumerator System.Collections.IEnumerable.GetEnumerator() {
             return _items.GetEnumerator();
         }
     }
+
+    public class ListPageSpec
+    {
+        public int PageIndex { get; protected set; }
+        public int PageSize { get; protected set; }
+
+        public ListPageSpec(int pageIndex, int pageSize) {
+            PageIndex = pageIndex;
+            PageSize = pageSize;
+        }
+    }
+
 }

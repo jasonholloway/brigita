@@ -145,12 +145,11 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
-    <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PageController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MiscController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ProductListController.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -160,14 +159,14 @@
     <Compile Include="Infrastructure\BrigitaViewEngine.cs" />
     <Compile Include="Infrastructure\CssLinkCollection.cs" />
     <Compile Include="Infrastructure\ScriptLinkCollection.cs" />
-    <Compile Include="Models\Home\HomeModel.cs" />
-    <Compile Include="Models\IPagedItemsModel.cs" />
-    <Compile Include="Models\IProductContextModel.cs" />
-    <Compile Include="Models\IWebPageModel.cs" />
-    <Compile Include="Models\Menu\CategoryMenuItem.cs" />
-    <Compile Include="Models\Menu\CategoryMenuModel.cs" />
-    <Compile Include="Models\Misc\FaviconModel.cs" />
-    <Compile Include="Models\Products\CategoryPageModel.cs" />
+    <Compile Include="ViewModels\Home\HomeModel.cs" />
+    <Compile Include="ViewModels\IPagedItemsModel.cs" />
+    <Compile Include="ViewModels\IProductContextModel.cs" />
+    <Compile Include="ViewModels\IWebPageModel.cs" />
+    <Compile Include="ViewModels\Menu\CategoryMenuItem.cs" />
+    <Compile Include="ViewModels\Menu\CategoryMenuModel.cs" />
+    <Compile Include="ViewModels\Misc\FaviconModel.cs" />
+    <Compile Include="ViewModels\Products\CategoryPageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
   </ItemGroup>

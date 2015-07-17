@@ -1,6 +1,6 @@
 ﻿using Nop.Web.Framework.Mvc;
 
-namespace Brigita.Web.Models.Misc
+namespace Brigita.Web.ViewModels.Misc
 {
     public partial class FaviconModel : BaseNopModel
     {

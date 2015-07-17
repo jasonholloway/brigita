@@ -1,4 +1,4 @@
-﻿using Brigita.Web.Models.Misc;
+﻿using Brigita.Web.ViewModels.Misc;
 using System;
 using System.Collections.Generic;
 using System.Linq;

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Brigita.Services.Products;
 
-namespace Brigita.Web.Models.Products
+namespace Brigita.Web.ViewModels.Home
 {
-    public class CategoryPageModel : IWebPageModel, IProductContextModel, IPagedItemsModel<IProductTeaser>
+    public class HomeModel : IWebPageModel
     {
         public string Title { get; set; }
         public string HeadCustom { get; set; }
@@ -17,10 +16,10 @@ namespace Brigita.Web.Models.Products
         public string FaviconURL { get; set; }
         public bool DisplayProfiler { get; set; }
 
-        public int CurrentCategoryID { get; set; }
-
-
-
-        public IListPage<IProductTeaser> ListPage { get; set; }
+        public string Greeting { get; set; }
     }
+    
+
+
+
 }

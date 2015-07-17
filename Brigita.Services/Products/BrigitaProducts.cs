@@ -10,6 +10,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace Brigita.Services.Products
 {
@@ -19,61 +20,54 @@ namespace Brigita.Services.Products
         IRepository<NopProduct> _repo;
         ICategories _cats;
 
+        //repos should be lazy...
+
         public BrigitaProducts(IRepository<NopProduct> repo, ICategories cats) {
             _repo = repo;
             _cats = cats;
         }
         
-        [Cache("ByCategory")]
-        public IProduct[] GetByCategoryID(int catalogID) 
+        [Cache("ProductsByCategory")]
+        public ListPage<IProduct> GetProductsByCategory(int categoryID, ListPageSpec pageSpec) 
         {          
-            var cats = _cats.FindCatFamily(catalogID) //array for EF's sake
+            var cats = _cats.FindCatFamily(categoryID) //array for EF's sake
                                     .Select(c => c.ID)
                                     .ToArray();
             
-            return _repo.TableNoTracking
-                        .Where(p => p.ProductCategories.Any(c => cats.Contains(c.CategoryId)))
-                        .ToArray();                                                            
-        }
-        
-
-        [Cache("TeasersByCategory")]
-        public ListPage<IProductTeaser> GetTeasersByCategoryID(int categoryID, int page) 
-        {
-            var cats = _cats.FindCatFamily(categoryID)
-                                    .Select(c => c.ID)
-                                    .ToArray();
+            var products = _repo.TableNoTracking
+                                .Where(p => p.ProductCategories.Any(c => cats.Contains(c.CategoryId)))
+                                .Skip(pageSpec.PageIndex * pageSpec.PageSize)
+                                .Take(pageSpec.PageSize);
             
-            var teasers = _repo.TableNoTracking
-                                    .Where(p => p.ProductCategories
-                                                    .Any(pc => cats.Contains(pc.CategoryId)))
-                                    .Select(p => new _ProductTeaser(p))                                                            
-                                    .ToArray();
-
-            return new ListPage<IProductTeaser>(teasers, 1, 1); //!!!!!!!!!!!!!  
+            return new ListPage<IProduct>(
+                                    products,
+                                    pageSpec.PageIndex,
+                                    pageSpec.PageSize,
+                                    10);                      
         }
 
 
-
-
-
-        class _ProductTeaser : IProductTeaser 
+        [Cache("TinyProductsByCategory", "ProductsByCategory")]
+        public ListPage<ITinyProduct> GetTinyProductsByCategory(int categoryID, ListPageSpec pageSpec) 
         {
+            var products = GetProductsByCategory(categoryID, pageSpec);
 
-            public _ProductTeaser(IProduct product) {
-                ID = product.ID;
-                Name = product.Name;
-                ShortDescription = product.ShortDescription;
-                Price = product.Price;
-                //Picture = 
-            }
+            var teasers = products
+                            .Select(p => Mapper.Map<TinyProduct>(p));
 
-            public int ID { get; set; }
-            public string Name { get; set; }
-            public string ShortDescription { get; set; }
-            public decimal Price { get; set; }
-            public object Picture { get; set; }
+            return new ListPage<ITinyProduct>(
+                            teasers,
+                            products.PageIndex,
+                            products.PageSize,
+                            products.PageCount
+                            );
+            throw new NotImplementedException();
+
         }
+
+
+
+
 
     }
 

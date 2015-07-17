@@ -3,7 +3,7 @@
 //using System.Linq;
 //using System.Web;
 //using System.Web.Mvc;
-//using Brigita.Web.Models;
+//using Brigita.Web.ViewModels;
 //using Nop.Core.Domain;
 //using Nop.Core.Domain.Seo;
 //using Nop.Core.Infrastructure;

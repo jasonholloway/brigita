@@ -32,6 +32,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper.Net4">
+      <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
@@ -67,9 +73,13 @@
     <Compile Include="Pages\LinkHelper.cs" />
     <Compile Include="Pages\PageHelper.cs" />
     <Compile Include="Plugins\BrigitaPluginFinder.cs" />
+    <Compile Include="Products\TinyProduct.cs">
+      <DependentUpon>TinyProduct.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="Products\IProducts.cs" />
     <Compile Include="Products\BrigitaProducts.cs" />
-    <Compile Include="Products\IProductTeaser.cs" />
     <Compile Include="Products\Product.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -102,6 +112,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Categories\ScopedCategory.tt">
@@ -113,6 +124,10 @@
       <LastGenOutput>Category.cs</LastGenOutput>
     </Content>
     <Content Include="FodyWeavers.xml" />
+    <Content Include="Products\TinyProduct.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>TinyProduct.cs</LastGenOutput>
+    </Content>
     <Content Include="Products\Product.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Product.cs</LastGenOutput>
@@ -122,6 +137,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

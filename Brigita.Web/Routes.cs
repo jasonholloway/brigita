@@ -14,23 +14,25 @@ namespace Brigita.Web
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //should have nice short URLs to categories here
-            //...
-
             routes.MapRoute(
-                "ProductLists",
-                "products/{categoryName}/{pageIndex}",
-                new { controller = "Category", action = "CategoryPage", pageIndex = UrlParameter.Optional },
-                new[] { "Brigita.Web.Controllers" }
+                "Home",
+                "",
+                new { controller = "Home", action = "Index" }
                 );
 
-
+            routes.MapRoute(
+                "ProductsByCategory",
+                "products/{categoryName}/{pageIndex}",
+                new { 
+                    controller = "ProductList", 
+                    action = "CategoryByName", 
+                    pageIndex = UrlParameter.Optional 
+                });
+            
             routes.MapRoute(
                 "Default",
-                "{controller}/{action}/{id}",
-                new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                new[] { "Brigita.Web.Controllers" }
-            ).DataTokens["UseNamespaceFallback"] = false;
+                "{controller}/{action}"
+            );
         }
 
     }

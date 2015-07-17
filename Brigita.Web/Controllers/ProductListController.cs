@@ -8,18 +8,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Brigita.Web.ViewModels.Products;
 
 namespace Brigita.Web.Controllers
 {
-    public class ProductController : Controller
+    public class ProductListController : Controller
     {
         IProducts _prods;
         ICategories _cats;
 
-        public ProductController(IProducts prods, ICategories cats) {
+        public ProductListController(IProducts prods, ICategories cats) {
             _prods = prods;
             _cats = cats;
         }
+
+
+
+        public ActionResult CategoryByName(string categoryName, int pageIndex = 0) {
+            //look up category name here...
+
+            //if nothing return 404
+
+            return Category(1, 0);
+        }
+
+        public ActionResult Category(int categoryID, int pageIndex = 0) {
+            var model = new CategoryPageModel();
+
+            return View(model);
+        }
+
+
+
 
 
         //public ActionResult ListByCategoryID(int categoryID) {

@@ -5,8 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Brigita.Web.Models
+namespace Brigita.Web.ViewModels
 {
+
+
     public interface IPagedItemsModel<TItem>
     {
         IListPage<TItem> ListPage { get; }

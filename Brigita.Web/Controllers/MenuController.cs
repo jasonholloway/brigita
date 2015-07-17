@@ -1,5 +1,5 @@
 ﻿using Brigita.Services.Categories;
-using Brigita.Web.Models.Menu;
+using Brigita.Web.ViewModels.Menu;
 using Brigita.Core.Infrastructure.Trees;
 using Nop.Core.Domain.Catalog;
 using Nop.Services.Catalog;
@@ -11,6 +11,7 @@ using System.Web.Mvc;
 using Brigita.Web.Infrastructure;
 using Brigita.Services.Pages;
 using Brigita.Domain.Scope;
+using System.Web.Routing;
 
 namespace Brigita.Web.Controllers
 {
@@ -19,7 +20,8 @@ namespace Brigita.Web.Controllers
         IScopedCategories _scopedCats;
         
         public MenuController(
-                    IScopedCategories scopedCats) 
+                    IScopedCategories scopedCats
+                    ) 
         {
             _scopedCats = scopedCats;
         }
@@ -30,9 +32,17 @@ namespace Brigita.Web.Controllers
         {
             var catTree = _scopedCats.GetTree(activeCatID);
 
+            var url = new UrlHelper(this.Request.RequestContext);
+
             var menuTree = catTree.Project(cat => new CategoryMenuItem() {
                                                             Name = cat.Name,
-                                                            Url = "socks",
+                                                            Url = url.Action(
+                                                                        "CategoryByName", 
+                                                                        "ProductList", 
+                                                                        new { 
+                                                                            categoryName = cat.Name,
+                                                                            pageIndex = 0
+                                                                        }),
                                                             IsActive = cat.IsActive,
                                                             IsActiveParent = cat.IsActiveParent
                                                         });

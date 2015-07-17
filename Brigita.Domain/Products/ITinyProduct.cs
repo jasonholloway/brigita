@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Brigita.Domain;
 
-namespace Brigita.Services.Products
+namespace Brigita.Domain.Products
 {
-    public interface IProductTeaser
+    public interface ITinyProduct : IEntity
     {
-        int ID { get; }
+        //int ID { get; }
         string Name { get; }
         string ShortDescription { get; }
         decimal Price { get; }

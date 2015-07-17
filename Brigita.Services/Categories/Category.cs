@@ -6,9 +6,8 @@ using System;
 
 namespace Brigita.Services.Categories {
 
-	partial class Category : ICategory, IEntity
+	public partial class Category : ICategory, ITinyCategory, IEntity
 	{
-		public String Name { get; set; }
 		public String Description { get; set; }
 		public Int32 ParentCategoryId { get; set; }
 		public Int32 PictureId { get; set; }
@@ -30,10 +29,10 @@ namespace Brigita.Services.Categories {
 		public Boolean HasDiscountsApplied { get; set; }
 		public Boolean SubjectToAcl { get; set; }
 		public Boolean LimitedToStores { get; set; }
+		public String Name { get; set; }
 		public Int32 ID { get; set; }
 
 		public void PopulateFrom(ICategory input) {
-			this.Name = input.Name;
 			this.Description = input.Description;
 			this.ParentCategoryId = input.ParentCategoryId;
 			this.PictureId = input.PictureId;
@@ -55,6 +54,13 @@ namespace Brigita.Services.Categories {
 			this.HasDiscountsApplied = input.HasDiscountsApplied;
 			this.SubjectToAcl = input.SubjectToAcl;
 			this.LimitedToStores = input.LimitedToStores;
+			this.Name = input.Name;
+			this.ID = input.ID;
+			this.ID = input.ID;
+		}
+
+		public void PopulateFrom(ITinyCategory input) {
+			this.Name = input.Name;
 			this.ID = input.ID;
 		}
 

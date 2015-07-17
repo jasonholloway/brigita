@@ -11,9 +11,9 @@ namespace Brigita.Services.Products
 {
     public interface IProducts
     {
-        IProduct[] GetByCategoryID(int catID);
-        ListPage<IProductTeaser> GetTeasersByCategoryID(int catID, int page);
+        ListPage<IProduct> GetProductsByCategory(int categoryID, ListPageSpec pageSpec);
 
+        ListPage<ITinyProduct> GetTinyProductsByCategory(int categoryID, ListPageSpec pageSpec);
         //...
 
     }

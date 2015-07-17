@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Brigita.Web.Models.Menu
+namespace Brigita.Web.ViewModels.Menu
 {
     public class CategoryMenuModel
     {

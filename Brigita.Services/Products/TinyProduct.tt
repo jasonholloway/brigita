@@ -1,0 +1,9 @@
+﻿<#@ include file="$(SolutionDir)Brigita.DtoGen\DtoGen.tt" once="true" #>
+<#@ assembly name="$(SolutionDir)Brigita.Domain\bin\$(ConfigurationName)\Brigita.Domain.dll" #>
+<#@ import namespace="Brigita.Domain.Products" #>
+<#  
+	GenerateDto(
+		new[] { typeof(ITinyProduct) },
+		"Brigita.Services.Products.TinyProduct", 
+		new[] { "System" }); 
+#>
