@@ -19,10 +19,10 @@ using Nop.Web.Framework.Themes;
 using StackExchange.Profiling;
 using StackExchange.Profiling.Mvc;
 using Brigita.Web.Infrastructure;
-using Brigita.Core.Infrastructure;
+using Brigita.Infrastructure;
 using Nop.Core.Configuration;
 using System.Configuration;
-using Brigita.Services.Categories;
+using Brigita.Dom.Services.Categories;
 
 namespace Brigita.Web
 {

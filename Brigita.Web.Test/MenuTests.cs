@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Brigita.Services.Categories;
+using Brigita.Dom.Services.Categories;
 using Brigita.Web.Controllers;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;

@@ -34,7 +34,7 @@ namespace Brigita.DtoGen.Test
             var ts = new TypeScriber(new[] { "System" });
             
             Assert.AreEqual("Int32", ts.WriteFullTypeName<int>());
-            Assert.AreEqual("Brigita.Domain.Test.DtoTests", ts.WriteFullTypeName<TypeScriberTests>());
+            Assert.AreEqual("Brigita.DtoGen.Test.TypeScriberTests", ts.WriteFullTypeName<TypeScriberTests>());
             Assert.AreEqual("Reflection.Assembly", ts.WriteFullTypeName<System.Reflection.Assembly>());
         }
 
@@ -44,18 +44,18 @@ namespace Brigita.DtoGen.Test
             var namespaces = new[] { 
                                 "System",
                                 "System.Collections.Generic",
-                                "Brigita.Domain"
+                                "Brigita.Dom"
                             };
             
             var scriber = new TypeScriber(namespaces);
 
             var tests = new Dictionary<Type, string> { 
                                 { typeof(int?), "Nullable<Int32>" }, 
-                                { typeof(List<TypeScriberTests>), "List<Test.DtoTests>" },
+                                { typeof(List<TypeScriberTests>), "List<Brigita.DtoGen.Test.TypeScriberTests>" },
                                 { typeof(SortedDictionary<string, float>), "SortedDictionary<String, Single>" },
                                 { typeof(byte[]), "Byte[]" },
                                 { typeof(float?[]), "Nullable<Single>[]" },
-                                { typeof(TypeScriberTests[][][]), "Test.DtoTests[][][]" }
+                                { typeof(TypeScriberTests[][][]), "Brigita.DtoGen.Test.TypeScriberTests[][][]" }
                             };
             
             foreach(var test in tests) {

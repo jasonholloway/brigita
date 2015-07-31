@@ -1,0 +1,12 @@
+﻿body {
+    /*****/
+}
+
+ul#categoryMenu a.active {
+    font-weight: bold;
+    font-style: italic;
+}
+
+ul#categoryMenu a.activeParent {
+    font-weight: bold;
+}

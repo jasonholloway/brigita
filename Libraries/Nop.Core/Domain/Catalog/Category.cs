@@ -5,7 +5,7 @@ using Nop.Core.Domain.Localization;
 using Nop.Core.Domain.Security;
 using Nop.Core.Domain.Seo;
 using Nop.Core.Domain.Stores;
-using Brigita.Domain.Categories;
+using Brigita.Dom.Categories;
 
 namespace Nop.Core.Domain.Catalog
 {

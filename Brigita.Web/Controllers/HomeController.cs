@@ -1,44 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
-using Brigita.Web.ViewModels;
-using Nop.Web.Framework;
-using Brigita.Web.ViewModels.Home;
-using Nop.Core.Domain;
-using Nop.Core.Domain.Seo;
-using Nop.Web.Framework.UI;
-using Nop.Core;
-using Brigita.Services.Pages;
+using Brigita.View.Services.Home;
 
 namespace Brigita.Web.Controllers
 {
     public class HomeController : Controller
     {
-        StoreInformationSettings _storeInfoSettings;
-        SeoSettings _seoSettings;
-        IWebHelper _webHelper;
-        IPageHelper _pageHelper;
+        IHomeModelSource _homeModelSource;
 
-        public HomeController(
-                    StoreInformationSettings storeInfoSettings,
-                    SeoSettings seoSettings,
-                    IWebHelper webHelper,
-                    IPageHelper pageHelper) 
-        {
-            _storeInfoSettings = storeInfoSettings;
-            _seoSettings = seoSettings;
-            _webHelper = webHelper;
-            _pageHelper = pageHelper;
+        public HomeController(IHomeModelSource homeModelSource) {
+            _homeModelSource = homeModelSource;
         }
 
         public ActionResult Index()
         {
-            var model = new HomeModel() { 
-                Title = _pageHelper.BuildPageTitle("Brigitas Bodite"),
-                Greeting = "Hullo. ho do you do?"
-            };
+            var model = _homeModelSource.GetModel();
 
             return View(model);
         }

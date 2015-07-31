@@ -20,14 +20,14 @@ namespace Brigita.Web
                 new { controller = "Home", action = "Index" }
                 );
 
-            routes.MapRoute(
-                "ProductsByCategory",
-                "products/{categoryName}/{pageIndex}",
-                new { 
-                    controller = "ProductList", 
-                    action = "CategoryByName", 
-                    pageIndex = UrlParameter.Optional 
-                });
+            //routes.MapRoute(
+            //    "ProductsByCategory",
+            //    "products/{categoryName}/{pageIndex}",
+            //    new { 
+            //        controller = "ProductList", 
+            //        action = "CategoryByName", 
+            //        pageIndex = UrlParameter.Optional 
+            //    });
             
             routes.MapRoute(
                 "Default",

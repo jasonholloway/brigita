@@ -1,8 +1,8 @@
-﻿using Brigita.Core.Infrastructure;
-using Brigita.Services.Cache;
-using Brigita.Services.Categories;
-using Brigita.Services.Plugins;
-using Brigita.Services.Stores;
+﻿using Brigita.Infrastructure;
+using Brigita.Dom.Services.Cache;
+using Brigita.Dom.Services.Categories;
+using Brigita.Dom.Services.Plugins;
+using Brigita.Dom.Services.Stores;
 using Nop.Core;
 using Nop.Core.Caching;
 using Nop.Core.Data;
@@ -32,7 +32,13 @@ using Nop.Web.Framework;
 using Nop.Web.Framework.UI;
 using System.Runtime.Caching;
 using System.Web;
-using Brigita.Services.Pages;
+using Brigita.Dom.Services.Pages;
+using Brigita.Dom.Services.Products;
+using Brigita.View.Services;
+using Brigita.Web.Services;
+using Brigita.View.Services.Products;
+using Brigita.View.Services.Home;
+using Brigita.View.Services.Menu;
 
 namespace Brigita.Web
 {
@@ -64,6 +70,13 @@ namespace Brigita.Web
             x.Bind<ILogger, NullLogger>();
 
 
+            x.BindSingleton<ILinkProvider, MvcLinkProvider>();
+
+            x.Bind<IHomeModelSource, HomeModelSource>();
+            x.Bind<IProductsByCategorySource, ProductsByCategorySource>();
+            x.Bind<ICatMenuModelSource, CatMenuModelSource>();
+
+
             x.Bind<IPageHelper, PageHelper>();
             x.Bind<ILinkHelper, LinkHelper>();
 
@@ -86,6 +99,9 @@ namespace Brigita.Web
 
             x.Bind<ICategories, BrigitaCategories>();
             x.Bind<IScopedCategories, ScopedCategories>();
+
+            x.Bind<IProducts, BrigitaProducts>();
+
 
             x.Bind<ICustomerService, CustomerService>();
             x.Bind<IVendorService, VendorService>();

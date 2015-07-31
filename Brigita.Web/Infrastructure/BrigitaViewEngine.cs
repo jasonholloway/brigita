@@ -24,7 +24,7 @@ namespace Brigita.Web.Infrastructure
         private static readonly string[] _emptyLocations = new string[0];
 
         internal Func<string, string> GetExtensionThunk = VirtualPathUtility.GetExtension;
-
+        
 
         public BrigitaViewEngine() {
             //...
@@ -112,7 +112,7 @@ namespace Brigita.Web.Infrastructure
             if(String.IsNullOrEmpty(viewName)) {
                 throw new ArgumentException("View name cannot be null or empty.", "viewName");
             }
-
+            
             var viewLocationsSearched = new List<string>();
             var masterLocationsSearched = new List<string>();
 

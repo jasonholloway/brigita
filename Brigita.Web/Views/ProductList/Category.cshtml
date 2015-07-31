@@ -1,0 +1,15 @@
+﻿@using Brigita.View.Products
+@model ProductsByCategoryModel
+@{
+    Title = "Products by Category"; 
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+@section leftSide {
+    <i>HELLO!</i>
+}
+@section rightSide {
+    ...
+}
+
+<h2>@Model.CurrentCategoryName</h2>
+@Html.DisplayFor(_ => Model.ListPage)

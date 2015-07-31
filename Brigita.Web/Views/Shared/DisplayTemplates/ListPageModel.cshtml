@@ -1,0 +1,16 @@
+﻿@using Brigita.View.Bits
+@model ListPageModel
+<div>
+    <ul class="itemList">
+    @foreach(var item in Model.Items) {
+        <li>
+            @Html.DisplayFor(_ => item)
+        </li>
+    }
+    </ul>
+    <ul class="itemListPages">
+    @for(int iPage = 0; iPage < Model.PageCount; iPage++) {
+        <li><a href="blah">@(iPage + 1)</a></li>
+    }
+    </ul>
+</div>

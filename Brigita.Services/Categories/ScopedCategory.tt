@@ -1,6 +1,0 @@
-﻿<#@ include file="$(SolutionDir)Brigita.DtoGen\DtoGen.tt" once="true" #>
-<#@ assembly name="$(SolutionDir)Brigita.Domain\bin\$(ConfigurationName)\Brigita.Domain.dll" #>
-<#@ import namespace="Brigita.Domain.Categories" #>
-<#  GenerateDto<IScopedCategory>(
-					"Brigita.Services.Categories.ScopedCategory", 
-					new[] { "System" }); #>

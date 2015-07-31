@@ -218,9 +218,9 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Brigita.Domain\Brigita.Domain.csproj">
+    <ProjectReference Include="..\..\..\Brigita.Dom\Brigita.Dom.csproj">
       <Project>{c3cdc67c-92c8-4ed7-8ba5-62523aa47fbd}</Project>
-      <Name>Brigita.Domain</Name>
+      <Name>Brigita.Dom</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\Libraries\Nop.Core\Nop.Core.csproj">
       <Project>{6bda8332-939f-45b7-a25e-7a797260ae59}</Project>

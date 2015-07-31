@@ -1,18 +1,15 @@
-﻿@using Brigita.Web.ViewModels.Home
+﻿@using Brigita.View.Home
 @model HomeModel
-
 @{
+    Title = "BRIGS BOD!";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<div>
-    @Model.Greeting
-</div>
-
 @section leftSide {
     <i>INJECTED LEFT SIDEBAR HTML HERE!</i>
 }
-
 @section rightSide {
     <b>AND HELLO AGAIN! RIGHT-SIDE HTML BIT HERE.</b>
 }
+
+@Model.Greeting
+

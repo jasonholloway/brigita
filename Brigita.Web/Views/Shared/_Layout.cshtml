@@ -1,6 +1,6 @@
-﻿@model IWebPageModel
-@{ 
+﻿@{ 
     Layout = "~/Views/Shared/_Root.cshtml";
+    CssFiles.Add("~/content/basic.css");
 }
 <div>
     <div id="header">
@@ -36,8 +36,8 @@
             @{Html.RenderAction(
                         "CategoryMenu", 
                         "Menu", 
-                        new { activeCatID = Model is IProductContextModel 
-                                                ? ((IProductContextModel)Model).CurrentCategoryID
+                        new { activeCatID = Model is IProductContextProvider
+                                                ? ((IProductContextProvider)Model).CurrentCategoryID
                                                 : 0 }
                         );}
 

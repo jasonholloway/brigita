@@ -60,9 +60,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Brigita.Domain\Brigita.Domain.csproj">
+    <ProjectReference Include="..\Brigita.Dom\Brigita.Dom.csproj">
       <Project>{c3cdc67c-92c8-4ed7-8ba5-62523aa47fbd}</Project>
-      <Name>Brigita.Domain</Name>
+      <Name>Brigita.Dom</Name>
     </ProjectReference>
     <ProjectReference Include="..\Brigita.DtoGen\Brigita.DtoGen.csproj">
       <Project>{4dcb1a55-bd4d-4cd6-b05f-3a7b394a9747}</Project>

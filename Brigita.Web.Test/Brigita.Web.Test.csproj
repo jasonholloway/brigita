@@ -97,13 +97,9 @@
     <Compile Include="SimpleTree.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Brigita.Services\Brigita.Services.csproj">
+    <ProjectReference Include="..\Brigita.Dom.Services\Brigita.Dom.Services.csproj">
       <Project>{f6c49de9-1a3b-42b9-b1e6-60e55e326eec}</Project>
-      <Name>Brigita.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Brigita.Web.Domain\Brigita.Web.Domain.csproj">
-      <Project>{c5cb2ebc-501a-4142-86fb-25f22ab2663f}</Project>
-      <Name>Brigita.Web.Domain</Name>
+      <Name>Brigita.Dom.Services</Name>
     </ProjectReference>
     <ProjectReference Include="..\Brigita.Web\Brigita.Web.csproj">
       <Project>{7d1391bf-9c30-41b6-a78b-6d5c79d46cb0}</Project>

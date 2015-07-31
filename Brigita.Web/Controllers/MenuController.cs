@@ -1,6 +1,6 @@
-﻿using Brigita.Services.Categories;
-using Brigita.Web.ViewModels.Menu;
-using Brigita.Core.Infrastructure.Trees;
+﻿using Brigita.Dom.Services.Categories;
+using Brigita.View.Menu;
+using Brigita.Infrastructure.Trees;
 using Nop.Core.Domain.Catalog;
 using Nop.Services.Catalog;
 using System;
@@ -9,50 +9,30 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Brigita.Web.Infrastructure;
-using Brigita.Services.Pages;
-using Brigita.Domain.Scope;
+using Brigita.Dom.Services.Pages;
+using Brigita.Dom.Scope;
 using System.Web.Routing;
+using Brigita.View.Services.Menu;
 
 namespace Brigita.Web.Controllers
 {
     public class MenuController : Controller
-    {
-        IScopedCategories _scopedCats;
+    {        
+        ICatMenuModelSource _catMenuModelSource;
         
-        public MenuController(
-                    IScopedCategories scopedCats
-                    ) 
+        public MenuController(ICatMenuModelSource catMenuModelSource) 
         {
-            _scopedCats = scopedCats;
+            _catMenuModelSource = catMenuModelSource;
         }
-
-
+        
         [ChildActionOnly]
         public ActionResult CategoryMenu(int activeCatID = 0) 
         {
-            var catTree = _scopedCats.GetTree(activeCatID);
+            var model = _catMenuModelSource
+                                .GetModel(activeCatID);
 
-            var url = new UrlHelper(this.Request.RequestContext);
-
-            var menuTree = catTree.Project(cat => new CategoryMenuItem() {
-                                                            Name = cat.Name,
-                                                            Url = url.Action(
-                                                                        "CategoryByName", 
-                                                                        "ProductList", 
-                                                                        new { 
-                                                                            categoryName = cat.Name,
-                                                                            pageIndex = 0
-                                                                        }),
-                                                            IsActive = cat.IsActive,
-                                                            IsActiveParent = cat.IsActiveParent
-                                                        });
-
-            return View(new CategoryMenuModel() { 
-                                    MenuItemTree = menuTree
-                                });
+            return View(model);
         }
-
-
 
     }
 }

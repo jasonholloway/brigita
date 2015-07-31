@@ -1,15 +1,9 @@
 
-TO DO:
-
-DtoGen to take multiple interfaces
-	/ should be checked beforehand for 1) methods/events 2) duplicate props
-
-DtoGen to take list of sub-interfaces to implement
 
 
+Currently, we have Domain-level listpages, from which we need to populate ViewModel listpages
 
-
-
+Domain-level listpage shouldn't know about it, so what???
 
 
 
