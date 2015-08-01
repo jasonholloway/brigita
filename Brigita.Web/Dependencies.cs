@@ -39,6 +39,9 @@ using Brigita.Web.Services;
 using Brigita.View.Services.Products;
 using Brigita.View.Services.Home;
 using Brigita.View.Services.Menu;
+using Brigita.Dom.Services.Media;
+using Brigita.Data;
+using Nop.Services.Media;
 
 namespace Brigita.Web
 {
@@ -70,10 +73,22 @@ namespace Brigita.Web
             x.Bind<ILogger, NullLogger>();
 
 
+
+
+
+
             x.BindSingleton<ILinkProvider, MvcLinkProvider>();
 
+
+            x.BindGeneric(typeof(IRepo<>), typeof(Repo<>));
+
+
+
+            x.Bind<IPiccies, Piccies>();
+            x.Bind<IPictureService, PictureService>();
+
             x.Bind<IHomeModelSource, HomeModelSource>();
-            x.Bind<IProductsByCategorySource, ProductsByCategorySource>();
+            x.Bind<IProductTeasers, ProductTeasers>();
             x.Bind<ICatMenuModelSource, CatMenuModelSource>();
 
 
@@ -126,10 +141,10 @@ namespace Brigita.Web
                 var dataProvider = efDataProviderManager.LoadDataProvider();
                 dataProvider.InitConnectionFactory();
 
-                x.Bind<IDbContext>(c => new NopObjectContext(dataProviderSettings.DataConnectionString));
+                x.Bind<IDbContext>(c => new NopObjectContext(dataProviderSettings.DataConnectionString, false, false));
             }
             else {
-                x.Bind<IDbContext>(c => new NopObjectContext(dataSettingsManager.LoadSettings().DataConnectionString));
+                x.Bind<IDbContext>(c => new NopObjectContext(dataSettingsManager.LoadSettings().DataConnectionString, false, false));
             }
 
             x.BindGeneric(typeof(IRepository<>), typeof(EfRepository<>));

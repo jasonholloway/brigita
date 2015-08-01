@@ -8,7 +8,10 @@ namespace Brigita.View.Bits
 {
     public class ImageModel
     {
-        //...
+        public string Title { get; set; }
+        public string AltText { get; set; }
+        public string Url { get; set; }
+        public string FullSizeUrl { get; set; }
     }
 
 

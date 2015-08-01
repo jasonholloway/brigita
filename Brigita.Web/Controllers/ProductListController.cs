@@ -17,16 +17,16 @@ namespace Brigita.Web.Controllers
 {
     public class ProductListController : Controller
     {
-        IProductsByCategorySource _prodsByCat;
+        IProductTeasers _prodsByCat;
 
-        public ProductListController(IProductsByCategorySource prodsByCat) {
+        public ProductListController(IProductTeasers prodsByCat) {
             _prodsByCat = prodsByCat;
         }
 
         public ActionResult Category(int categoryID, int pageIndex = 0) 
         {
             var model = _prodsByCat
-                            .GetModel(categoryID, new ListPageSpec(pageIndex, 16));
+                            .GetPage(categoryID, new ListPageSpec(pageIndex, 16));
 
             return View(model);
         }

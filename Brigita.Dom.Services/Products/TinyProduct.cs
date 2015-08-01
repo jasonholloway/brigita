@@ -11,14 +11,14 @@ namespace Brigita.Dom.Services.Products {
 		public String Name { get; set; }
 		public String ShortDescription { get; set; }
 		public Decimal Price { get; set; }
-		public Object Picture { get; set; }
+		public Nullable<Int32> PictureID { get; set; }
 		public Int32 ID { get; set; }
 
 		public void PopulateFrom(ITinyProduct input) {
 			this.Name = input.Name;
 			this.ShortDescription = input.ShortDescription;
 			this.Price = input.Price;
-			this.Picture = input.Picture;
+			this.PictureID = input.PictureID;
 			this.ID = input.ID;
 		}
 

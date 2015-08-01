@@ -18,9 +18,11 @@ namespace Nop.Data
     {
         #region Ctor
 
-        public NopObjectContext(string nameOrConnectionString)
+        public NopObjectContext(string nameOrConnectionString, bool useLazyLoading = true, bool useProxies = true)
             : base(nameOrConnectionString)
         {
+            ProxyCreationEnabled = useProxies;
+            Configuration.LazyLoadingEnabled = useLazyLoading;
             //((IObjectContextAdapter) this).ObjectContext.ContextOptions.LazyLoadingEnabled = true;
         }
         

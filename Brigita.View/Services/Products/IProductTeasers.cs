@@ -8,8 +8,8 @@ using Brigita.View.Products;
 
 namespace Brigita.View.Services.Products
 {
-    public interface IProductsByCategorySource
+    public interface IProductTeasers
     {
-        ProductsByCategoryModel GetModel(int categoryID, ListPageSpec pageSpec);
+        ProductTeaserPage GetPage(int categoryID, ListPageSpec pageSpec);
     }
 }

@@ -4,3 +4,19 @@ TO DO:
 DONE:
 > Menu links stack up incorrectly DONE
 > ActiveParent wrongly appearing on active menu item DONE
+
+
+
+
+
+
+
+Dapper's all well and good, but we'll really be relying on caching to speed us up. As such, we have no pressing need
+to fuck around with SQL, as happy as it may be.
+
+The existing EF-based data layer can be reused, with a few small tweaks. 
+	> NO LAZY LOADING!
+	> Expose the Include function
+	
+	
+Some NOP services will be best rerouted via simpler interfaces, so as to make cacheing that bit simpler.

@@ -38,6 +38,12 @@
     <Reference Include="AutoMapper.Net4">
       <HintPath>..\packages\AutoMapper.3.3.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
+    <Reference Include="Dapper">
+      <HintPath>..\packages\Dapper.1.42\lib\net45\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DapperWrapper">
+      <HintPath>..\packages\DapperWrapper-Updated.0.3.0.0\lib\net40\DapperWrapper.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Caching" />
@@ -68,6 +74,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Categories\ScopedCategories.cs" />
+    <Compile Include="Media\IPiccies.cs" />
+    <Compile Include="Media\Piccy.cs" />
+    <Compile Include="Media\Piccies.cs" />
     <Compile Include="Pages\ILinkHelper.cs" />
     <Compile Include="Pages\IPageHelper.cs" />
     <Compile Include="Pages\LinkHelper.cs" />
@@ -89,6 +98,10 @@
     <Compile Include="Stores\BrigitaStores.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Brigita.Data\Brigita.Data.csproj">
+      <Project>{b9238e30-f60a-4fbd-ae71-fbcb11e414e5}</Project>
+      <Name>Brigita.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Brigita\Brigita.csproj">
       <Project>{1898ea0a-4e8d-4462-94f3-6d05e6a3d88f}</Project>
       <Name>Brigita</Name>

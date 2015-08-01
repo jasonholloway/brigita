@@ -252,9 +252,10 @@
     <Content Include="Views\Category\CategoryPage.cshtml" />
     <Content Include="Views\ProductList\Category.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ListPageModel.cshtml" />
-    <Content Include="Views\Shared\DisplayTemplates\ProductTeaserModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ProductTeaser.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Content\Images\Thumbs\" />
     <Folder Include="Views\Misc\" />
     <Folder Include="Views\Products\" />
   </ItemGroup>
@@ -265,6 +266,10 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Brigita.Data\Brigita.Data.csproj">
+      <Project>{b9238e30-f60a-4fbd-ae71-fbcb11e414e5}</Project>
+      <Name>Brigita.Data</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Brigita\Brigita.csproj">
       <Project>{1898ea0a-4e8d-4462-94f3-6d05e6a3d88f}</Project>
       <Name>Brigita</Name>

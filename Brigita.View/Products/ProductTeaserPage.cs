@@ -7,10 +7,10 @@ using Brigita.View.Bits;
 
 namespace Brigita.View.Products
 {
-    public class ProductsByCategoryModel : IProductContextProvider
+    public class ProductTeaserPage : IProductContextProvider
     {
         public int CurrentCategoryID { get; set; }
         public string CurrentCategoryName { get; set; }
-        public ListPageModel<ProductTeaserModel> ListPage { get; set; }
+        public ListPageModel<ProductTeaser> ListPage { get; set; }
     }
 }

@@ -1,6 +1,8 @@
 ﻿@using Brigita.View.Products
-@model ProductTeaserModel
+@model ProductTeaser
 <div class="productTeaser">    
-    @Html.DisplayFor(m => m.Image)
+    @if(Model.Image != null) {
+        <img src="@Url.Content(Model.Image.Url)" />
+    }
     <a href="@Url.MvcLink(Model.Link)"><h3>@Model.Name</h3></a>
 </div>

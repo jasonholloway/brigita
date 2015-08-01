@@ -14,6 +14,6 @@ namespace Brigita.Dom.Products
         string ShortDescription { get; }
         decimal Price { get; }
 
-        object Picture { get; } //how to populate this with nice url? API wants to give me byte array!
+        int? PictureID { get; } //how to populate this with nice url? API wants to give me byte array!
     }
 }

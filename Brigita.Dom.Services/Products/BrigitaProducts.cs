@@ -11,18 +11,20 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Nop.Services.Catalog;
+using Brigita.Data;
 
 namespace Brigita.Dom.Services.Products
 {
     [CacheZone("Products")]
     public class BrigitaProducts : IProducts
     {
-        IRepository<NopProduct> _repo;
+        IRepo<NopProduct> _repo;
         ICategories _cats;
 
         //repos should be lazy...
 
-        public BrigitaProducts(IRepository<NopProduct> repo, ICategories cats) {
+        public BrigitaProducts(IRepo<NopProduct> repo, ICategories cats) {
             _repo = repo;
             _cats = cats;
         }
@@ -39,20 +41,21 @@ namespace Brigita.Dom.Services.Products
                                     .Select(c => c.ID)
                                     .ToArray();
 
-            var productCount = _repo.TableNoTracking
-                                        .Count(p => p.ProductCategories.Any(c => cats.Contains(c.ID)));
+            var productCount = _repo.Count(p => p.ProductCategories
+                                                    .Any(c => cats.Contains(c.ID)));
 
-            var products = _repo.TableNoTracking
-                                .OrderByDescending(p => p.ID)
-                                .Where(p => p.ProductCategories.Any(c => cats.Contains(c.ID)))
-                                .Skip(pageSpec.PageIndex * pageSpec.PageSize)
-                                .Take(pageSpec.PageSize);
+            var products = _repo.Include(p => p.ProductPictures)
+                                    .OrderByDescending(p => p.ID)
+                                    .Where(p => p.ProductCategories.Any(c => cats.Contains(c.ID)))
+                                    .Skip(pageSpec.PageIndex * pageSpec.PageSize)
+                                    .Take(pageSpec.PageSize)
+                                    .ToArray();
             
             return new ListPage<IProduct>(
                                     products,
                                     pageSpec.PageIndex,
                                     pageSpec.PageSize,
-                                    productCount / pageSpec.PageSize + 1);                      
+                                    productCount / pageSpec.PageSize + 1);            
         }
 
 
@@ -61,17 +64,27 @@ namespace Brigita.Dom.Services.Products
         {
             var products = GetProductsByCategory(categoryID, pageSpec);
 
-            var teasers = products
-                            .Select(p => Mapper.Map<TinyProduct>(p));
+            var tinyProds = products
+                            .Select(p => {
+                                var tp = Mapper.Map<TinyProduct>(p);
+
+                                var pic = ((NopProduct)p).ProductPictures
+                                                            .OrderBy(pp => pp.DisplayOrder)
+                                                            .FirstOrDefault();
+
+                                tp.PictureID = pic != null 
+                                                    ? (int?)pic.PictureId 
+                                                    : null;
+
+                                return tp;
+                            });
 
             return new ListPage<ITinyProduct>(
-                            teasers,
-                            products.PageIndex,
-                            products.PageSize,
-                            products.PageCount
-                            );
-            throw new NotImplementedException();
-
+                                        tinyProds,
+                                        products.PageIndex,
+                                        products.PageSize,
+                                        products.PageCount
+                                        );
         }
 
 
