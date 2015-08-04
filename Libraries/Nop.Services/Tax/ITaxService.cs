@@ -44,7 +44,7 @@ namespace Nop.Services.Tax
         /// <param name="price">Price</param>
         /// <param name="taxRate">Tax rate</param>
         /// <returns>Price</returns>
-        decimal GetProductPrice(NopProduct product, decimal price,
+        decimal GetProductPrice(Product product, decimal price,
             out decimal taxRate);
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Nop.Services.Tax
         /// <param name="customer">Customer</param>
         /// <param name="taxRate">Tax rate</param>
         /// <returns>Price</returns>
-        decimal GetProductPrice(NopProduct product, decimal price,
+        decimal GetProductPrice(Product product, decimal price,
             Customer customer, out decimal taxRate);
 
         /// <summary>
@@ -67,7 +67,7 @@ namespace Nop.Services.Tax
         /// <param name="customer">Customer</param>
         /// <param name="taxRate">Tax rate</param>
         /// <returns>Price</returns>
-        decimal GetProductPrice(NopProduct product, decimal price,
+        decimal GetProductPrice(Product product, decimal price,
             bool includingTax, Customer customer, out decimal taxRate);
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace Nop.Services.Tax
         /// <param name="priceIncludesTax">A value indicating whether price already includes tax</param>
         /// <param name="taxRate">Tax rate</param>
         /// <returns>Price</returns>
-        decimal GetProductPrice(NopProduct product, int taxCategoryId, decimal price,
+        decimal GetProductPrice(Product product, int taxCategoryId, decimal price,
             bool includingTax, Customer customer,
             bool priceIncludesTax, out decimal taxRate);
 
@@ -250,7 +250,7 @@ namespace Nop.Services.Tax
         /// <param name="product">Product</param>
         /// <param name="customer">Customer</param>
         /// <returns>A value indicating whether a product is tax exempt</returns>
-        bool IsTaxExempt(NopProduct product, Customer customer);
+        bool IsTaxExempt(Product product, Customer customer);
 
         /// <summary>
         /// Gets a value indicating whether EU VAT exempt (the European Union Value Added Tax)

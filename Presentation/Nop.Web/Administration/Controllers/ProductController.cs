@@ -176,7 +176,7 @@ namespace Nop.Admin.Controllers
         #region Utilities
 
         [NonAction]
-        protected virtual void UpdateLocales(NopProduct product, ProductModel model)
+        protected virtual void UpdateLocales(Product product, ProductModel model)
         {
             foreach (var localized in model.Locales)
             {
@@ -236,14 +236,14 @@ namespace Nop.Admin.Controllers
         }
 
         [NonAction]
-        protected virtual void UpdatePictureSeoNames(NopProduct product)
+        protected virtual void UpdatePictureSeoNames(Product product)
         {
             foreach (var pp in product.ProductPictures)
                 _pictureService.SetSeoFilename(pp.PictureId, _pictureService.GetPictureSeName(product.Name));
         }
         
         [NonAction]
-        protected virtual void PrepareAclModel(ProductModel model, NopProduct product, bool excludeProperties)
+        protected virtual void PrepareAclModel(ProductModel model, Product product, bool excludeProperties)
         {
             if (model == null)
                 throw new ArgumentNullException("model");
@@ -262,7 +262,7 @@ namespace Nop.Admin.Controllers
         }
 
         [NonAction]
-        protected virtual void SaveProductAcl(NopProduct product, ProductModel model)
+        protected virtual void SaveProductAcl(Product product, ProductModel model)
         {
             var existingAclRecords = _aclService.GetAclRecords(product);
             var allCustomerRoles = _customerService.GetAllCustomerRoles(true);
@@ -285,7 +285,7 @@ namespace Nop.Admin.Controllers
         }
 
         [NonAction]
-        protected virtual void PrepareStoresMappingModel(ProductModel model, NopProduct product, bool excludeProperties)
+        protected virtual void PrepareStoresMappingModel(ProductModel model, Product product, bool excludeProperties)
         {
             if (model == null)
                 throw new ArgumentNullException("model");
@@ -304,7 +304,7 @@ namespace Nop.Admin.Controllers
         }
 
         [NonAction]
-        protected virtual void SaveStoreMappings(NopProduct product, ProductModel model)
+        protected virtual void SaveStoreMappings(Product product, ProductModel model)
         {
             var existingStoreMappings = _storeMappingService.GetStoreMappings(product);
             var allStores = _storeService.GetAllStores();
@@ -327,7 +327,7 @@ namespace Nop.Admin.Controllers
         }
 
         [NonAction]
-        protected virtual void PrepareAddProductAttributeCombinationModel(AddProductAttributeCombinationModel model, NopProduct product)
+        protected virtual void PrepareAddProductAttributeCombinationModel(AddProductAttributeCombinationModel model, Product product)
         {
             if (model == null)
                 throw new ArgumentNullException("model");
@@ -389,7 +389,7 @@ namespace Nop.Admin.Controllers
         }
 
         [NonAction]
-        protected virtual void SaveProductTags(NopProduct product, string[] productTags)
+        protected virtual void SaveProductTags(Product product, string[] productTags)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -444,7 +444,7 @@ namespace Nop.Admin.Controllers
         }
 
         [NonAction]
-        protected virtual void PrepareProductModel(ProductModel model, NopProduct product,
+        protected virtual void PrepareProductModel(ProductModel model, Product product,
             bool setPredefinedValues, bool excludeProperties)
         {
             if (model == null)
@@ -673,7 +673,7 @@ namespace Nop.Admin.Controllers
         }
 
         [NonAction]
-        protected virtual void SaveProductWarehouseInventory(NopProduct product, ProductModel model)
+        protected virtual void SaveProductWarehouseInventory(Product product, ProductModel model)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -1140,7 +1140,7 @@ namespace Nop.Admin.Controllers
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageProducts))
                 return AccessDeniedView();
 
-            var products = new List<NopProduct>();
+            var products = new List<Product>();
             if (selectedIds != null)
             {
                 products.AddRange(_productService.GetProductsByIds(selectedIds.ToArray()));
@@ -2738,7 +2738,7 @@ namespace Nop.Admin.Controllers
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageProducts))
                 return AccessDeniedView();
 
-            var products = new List<NopProduct>();
+            var products = new List<Product>();
             if (selectedIds != null)
             {
                 var ids = selectedIds
@@ -2818,7 +2818,7 @@ namespace Nop.Admin.Controllers
             if (!_permissionService.Authorize(StandardPermissionProvider.ManageProducts))
                 return AccessDeniedView();
 
-            var products = new List<NopProduct>();
+            var products = new List<Product>();
             if (selectedIds != null)
             {
                 var ids = selectedIds
@@ -2897,7 +2897,7 @@ namespace Nop.Admin.Controllers
             if (_workContext.CurrentVendor != null)
                 vendorId = _workContext.CurrentVendor.ID;
 
-            IList<NopProduct> products;
+            IList<Product> products;
             IList<ProductAttributeCombination> combinations;
             _productService.GetLowStockProducts(vendorId, out products, out combinations);
 
@@ -3524,7 +3524,7 @@ namespace Nop.Admin.Controllers
             {
                 Data = values.Select(x =>
                 {
-                    NopProduct associatedProduct = null;
+                    Product associatedProduct = null;
                     if (x.AttributeValueType == AttributeValueType.AssociatedToProduct)
                     {
                         associatedProduct = _productService.GetProductById(x.AssociatedProductId);

@@ -212,7 +212,7 @@ namespace Nop.Services.ExportImport
         /// </summary>
         /// <param name="products">Products</param>
         /// <returns>Result in XML format</returns>
-        public virtual string ExportProductsToXml(IList<NopProduct> products)
+        public virtual string ExportProductsToXml(IList<Product> products)
         {
             var sb = new StringBuilder();
             var stringWriter = new StringWriter(sb);
@@ -484,7 +484,7 @@ namespace Nop.Services.ExportImport
         /// </summary>
         /// <param name="stream">Stream</param>
         /// <param name="products">Products</param>
-        public virtual void ExportProductsToXlsx(Stream stream, IList<NopProduct> products)
+        public virtual void ExportProductsToXlsx(Stream stream, IList<Product> products)
         {
             if (stream == null)
                 throw new ArgumentNullException("stream");

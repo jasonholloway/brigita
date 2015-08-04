@@ -6,7 +6,7 @@ using System;
 
 namespace Brigita.Dom.Services.Products {
 
-	public partial class Product : IProduct, IEntity
+	public partial class BrigitaProduct : IProduct, IEntity
 	{
 		public Int32 ProductTypeId { get; set; }
 		public Int32 ParentGroupedProductId { get; set; }

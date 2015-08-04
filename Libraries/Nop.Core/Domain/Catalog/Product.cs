@@ -12,7 +12,7 @@ namespace Nop.Core.Domain.Catalog
     /// <summary>
     /// Represents a product
     /// </summary>
-    public partial class NopProduct : BaseEntity, IProduct, ILocalizedEntity, ISlugSupported, IAclSupported, IStoreMappingSupported
+    public partial class Product : BaseEntity, IProduct, ILocalizedEntity, ISlugSupported, IAclSupported, IStoreMappingSupported
     {
         private ICollection<ProductCategory> _productCategories;
         private ICollection<ProductManufacturer> _productManufacturers;

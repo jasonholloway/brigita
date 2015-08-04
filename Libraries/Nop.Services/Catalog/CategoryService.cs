@@ -73,7 +73,7 @@ namespace Nop.Services.Catalog
 
         private readonly IRepository<NopCategory> _categoryRepository;
         private readonly IRepository<ProductCategory> _productCategoryRepository;
-        private readonly IRepository<NopProduct> _productRepository;
+        private readonly IRepository<Product> _productRepository;
         private readonly IRepository<AclRecord> _aclRepository;
         private readonly IRepository<StoreMapping> _storeMappingRepository;
         private readonly IWorkContext _workContext;
@@ -106,7 +106,7 @@ namespace Nop.Services.Catalog
         public CategoryService(ICacheManager cacheManager,
             IRepository<NopCategory> categoryRepository,
             IRepository<ProductCategory> productCategoryRepository,
-            IRepository<NopProduct> productRepository,
+            IRepository<Product> productRepository,
             IRepository<AclRecord> aclRepository,
             IRepository<StoreMapping> storeMappingRepository,
             IWorkContext workContext,

@@ -89,10 +89,10 @@
     </Compile>
     <Compile Include="Products\IProducts.cs" />
     <Compile Include="Products\BrigitaProducts.cs" />
-    <Compile Include="Products\Product.cs">
+    <Compile Include="Products\BrigitaProduct.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Product.tt</DependentUpon>
+      <DependentUpon>BrigitaProduct.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Stores\BrigitaStores.cs" />
@@ -141,9 +141,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>TinyProduct.cs</LastGenOutput>
     </Content>
-    <Content Include="Products\Product.tt">
+    <Content Include="Products\BrigitaProduct.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Product.cs</LastGenOutput>
+      <LastGenOutput>BrigitaProduct.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <ItemGroup>

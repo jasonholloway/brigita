@@ -18,39 +18,39 @@ namespace Nop.Services.Catalog
         /// Delete a product
         /// </summary>
         /// <param name="product">Product</param>
-        void DeleteProduct(NopProduct product);
+        void DeleteProduct(Product product);
 
         /// <summary>
         /// Gets all products displayed on the home page
         /// </summary>
         /// <returns>Products</returns>
-        IList<NopProduct> GetAllProductsDisplayedOnHomePage();
+        IList<Product> GetAllProductsDisplayedOnHomePage();
         
         /// <summary>
         /// Gets product
         /// </summary>
         /// <param name="productId">Product identifier</param>
         /// <returns>Product</returns>
-        NopProduct GetProductById(int productId);
+        Product GetProductById(int productId);
         
         /// <summary>
         /// Gets products by identifier
         /// </summary>
         /// <param name="productIds">Product identifiers</param>
         /// <returns>Products</returns>
-        IList<NopProduct> GetProductsByIds(int[] productIds);
+        IList<Product> GetProductsByIds(int[] productIds);
 
         /// <summary>
         /// Inserts a product
         /// </summary>
         /// <param name="product">Product</param>
-        void InsertProduct(NopProduct product);
+        void InsertProduct(Product product);
 
         /// <summary>
         /// Updates the product
         /// </summary>
         /// <param name="product">Product</param>
-        void UpdateProduct(NopProduct product);
+        void UpdateProduct(Product product);
 
         /// <summary>
         /// Get (visible) product number in certain category
@@ -90,7 +90,7 @@ namespace Nop.Services.Catalog
         /// false - load only "Unpublished" products
         /// </param>
         /// <returns>Products</returns>
-        IPagedList<NopProduct> SearchProducts(
+        IPagedList<Product> SearchProducts(
             int pageIndex = 0,
             int pageSize = int.MaxValue,
             IList<int> categoryIds = null,
@@ -146,7 +146,7 @@ namespace Nop.Services.Catalog
         /// false - load only "Unpublished" products
         /// </param>
         /// <returns>Products</returns>
-        IPagedList<NopProduct> SearchProducts(
+        IPagedList<Product> SearchProducts(
             out IList<int> filterableSpecificationAttributeOptionIds,
             bool loadFilterableSpecificationAttributeOptionIds = false,
             int pageIndex = 0,
@@ -179,7 +179,7 @@ namespace Nop.Services.Catalog
         /// <param name="pageIndex">Page index</param>
         /// <param name="pageSize">Page size</param>
         /// <returns>Products</returns>
-        IPagedList<NopProduct> GetProductsByProductAtributeId(int productAttributeId,
+        IPagedList<Product> GetProductsByProductAtributeId(int productAttributeId,
             int pageIndex = 0, int pageSize = int.MaxValue);
 
         /// <summary>
@@ -190,14 +190,14 @@ namespace Nop.Services.Catalog
         /// <param name="vendorId">Vendor identifier; 0 to load all records</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Products</returns>
-        IList<NopProduct> GetAssociatedProducts(int parentGroupedProductId,
+        IList<Product> GetAssociatedProducts(int parentGroupedProductId,
             int storeId = 0, int vendorId = 0, bool showHidden = false);
 
         /// <summary>
         /// Update product review totals
         /// </summary>
         /// <param name="product">Product</param>
-        void UpdateProductReviewTotals(NopProduct product);
+        void UpdateProductReviewTotals(Product product);
 
         /// <summary>
         /// Get low stock products
@@ -206,7 +206,7 @@ namespace Nop.Services.Catalog
         /// <param name="products">Low stock products</param>
         /// <param name="combinations">Low stock attribute combinations</param>
         void GetLowStockProducts(int vendorId,
-            out IList<NopProduct> products,
+            out IList<Product> products,
             out IList<ProductAttributeCombination> combinations);
 
         /// <summary>
@@ -214,19 +214,19 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="sku">SKU</param>
         /// <returns>Product</returns>
-        NopProduct GetProductBySku(string sku);
+        Product GetProductBySku(string sku);
 
         /// <summary>
         /// Update HasTierPrices property (used for performance optimization)
         /// </summary>
         /// <param name="product">Product</param>
-        void UpdateHasTierPricesProperty(NopProduct product);
+        void UpdateHasTierPricesProperty(Product product);
 
         /// <summary>
         /// Update HasDiscountsApplied property (used for performance optimization)
         /// </summary>
         /// <param name="product">Product</param>
-        void UpdateHasDiscountsApplied(NopProduct product);
+        void UpdateHasDiscountsApplied(Product product);
 
         #endregion
 
@@ -238,21 +238,21 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="quantityToChange">Quantity to increase or descrease</param>
         /// <param name="attributesXml">Attributes in XML format</param>
-        void AdjustInventory(NopProduct product, int quantityToChange, string attributesXml = "");
+        void AdjustInventory(Product product, int quantityToChange, string attributesXml = "");
 
         /// <summary>
         /// Reserve the given quantity in the warehouses.
         /// </summary>
         /// <param name="product">Product</param>
         /// <param name="quantity">Quantity, must be negative</param>
-        void ReserveInventory(NopProduct product, int quantity);
+        void ReserveInventory(Product product, int quantity);
 
         /// <summary>
         /// Unblocks the given quantity reserved items in the warehouses
         /// </summary>
         /// <param name="product">Product</param>
         /// <param name="quantity">Quantity, must be positive</param>
-        void UnblockReservedInventory(NopProduct product, int quantity);
+        void UnblockReservedInventory(Product product, int quantity);
 
         /// <summary>
         /// Book the reserved quantity
@@ -260,7 +260,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="warehouseId">Warehouse identifier</param>
         /// <param name="quantity">Quantity, must be negative</param>
-        void BookReservedInventory(NopProduct product, int warehouseId, int quantity);
+        void BookReservedInventory(Product product, int warehouseId, int quantity);
 
         /// <summary>
         /// Reverse booked inventory (if acceptable)
@@ -268,7 +268,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">product</param>
         /// <param name="shipmentItem">Shipment item</param>
         /// <returns>Quantity reversed</returns>
-        int ReverseBookedInventory(NopProduct product, ShipmentItem shipmentItem);
+        int ReverseBookedInventory(Product product, ShipmentItem shipmentItem);
 
         #endregion
 
@@ -350,7 +350,7 @@ namespace Nop.Services.Catalog
         /// <param name="cart">Shopping cart</param>
         /// <param name="numberOfProducts">Number of products to return</param>
         /// <returns>Cross-sells</returns>
-        IList<NopProduct> GetCrosssellProductsByShoppingCart(IList<ShoppingCartItem> cart, int numberOfProducts);
+        IList<Product> GetCrosssellProductsByShoppingCart(IList<ShoppingCartItem> cart, int numberOfProducts);
 
         #endregion
         

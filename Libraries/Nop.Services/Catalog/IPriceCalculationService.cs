@@ -20,7 +20,7 @@ namespace Nop.Services.Catalog
         /// <param name="includeDiscounts">A value indicating whether include discounts or not for final price computation</param>
         /// <param name="quantity">Shopping cart item quantity</param>
         /// <returns>Final price</returns>
-        decimal GetFinalPrice(NopProduct product,
+        decimal GetFinalPrice(Product product,
             Customer customer,
             decimal additionalCharge = decimal.Zero, 
             bool includeDiscounts = true, 
@@ -36,7 +36,7 @@ namespace Nop.Services.Catalog
         /// <param name="discountAmount">Applied discount amount</param>
         /// <param name="appliedDiscount">Applied discount</param>
         /// <returns>Final price</returns>
-        decimal GetFinalPrice(NopProduct product,
+        decimal GetFinalPrice(Product product,
             Customer customer,
             decimal additionalCharge,
             bool includeDiscounts,
@@ -56,7 +56,7 @@ namespace Nop.Services.Catalog
         /// <param name="discountAmount">Applied discount amount</param>
         /// <param name="appliedDiscount">Applied discount</param>
         /// <returns>Final price</returns>
-        decimal GetFinalPrice(NopProduct product,
+        decimal GetFinalPrice(Product product,
             Customer customer,
             decimal additionalCharge,
             bool includeDiscounts,
@@ -103,7 +103,7 @@ namespace Nop.Services.Catalog
         /// <param name="discountAmount">Applied discount amount</param>
         /// <param name="appliedDiscount">Applied discount</param>
         /// <returns>Shopping cart unit price (one item)</returns>
-        decimal GetUnitPrice(NopProduct product,
+        decimal GetUnitPrice(Product product,
             Customer customer,
             ShoppingCartType shoppingCartType,
             int quantity,
@@ -143,7 +143,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="attributesXml">Shopping cart item attributes in XML</param>
         /// <returns>Product cost (one item)</returns>
-        decimal GetProductCost(NopProduct product, string attributesXml);
+        decimal GetProductCost(Product product, string attributesXml);
 
 
 

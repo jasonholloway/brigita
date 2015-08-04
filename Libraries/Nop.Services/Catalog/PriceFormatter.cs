@@ -234,7 +234,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="price">Price</param>
         /// <returns>Rental product price with period</returns>
-        public virtual string FormatRentalProductPeriod(NopProduct product, string price)
+        public virtual string FormatRentalProductPeriod(Product product, string price)
         {
             if (product == null)
                 throw new ArgumentNullException("product");

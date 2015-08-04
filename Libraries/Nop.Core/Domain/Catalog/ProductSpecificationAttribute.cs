@@ -43,7 +43,7 @@ namespace Nop.Core.Domain.Catalog
         /// <summary>
         /// Gets or sets the product
         /// </summary>
-        public virtual NopProduct Product { get; set; }
+        public virtual Product Product { get; set; }
 
         /// <summary>
         /// Gets or sets the specification attribute option

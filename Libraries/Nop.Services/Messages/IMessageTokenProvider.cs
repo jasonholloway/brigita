@@ -37,7 +37,7 @@ namespace Nop.Services.Messages
 
         void AddNewsCommentTokens(IList<Token> tokens, NewsComment newsComment);
 
-        void AddProductTokens(IList<Token> tokens, NopProduct product, int languageId);
+        void AddProductTokens(IList<Token> tokens, Product product, int languageId);
 
         void AddAttributeCombinationTokens(IList<Token> tokens, ProductAttributeCombination combination, int languageId);
 

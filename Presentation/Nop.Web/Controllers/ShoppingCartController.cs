@@ -1155,7 +1155,7 @@ namespace Nop.Web.Controllers
         /// <param name="form">Form</param>
         /// <returns>Parsed attributes</returns>
         [NonAction]
-        protected virtual string ParseProductAttributes(NopProduct product, FormCollection form)
+        protected virtual string ParseProductAttributes(Product product, FormCollection form)
         {
             string attributesXml = "";
 
@@ -1313,7 +1313,7 @@ namespace Nop.Web.Controllers
         /// <param name="startDate">Start date</param>
         /// <param name="endDate">End date</param>
         [NonAction]
-        protected virtual void ParseRentalDates(NopProduct product, FormCollection form,
+        protected virtual void ParseRentalDates(Product product, FormCollection form,
             out DateTime? startDate, out DateTime? endDate)
         {
             startDate = null;

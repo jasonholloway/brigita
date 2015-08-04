@@ -73,7 +73,7 @@ namespace Nop.Services.Catalog
         /// <param name="copyImages">A value indicating whether the product images should be copied</param>
         /// <param name="copyAssociatedProducts">A value indicating whether the copy associated products</param>
         /// <returns>Product copy</returns>
-        public virtual NopProduct CopyProduct(NopProduct product, string newName,
+        public virtual Product CopyProduct(Product product, string newName,
             bool isPublished = true, bool copyImages = true, bool copyAssociatedProducts = true)
         {
             if (product == null)
@@ -128,7 +128,7 @@ namespace Nop.Services.Catalog
             }
 
             // product
-            var productCopy = new NopProduct
+            var productCopy = new Product
             {
                 ProductTypeId = product.ProductTypeId,
                 ParentGroupedProductId = product.ParentGroupedProductId,

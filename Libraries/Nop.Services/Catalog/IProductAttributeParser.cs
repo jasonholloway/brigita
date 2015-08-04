@@ -57,7 +57,7 @@ namespace Nop.Services.Catalog
         /// <param name="attributesXml">Attributes in XML format</param>
         /// <param name="ignoreNonCombinableAttributes">A value indicating whether we should ignore non-combinable attributes</param>
         /// <returns>Found product attribute combination</returns>
-        ProductAttributeCombination FindProductAttributeCombination(NopProduct product,
+        ProductAttributeCombination FindProductAttributeCombination(Product product,
             string attributesXml, bool ignoreNonCombinableAttributes = true);
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="ignoreNonCombinableAttributes">A value indicating whether we should ignore non-combinable attributes</param>
         /// <returns>Attribute combinations in XML format</returns>
-        IList<string> GenerateAllCombinations(NopProduct product, bool ignoreNonCombinableAttributes = false);
+        IList<string> GenerateAllCombinations(Product product, bool ignoreNonCombinableAttributes = false);
 
         #endregion
 

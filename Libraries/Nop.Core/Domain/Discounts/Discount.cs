@@ -11,7 +11,7 @@ namespace Nop.Core.Domain.Discounts
     {
         private ICollection<DiscountRequirement> _discountRequirements;
         private ICollection<NopCategory> _appliedToCategories;
-        private ICollection<NopProduct> _appliedToProducts;
+        private ICollection<Product> _appliedToProducts;
 
         /// <summary>
         /// Gets or sets the name
@@ -130,9 +130,9 @@ namespace Nop.Core.Domain.Discounts
         /// <summary>
         /// Gets or sets the products 
         /// </summary>
-        public virtual ICollection<NopProduct> AppliedToProducts
+        public virtual ICollection<Product> AppliedToProducts
         {
-            get { return _appliedToProducts ?? (_appliedToProducts = new List<NopProduct>()); }
+            get { return _appliedToProducts ?? (_appliedToProducts = new List<Product>()); }
             protected set { _appliedToProducts = value; }
         }
     }

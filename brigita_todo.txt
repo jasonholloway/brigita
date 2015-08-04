@@ -1,15 +1,36 @@
 TO DO:
-> Images to be sourced and templated
+> Language detection
+> Populate models with localized strings (eugh!)
+> Product detail pages
+> Nice routes via dictionary of titles
+
 
 DONE:
 > Menu links stack up incorrectly DONE
 > ActiveParent wrongly appearing on active menu item DONE
+> Images to be sourced and templated DONE
+
+
+
+
+LANGUAGE DETECTION!!!!!
 
 
 
 
 
+*************************************************
 
+Localized strings should be in the served domain model.... or at least the model should expose methods for getting localized info.
+
+As is, Nop leaves this dreck for the presentation layer to spasm through, in a very ugly manner.
+
+Nop really wants to do this at the ViewModel layer, and does so, but as this entire layer in submerged in the MVC stuff, it appears there via gruesome extension methods.
+
+
+
+
+**************************************************
 
 Dapper's all well and good, but we'll really be relying on caching to speed us up. As such, we have no pressing need
 to fuck around with SQL, as happy as it may be.

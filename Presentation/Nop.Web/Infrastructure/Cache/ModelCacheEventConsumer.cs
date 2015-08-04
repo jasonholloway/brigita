@@ -51,9 +51,9 @@ namespace Nop.Web.Infrastructure.Cache
         IConsumer<EntityUpdated<ProductCategory>>,
         IConsumer<EntityDeleted<ProductCategory>>,
         //products
-        IConsumer<EntityInserted<NopProduct>>,
-        IConsumer<EntityUpdated<NopProduct>>,
-        IConsumer<EntityDeleted<NopProduct>>,
+        IConsumer<EntityInserted<Product>>,
+        IConsumer<EntityUpdated<Product>>,
+        IConsumer<EntityDeleted<Product>>,
         //related product
         IConsumer<EntityInserted<RelatedProduct>>,
         IConsumer<EntityUpdated<RelatedProduct>>,
@@ -826,11 +826,11 @@ namespace Nop.Web.Infrastructure.Cache
          }
 
         //products
-        public void HandleEvent(EntityInserted<NopProduct> eventMessage)
+        public void HandleEvent(EntityInserted<Product> eventMessage)
         {
             _cacheManager.RemoveByPattern(SITEMAP_PATTERN_KEY);
         }
-        public void HandleEvent(EntityUpdated<NopProduct> eventMessage)
+        public void HandleEvent(EntityUpdated<Product> eventMessage)
         {
             //_cacheManager.RemoveByPattern(PRODUCT_BREADCRUMB_PATTERN_KEY);
             //_cacheManager.RemoveByPattern(CATEGORY_NAVIGATION_PATTERN_KEY);
@@ -841,7 +841,7 @@ namespace Nop.Web.Infrastructure.Cache
             _cacheManager.RemoveByPattern(PRODUCTS_RELATED_IDS_PATTERN_KEY);
             _cacheManager.RemoveByPattern(SITEMAP_PATTERN_KEY);
         }
-        public void HandleEvent(EntityDeleted<NopProduct> eventMessage)
+        public void HandleEvent(EntityDeleted<Product> eventMessage)
         {
             //_cacheManager.RemoveByPattern(CATEGORY_NAVIGATION_PATTERN_KEY);
             //_cacheManager.RemoveByPattern(CATEGORY_MENU_PATTERN_KEY);

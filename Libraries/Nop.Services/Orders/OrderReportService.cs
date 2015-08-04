@@ -21,7 +21,7 @@ namespace Nop.Services.Orders
 
         private readonly IRepository<Order> _orderRepository;
         private readonly IRepository<OrderItem> _orderItemRepository;
-        private readonly IRepository<NopProduct> _productRepository;
+        private readonly IRepository<Product> _productRepository;
         private readonly IDateTimeHelper _dateTimeHelper;
 
         #endregion
@@ -37,7 +37,7 @@ namespace Nop.Services.Orders
         /// <param name="dateTimeHelper">Datetime helper</param>
         public OrderReportService(IRepository<Order> orderRepository,
             IRepository<OrderItem> orderItemRepository,
-            IRepository<NopProduct> productRepository,
+            IRepository<Product> productRepository,
             IDateTimeHelper dateTimeHelper)
         {
             this._orderRepository = orderRepository;
@@ -425,7 +425,7 @@ namespace Nop.Services.Orders
         /// <param name="pageSize">Page size</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Products</returns>
-        public virtual IPagedList<NopProduct> ProductsNeverSold(int vendorId = 0,
+        public virtual IPagedList<Product> ProductsNeverSold(int vendorId = 0,
             DateTime? createdFromUtc = null, DateTime? createdToUtc = null,
             int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false)
         {
@@ -449,7 +449,7 @@ namespace Nop.Services.Orders
                                (showHidden || p.Published)
                          select p;
 
-            var products = new PagedList<NopProduct>(query2, pageIndex, pageSize);
+            var products = new PagedList<Product>(query2, pageIndex, pageSize);
             return products;
         }
 

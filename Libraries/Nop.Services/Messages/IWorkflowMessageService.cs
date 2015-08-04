@@ -195,7 +195,7 @@ namespace Nop.Services.Messages
         /// <param name="personalMessage">Personal message</param>
         /// <returns>Queued email identifier</returns>
         int SendProductEmailAFriendMessage(Customer customer, int languageId,
-            NopProduct product, string customerEmail, string friendsEmail, string personalMessage);
+            Product product, string customerEmail, string friendsEmail, string personalMessage);
 
         /// <summary>
         /// Sends wishlist "email a friend" message
@@ -298,7 +298,7 @@ namespace Nop.Services.Messages
         /// <param name="product">Product</param>
         /// <param name="languageId">Message language identifier</param>
         /// <returns>Queued email identifier</returns>
-        int SendQuantityBelowStoreOwnerNotification(NopProduct product, int languageId);
+        int SendQuantityBelowStoreOwnerNotification(Product product, int languageId);
 
         /// <summary>
         /// Sends a "quantity below" notification to a store owner

@@ -19,12 +19,12 @@ namespace Brigita.Dom.Services.Products
     [CacheZone("Products")]
     public class BrigitaProducts : IProducts
     {
-        IRepo<NopProduct> _repo;
+        IRepo<Product> _repo;
         ICategories _cats;
 
         //repos should be lazy...
 
-        public BrigitaProducts(IRepo<NopProduct> repo, ICategories cats) {
+        public BrigitaProducts(IRepo<Product> repo, ICategories cats) {
             _repo = repo;
             _cats = cats;
         }
@@ -68,7 +68,7 @@ namespace Brigita.Dom.Services.Products
                             .Select(p => {
                                 var tp = Mapper.Map<TinyProduct>(p);
 
-                                var pic = ((NopProduct)p).ProductPictures
+                                var pic = ((Product)p).ProductPictures
                                                             .OrderBy(pp => pp.DisplayOrder)
                                                             .FirstOrDefault();
 

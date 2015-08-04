@@ -323,7 +323,7 @@ namespace Nop.Services.ExportImport
                     bool newProduct = false;
                     if (product == null)
                     {
-                        product = new NopProduct();
+                        product = new Product();
                         newProduct = true;
                     }
                     product.ProductTypeId = productTypeId;

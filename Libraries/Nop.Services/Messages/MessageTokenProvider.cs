@@ -737,7 +737,7 @@ namespace Nop.Services.Messages
             _eventPublisher.EntityTokensAdded(newsComment, tokens);
         }
 
-        public virtual void AddProductTokens(IList<Token> tokens, NopProduct product, int languageId)
+        public virtual void AddProductTokens(IList<Token> tokens, Product product, int languageId)
         {
             tokens.Add(new Token("Product.ID", product.ID.ToString()));
             tokens.Add(new Token("Product.Name", product.GetLocalized(x => x.Name, languageId)));

@@ -42,7 +42,7 @@ namespace Nop.Services.Catalog
 
         #region Fields
 
-        private readonly IRepository<NopProduct> _productRepository;
+        private readonly IRepository<Product> _productRepository;
         private readonly IRepository<RelatedProduct> _relatedProductRepository;
         private readonly IRepository<CrossSellProduct> _crossSellProductRepository;
         private readonly IRepository<TierPrice> _tierPriceRepository;
@@ -103,7 +103,7 @@ namespace Nop.Services.Catalog
         /// <param name="aclService">ACL service</param>
         /// <param name="storeMappingService">Store mapping service</param>
         public ProductService(ICacheManager cacheManager,
-            IRepository<NopProduct> productRepository,
+            IRepository<Product> productRepository,
             IRepository<RelatedProduct> relatedProductRepository,
             IRepository<CrossSellProduct> crossSellProductRepository,
             IRepository<TierPrice> tierPriceRepository,
@@ -167,7 +167,7 @@ namespace Nop.Services.Catalog
         /// Delete a product
         /// </summary>
         /// <param name="product">Product</param>
-        public virtual void DeleteProduct(NopProduct product)
+        public virtual void DeleteProduct(Product product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -181,7 +181,7 @@ namespace Nop.Services.Catalog
         /// Gets all products displayed on the home page
         /// </summary>
         /// <returns>Products</returns>
-        public virtual IList<NopProduct> GetAllProductsDisplayedOnHomePage()
+        public virtual IList<Product> GetAllProductsDisplayedOnHomePage()
         {
             var query = from p in _productRepository.Table
                         orderby p.DisplayOrder, p.Name
@@ -198,7 +198,7 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="productId">Product identifier</param>
         /// <returns>Product</returns>
-        public virtual NopProduct GetProductById(int productId)
+        public virtual Product GetProductById(int productId)
         {
             if (productId == 0)
                 return null;
@@ -212,17 +212,17 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="productIds">Product identifiers</param>
         /// <returns>Products</returns>
-        public virtual IList<NopProduct> GetProductsByIds(int[] productIds)
+        public virtual IList<Product> GetProductsByIds(int[] productIds)
         {
             if (productIds == null || productIds.Length == 0)
-                return new List<NopProduct>();
+                return new List<Product>();
 
             var query = from p in _productRepository.Table
                         where productIds.Contains(p.ID)
                         select p;
             var products = query.ToList();
             //sort by passed identifiers
-            var sortedProducts = new List<NopProduct>();
+            var sortedProducts = new List<Product>();
             foreach (int id in productIds)
             {
                 var product = products.Find(x => x.ID == id);
@@ -236,7 +236,7 @@ namespace Nop.Services.Catalog
         /// Inserts a product
         /// </summary>
         /// <param name="product">Product</param>
-        public virtual void InsertProduct(NopProduct product)
+        public virtual void InsertProduct(Product product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -255,7 +255,7 @@ namespace Nop.Services.Catalog
         /// Updates the product
         /// </summary>
         /// <param name="product">Product</param>
-        public virtual void UpdateProduct(NopProduct product)
+        public virtual void UpdateProduct(Product product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -352,7 +352,7 @@ namespace Nop.Services.Catalog
         /// false - load only "Unpublished" products
         /// </param>
         /// <returns>Products</returns>
-        public virtual IPagedList<NopProduct> SearchProducts(
+        public virtual IPagedList<Product> SearchProducts(
             int pageIndex = 0,
             int pageSize = int.MaxValue,
             IList<int> categoryIds = null,
@@ -418,7 +418,7 @@ namespace Nop.Services.Catalog
         /// false - load only "Unpublished" products
         /// </param>
         /// <returns>Products</returns>
-        public virtual IPagedList<NopProduct> SearchProducts(
+        public virtual IPagedList<Product> SearchProducts(
             out IList<int> filterableSpecificationAttributeOptionIds,
             bool loadFilterableSpecificationAttributeOptionIds = false,
             int pageIndex = 0,
@@ -666,7 +666,7 @@ namespace Nop.Services.Catalog
                 pTotalRecords.DbType = DbType.Int32;
 
                 //invoke stored procedure
-                var products = _dbContext.ExecuteStoredProcedureList<NopProduct>(
+                var products = _dbContext.ExecuteStoredProcedureList<Product>(
                     "ProductLoadAllPaged",
                     pCategoryIds,
                     pManufacturerId,
@@ -708,7 +708,7 @@ namespace Nop.Services.Catalog
                 }
                 //return products
                 int totalRecords = (pTotalRecords.Value != DBNull.Value) ? Convert.ToInt32(pTotalRecords.Value) : 0;
-                return new PagedList<NopProduct>(products, pageIndex, pageSize, totalRecords);
+                return new PagedList<Product>(products, pageIndex, pageSize, totalRecords);
 
                 #endregion
             }
@@ -969,7 +969,7 @@ namespace Nop.Services.Catalog
                     query = query.OrderBy(p => p.Name);
                 }
 
-                var products = new PagedList<NopProduct>(query, pageIndex, pageSize);
+                var products = new PagedList<Product>(query, pageIndex, pageSize);
 
                 //get filterable specification attribute option identifier
                 if (loadFilterableSpecificationAttributeOptionIds)
@@ -998,7 +998,7 @@ namespace Nop.Services.Catalog
         /// <param name="pageIndex">Page index</param>
         /// <param name="pageSize">Page size</param>
         /// <returns>Products</returns>
-        public virtual IPagedList<NopProduct> GetProductsByProductAtributeId(int productAttributeId,
+        public virtual IPagedList<Product> GetProductsByProductAtributeId(int productAttributeId,
             int pageIndex = 0, int pageSize = int.MaxValue)
         {
             var query = _productRepository.Table;
@@ -1006,7 +1006,7 @@ namespace Nop.Services.Catalog
             query = query.Where(x => !x.Deleted);
             query = query.OrderBy(x => x.Name);
 
-            var products = new PagedList<NopProduct>(query, pageIndex, pageSize);
+            var products = new PagedList<Product>(query, pageIndex, pageSize);
             return products;
         }
 
@@ -1018,7 +1018,7 @@ namespace Nop.Services.Catalog
         /// <param name="vendorId">Vendor identifier; 0 to load all records</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Products</returns>
-        public virtual IList<NopProduct> GetAssociatedProducts(int parentGroupedProductId,
+        public virtual IList<Product> GetAssociatedProducts(int parentGroupedProductId,
             int storeId = 0, int vendorId = 0, bool showHidden = false)
         {
             var query = _productRepository.Table;
@@ -1065,7 +1065,7 @@ namespace Nop.Services.Catalog
         /// Update product review totals
         /// </summary>
         /// <param name="product">Product</param>
-        public virtual void UpdateProductReviewTotals(NopProduct product)
+        public virtual void UpdateProductReviewTotals(Product product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -1103,7 +1103,7 @@ namespace Nop.Services.Catalog
         /// <param name="products">Low stock products</param>
         /// <param name="combinations">Low stock attribute combinations</param>
         public virtual void GetLowStockProducts(int vendorId,
-            out IList<NopProduct> products, 
+            out IList<Product> products, 
             out IList<ProductAttributeCombination> combinations)
         {
             //Track inventory for product
@@ -1137,7 +1137,7 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="sku">SKU</param>
         /// <returns>Product</returns>
-        public virtual NopProduct GetProductBySku(string sku)
+        public virtual Product GetProductBySku(string sku)
         {
             if (String.IsNullOrEmpty(sku))
                 return null;
@@ -1157,7 +1157,7 @@ namespace Nop.Services.Catalog
         /// Update HasTierPrices property (used for performance optimization)
         /// </summary>
         /// <param name="product">Product</param>
-        public virtual void UpdateHasTierPricesProperty(NopProduct product)
+        public virtual void UpdateHasTierPricesProperty(Product product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -1170,7 +1170,7 @@ namespace Nop.Services.Catalog
         /// Update HasDiscountsApplied property (used for performance optimization)
         /// </summary>
         /// <param name="product">Product</param>
-        public virtual void UpdateHasDiscountsApplied(NopProduct product)
+        public virtual void UpdateHasDiscountsApplied(Product product)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -1189,7 +1189,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="quantityToChange">Quantity to increase or descrease</param>
         /// <param name="attributesXml">Attributes in XML format</param>
-        public virtual void AdjustInventory(NopProduct product, int quantityToChange, string attributesXml = "")
+        public virtual void AdjustInventory(Product product, int quantityToChange, string attributesXml = "")
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -1292,7 +1292,7 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="product">Product</param>
         /// <param name="quantity">Quantity, must be negative</param>
-        public virtual void ReserveInventory(NopProduct product, int quantity)
+        public virtual void ReserveInventory(Product product, int quantity)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -1340,7 +1340,7 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="product">Product</param>
         /// <param name="quantity">Quantity, must be positive</param>
-        public virtual void UnblockReservedInventory(NopProduct product, int quantity)
+        public virtual void UnblockReservedInventory(Product product, int quantity)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -1383,7 +1383,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">Product</param>
         /// <param name="warehouseId">Warehouse identifier</param>
         /// <param name="quantity">Quantity, must be negative</param>
-        public virtual void BookReservedInventory(NopProduct product, int warehouseId, int quantity)
+        public virtual void BookReservedInventory(Product product, int warehouseId, int quantity)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -1414,7 +1414,7 @@ namespace Nop.Services.Catalog
         /// <param name="product">product</param>
         /// <param name="shipmentItem">Shipment item</param>
         /// <returns>Quantity reversed</returns>
-        public virtual int ReverseBookedInventory(NopProduct product, ShipmentItem shipmentItem)
+        public virtual int ReverseBookedInventory(Product product, ShipmentItem shipmentItem)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -1618,9 +1618,9 @@ namespace Nop.Services.Catalog
         /// <param name="cart">Shopping cart</param>
         /// <param name="numberOfProducts">Number of products to return</param>
         /// <returns>Cross-sells</returns>
-        public virtual IList<NopProduct> GetCrosssellProductsByShoppingCart(IList<ShoppingCartItem> cart, int numberOfProducts)
+        public virtual IList<Product> GetCrosssellProductsByShoppingCart(IList<ShoppingCartItem> cart, int numberOfProducts)
         {
-            var result = new List<NopProduct>();
+            var result = new List<Product>();
 
             if (numberOfProducts == 0)
                 return result;

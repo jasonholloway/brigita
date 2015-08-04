@@ -883,7 +883,7 @@ namespace Nop.Services.Messages
         /// <param name="personalMessage">Personal message</param>
         /// <returns>Queued email identifier</returns>
         public virtual int SendProductEmailAFriendMessage(Customer customer, int languageId,
-            NopProduct product, string customerEmail, string friendsEmail, string personalMessage)
+            Product product, string customerEmail, string friendsEmail, string personalMessage)
         {
             if (customer == null)
                 throw new ArgumentNullException("customer");
@@ -1267,7 +1267,7 @@ namespace Nop.Services.Messages
         /// <param name="product">Product</param>
         /// <param name="languageId">Message language identifier</param>
         /// <returns>Queued email identifier</returns>
-        public virtual int SendQuantityBelowStoreOwnerNotification(NopProduct product,  int languageId)
+        public virtual int SendQuantityBelowStoreOwnerNotification(Product product,  int languageId)
         {
             if (product== null)
                 throw new ArgumentNullException("product");

@@ -29,14 +29,14 @@ namespace Brigita.Dom.Services.Test
                 var categories = Builder<ProductCategory>.CreateListOfSize(20).BuildList();
                 var desiredCategory = Pick.Randomly.From(categories);
 
-                var products = Builder<NopProduct>.CreateListOfSize(200)
+                var products = Builder<Product>.CreateListOfSize(200)
                                                     .All()
                                                         .Set(p => p.ProductCategories, () => new[] { Pick.Randomly.From(categories) })
                                                     .ListBuilder
                                                     .BuildList();
 
-                x.Resolve<IRepository<NopProduct>>().TableNoTracking
-                                                        .Returns(new EnumerableQuery<NopProduct>(products));
+                x.Resolve<IRepository<Product>>().TableNoTracking
+                                                        .Returns(new EnumerableQuery<Product>(products));
 
                 x.Resolve<ICategories>().FindCatFamily(Arg.Is(desiredCategory.ID))
                                             .Returns(new[] { new Category() { ID = desiredCategory.ID } });

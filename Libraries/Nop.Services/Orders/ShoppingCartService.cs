@@ -183,7 +183,7 @@ namespace Nop.Services.Orders
         /// <param name="automaticallyAddRequiredProductsIfEnabled">Automatically add required products if enabled</param>
         /// <returns>Warnings</returns>
         public virtual IList<string> GetRequiredProductWarnings(Customer customer,
-            ShoppingCartType shoppingCartType, NopProduct product,
+            ShoppingCartType shoppingCartType, Product product,
             int storeId, bool automaticallyAddRequiredProductsIfEnabled)
         {
             if (customer == null)
@@ -201,7 +201,7 @@ namespace Nop.Services.Orders
 
             if (product.RequireOtherProducts)
             {
-                var requiredProducts = new List<NopProduct>();
+                var requiredProducts = new List<Product>();
                 foreach (var id in product.ParseRequiredProductIds())
                 {
                     var rp = _productService.GetProductById(id);
@@ -272,7 +272,7 @@ namespace Nop.Services.Orders
         /// <param name="quantity">Quantity</param>
         /// <returns>Warnings</returns>
         public virtual IList<string> GetStandardWarnings(Customer customer, ShoppingCartType shoppingCartType,
-            NopProduct product, string attributesXml, decimal customerEnteredPrice,
+            Product product, string attributesXml, decimal customerEnteredPrice,
             int quantity)
         {
             if (customer == null)
@@ -461,7 +461,7 @@ namespace Nop.Services.Orders
         /// <returns>Warnings</returns>
         public virtual IList<string> GetShoppingCartItemAttributeWarnings(Customer customer, 
             ShoppingCartType shoppingCartType,
-            NopProduct product, 
+            Product product, 
             int quantity = 1,
             string attributesXml = "",
             bool ignoreNonCombinableAttributes = false)
@@ -640,7 +640,7 @@ namespace Nop.Services.Orders
         /// <param name="attributesXml">Attributes in XML format</param>
         /// <returns>Warnings</returns>
         public virtual IList<string> GetShoppingCartItemGiftCardWarnings(ShoppingCartType shoppingCartType,
-            NopProduct product, string attributesXml)
+            Product product, string attributesXml)
         {
             if (product == null)
                 throw new ArgumentNullException("product");
@@ -690,7 +690,7 @@ namespace Nop.Services.Orders
         /// <param name="rentalStartDate">Rental start date</param>
         /// <param name="rentalEndDate">Rental end date</param>
         /// <returns>Warnings</returns>
-        public virtual IList<string> GetRentalProductWarnings(NopProduct product,
+        public virtual IList<string> GetRentalProductWarnings(Product product,
             DateTime? rentalStartDate = null, DateTime? rentalEndDate = null)
         {
             if (product == null)
@@ -742,7 +742,7 @@ namespace Nop.Services.Orders
         /// <param name="getRentalWarnings">A value indicating whether we should validate rental properties</param>
         /// <returns>Warnings</returns>
         public virtual IList<string> GetShoppingCartItemWarnings(Customer customer, ShoppingCartType shoppingCartType,
-            NopProduct product, int storeId,
+            Product product, int storeId,
             string attributesXml, decimal customerEnteredPrice,
             DateTime? rentalStartDate = null, DateTime? rentalEndDate = null,
             int quantity = 1, bool automaticallyAddRequiredProductsIfEnabled = true,
@@ -922,7 +922,7 @@ namespace Nop.Services.Orders
         /// <returns>Found shopping cart item</returns>
         public virtual ShoppingCartItem FindShoppingCartItemInTheCart(IList<ShoppingCartItem> shoppingCart,
             ShoppingCartType shoppingCartType,
-            NopProduct product,
+            Product product,
             string attributesXml = "",
             decimal customerEnteredPrice = decimal.Zero,
             DateTime? rentalStartDate = null, 
@@ -1004,7 +1004,7 @@ namespace Nop.Services.Orders
         /// <param name="quantity">Quantity</param>
         /// <param name="automaticallyAddRequiredProductsIfEnabled">Automatically add required products if enabled</param>
         /// <returns>Warnings</returns>
-        public virtual IList<string> AddToCart(Customer customer, NopProduct product,
+        public virtual IList<string> AddToCart(Customer customer, Product product,
             ShoppingCartType shoppingCartType, int storeId, string attributesXml = null,
             decimal customerEnteredPrice = decimal.Zero,
             DateTime? rentalStartDate = null, DateTime? rentalEndDate = null,

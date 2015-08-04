@@ -149,6 +149,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
     <Compile Include="Dependencies.cs" />
+    <Compile Include="Filters\LocaleFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -158,6 +159,7 @@
     <Compile Include="Infrastructure\BrigitaWebViewPage.cs" />
     <Compile Include="Infrastructure\HtmlHelperExtensions.cs" />
     <Compile Include="Infrastructure\LinkCollection.cs" />
+    <Compile Include="Infrastructure\LocaleRoutes.cs" />
     <Compile Include="Infrastructure\UrlHelperExtensions.cs" />
     <Compile Include="Links.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

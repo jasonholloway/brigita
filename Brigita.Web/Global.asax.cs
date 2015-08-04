@@ -71,6 +71,7 @@ namespace Brigita.Web
             }
         }
 
+
         protected void Application_BeginRequest(object sender, EventArgs e) {
             //ignore static resources
             var webHelper = EngineContext.Current.Resolve<IWebHelper>();
@@ -82,13 +83,13 @@ namespace Brigita.Web
             if(webHelper.GetThisPageUrl(false).StartsWith(keepAliveUrl, StringComparison.InvariantCultureIgnoreCase))
                 return;
 
-            //ensure database is installed
-            if(!DataSettingsHelper.DatabaseIsInstalled()) {
-                string installUrl = string.Format("{0}install", webHelper.GetStoreLocation());
-                if(!webHelper.GetThisPageUrl(false).StartsWith(installUrl, StringComparison.InvariantCultureIgnoreCase)) {
-                    this.Response.Redirect(installUrl);
-                }
-            }
+            //ensure database is installed - for every fucking request???!?
+            //if(!DataSettingsHelper.DatabaseIsInstalled()) {
+            //    string installUrl = string.Format("{0}install", webHelper.GetStoreLocation());
+            //    if(!webHelper.GetThisPageUrl(false).StartsWith(installUrl, StringComparison.InvariantCultureIgnoreCase)) {
+            //        this.Response.Redirect(installUrl);
+            //    }
+            //}
 
             if(!DataSettingsHelper.DatabaseIsInstalled())
                 return;

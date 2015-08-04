@@ -4,21 +4,36 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Brigita.Web.Infrastructure;
 
 namespace Brigita.Web
 {
     
     public static class Routes
     {
+
+
+
+
+
         public static void Register(RouteCollection routes) {
             routes.IgnoreRoute("favicon.ico");
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-                "Home",
-                "",
-                new { controller = "Home", action = "Index" }
-                );
+
+            routes.MapRouteWithLocale(
+                        "Home",
+                        "",
+                        new { controller = "Home", action = "Index" }
+                        );
+
+
+
+            //routes.MapRoute(
+            //    "Home",
+            //    "{locale}",
+            //    new { locale = UrlParameter.Optional, controller = "Home", action = "Index" }
+            //    );
 
             //routes.MapRoute(
             //    "ProductsByCategory",
@@ -29,10 +44,10 @@ namespace Brigita.Web
             //        pageIndex = UrlParameter.Optional 
             //    });
             
-            routes.MapRoute(
-                "Default",
-                "{controller}/{action}"
-            );
+            routes.MapRouteWithLocale(
+                        "Default",
+                        "{controller}/{action}"
+                        );
         }
 
     }

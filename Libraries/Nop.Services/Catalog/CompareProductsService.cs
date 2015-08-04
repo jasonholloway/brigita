@@ -92,9 +92,9 @@ namespace Nop.Services.Catalog
         /// Gets a "compare products" list
         /// </summary>
         /// <returns>"Compare products" list</returns>
-        public virtual IList<NopProduct> GetComparedProducts()
+        public virtual IList<Product> GetComparedProducts()
         {
-            var products = new List<NopProduct>();
+            var products = new List<Product>();
             var productIds = GetComparedProductIds();
             foreach (int productId in productIds)
             {

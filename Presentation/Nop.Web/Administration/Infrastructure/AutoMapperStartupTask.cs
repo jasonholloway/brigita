@@ -224,7 +224,7 @@ namespace Nop.Admin.Infrastructure
                 .ForMember(dest => dest.Deleted, mo => mo.Ignore());
 
             //products
-            Mapper.CreateMap<NopProduct, ProductModel>()
+            Mapper.CreateMap<Product, ProductModel>()
                 .ForMember(dest => dest.ProductTypeName, mo => mo.Ignore())
                 .ForMember(dest => dest.AssociatedToProductId, mo => mo.Ignore())
                 .ForMember(dest => dest.AssociatedToProductName, mo => mo.Ignore())
@@ -259,7 +259,7 @@ namespace Nop.Admin.Infrastructure
                 .ForMember(dest => dest.AvailableDeliveryDates, mo => mo.Ignore())
                 .ForMember(dest => dest.AvailableWarehouses, mo => mo.Ignore())
                 .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
-            Mapper.CreateMap<ProductModel, NopProduct>()
+            Mapper.CreateMap<ProductModel, Product>()
                 .ForMember(dest => dest.ProductTags, mo => mo.Ignore())
                 .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore())
                 .ForMember(dest => dest.UpdatedOnUtc, mo => mo.Ignore())

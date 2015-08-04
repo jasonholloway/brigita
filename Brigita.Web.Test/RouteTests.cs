@@ -1,11 +1,15 @@
 ﻿using System;
+using System.Collections;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
+using Brigita.Web.Controllers;
 using Brigita.Web.Test.Infrastructure;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using MvcRouteTester;
+using MvcRouteTester.Fluent;
 
 namespace Brigita.Web.Test
 {
@@ -31,6 +35,22 @@ namespace Brigita.Web.Test
             Assert.AreEqual("Home", data.Values["controller"]);
             Assert.AreEqual("Index", data.Values["action"]);
         }
+
+
+
+        [TestMethod]
+        public void LocaleResolves() 
+        {
+            _routes.ShouldMap("~/lv")
+                        .To<HomeController>(x => x.Index());
+
+            _routes.ShouldMap("")
+                        .To<HomeController>(x => x.Index());
+        }
+
+
+
+
 
 
         [TestMethod]

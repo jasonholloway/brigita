@@ -61,7 +61,7 @@ namespace Nop.Services.Catalog
 
         private readonly IRepository<Manufacturer> _manufacturerRepository;
         private readonly IRepository<ProductManufacturer> _productManufacturerRepository;
-        private readonly IRepository<NopProduct> _productRepository;
+        private readonly IRepository<Product> _productRepository;
         private readonly IRepository<AclRecord> _aclRepository;
         private readonly IRepository<StoreMapping> _storeMappingRepository;
         private readonly IWorkContext _workContext;
@@ -90,7 +90,7 @@ namespace Nop.Services.Catalog
         public ManufacturerService(ICacheManager cacheManager,
             IRepository<Manufacturer> manufacturerRepository,
             IRepository<ProductManufacturer> productManufacturerRepository,
-            IRepository<NopProduct> productRepository,
+            IRepository<Product> productRepository,
             IRepository<AclRecord> aclRepository,
             IRepository<StoreMapping> storeMappingRepository,
             IWorkContext workContext,

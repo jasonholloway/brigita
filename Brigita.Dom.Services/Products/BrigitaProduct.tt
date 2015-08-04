@@ -4,6 +4,6 @@
 <#  
 	GenerateDto(
 		new[] { typeof(IProduct) },
-		"Brigita.Dom.Services.Products.Product", 
+		"Brigita.Dom.Services.Products.BrigitaProduct", 
 		new[] { "System" }); 
 #>

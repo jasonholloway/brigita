@@ -124,17 +124,17 @@ namespace Nop.Admin.Extensions
 
         #region Products
 
-        public static ProductModel ToModel(this NopProduct entity)
+        public static ProductModel ToModel(this Product entity)
         {
-            return entity.MapTo<NopProduct, ProductModel>();
+            return entity.MapTo<Product, ProductModel>();
         }
 
-        public static NopProduct ToEntity(this ProductModel model)
+        public static Product ToEntity(this ProductModel model)
         {
-            return model.MapTo<ProductModel, NopProduct>();
+            return model.MapTo<ProductModel, Product>();
         }
 
-        public static NopProduct ToEntity(this ProductModel model, NopProduct destination)
+        public static Product ToEntity(this ProductModel model, Product destination)
         {
             return model.MapTo(destination);
         }

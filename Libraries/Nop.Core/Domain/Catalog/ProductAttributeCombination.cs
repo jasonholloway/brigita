@@ -53,7 +53,7 @@ namespace Nop.Core.Domain.Catalog
         /// <summary>
         /// Gets the product
         /// </summary>
-        public virtual NopProduct Product { get; set; }
+        public virtual Product Product { get; set; }
 
     }
 }
