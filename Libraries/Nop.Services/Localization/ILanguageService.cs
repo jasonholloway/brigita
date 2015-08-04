@@ -40,5 +40,10 @@ namespace Nop.Services.Localization
         /// </summary>
         /// <param name="language">Language</param>
         void UpdateLanguage(Language language);
+
+
+        Language GetLanguageByCode(string code);
+        Language GetDefaultLanguage();
+
     }
 }

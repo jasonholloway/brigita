@@ -42,6 +42,7 @@ using Brigita.View.Services.Menu;
 using Brigita.Dom.Services.Media;
 using Brigita.Data;
 using Nop.Services.Media;
+using Brigita.Dom.Services.Context;
 
 namespace Brigita.Web
 {
@@ -90,6 +91,10 @@ namespace Brigita.Web
             x.Bind<IHomeModelSource, HomeModelSource>();
             x.Bind<IProductTeasers, ProductTeasers>();
             x.Bind<ICatMenuModelSource, CatMenuModelSource>();
+
+
+            x.Bind<ILocaleContext, LocaleContext>();
+            x.Bind<IWorkContext, BrigitaWorkContext>();
 
 
             x.Bind<IPageHelper, PageHelper>();

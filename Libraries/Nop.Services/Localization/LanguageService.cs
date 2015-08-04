@@ -190,6 +190,22 @@ namespace Nop.Services.Localization
             _eventPublisher.EntityUpdated(language);
         }
 
+
+        //CACHE THIS!
+        public Language GetLanguageByCode(string code) {
+            return GetAllLanguages() //horrible: should use cached dictionary!
+                        .FirstOrDefault(l => l.UniqueSeoCode.Equals(code, StringComparison.InvariantCultureIgnoreCase));
+        }
+
+
+        //CACHE THIS!
+        public Language GetDefaultLanguage() {
+            return GetAllLanguages()
+                        .OrderBy(l => l.DisplayOrder)
+                        .First();
+        }
+
+
         #endregion
     }
 }

@@ -74,6 +74,8 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Categories\ScopedCategories.cs" />
+    <Compile Include="Context\BrigitaWorkContext.cs" />
+    <Compile Include="Context\ILocaleContext.cs" />
     <Compile Include="Media\IPiccies.cs" />
     <Compile Include="Media\Piccy.cs" />
     <Compile Include="Media\Piccies.cs" />

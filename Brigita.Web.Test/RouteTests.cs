@@ -44,7 +44,7 @@ namespace Brigita.Web.Test
             _routes.ShouldMap("~/lv")
                         .To<HomeController>(x => x.Index());
 
-            _routes.ShouldMap("")
+            _routes.ShouldMap("~/")
                         .To<HomeController>(x => x.Index());
         }
 
