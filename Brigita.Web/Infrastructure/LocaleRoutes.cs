@@ -25,6 +25,8 @@ namespace Brigita.Web.Infrastructure
             {                    
                 requestContext.HttpContext.Items["locale"] = ((string)localeObj).ToUpper();
                 requestContext.RouteData.Values.Remove("locale");
+
+                //should somehow set thread culture?
             }
 
             return _innerHandler.GetHttpHandler(requestContext);

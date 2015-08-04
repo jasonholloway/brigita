@@ -99,7 +99,7 @@ namespace Brigita.Web
                 MiniProfiler.Start();
                 //store a value indicating whether profiler was started
                 HttpContext.Current.Items["nop.MiniProfilerStarted"] = true;
-            }
+            }                     
         }
 
         protected void Application_EndRequest(object sender, EventArgs e) {
@@ -113,7 +113,7 @@ namespace Brigita.Web
 
         protected void Application_AuthenticateRequest(object sender, EventArgs e) {
             //we don't do it in Application_BeginRequest because a user is not authenticated yet
-            SetWorkingCulture();
+            //SetWorkingCulture();
         }
 
         protected void Application_Error(Object sender, EventArgs e) {
@@ -146,40 +146,40 @@ namespace Brigita.Web
             }
         }
 
-        protected void SetWorkingCulture() {
-            if(!DataSettingsHelper.DatabaseIsInstalled())
-                return;
+        //protected void SetWorkingCulture() {
+        //    if(!DataSettingsHelper.DatabaseIsInstalled())
+        //        return;
 
-            //ignore static resources
-            var webHelper = EngineContext.Current.Resolve<IWebHelper>();
-            if(webHelper.IsStaticResource(this.Request))
-                return;
+        //    //ignore static resources
+        //    var webHelper = EngineContext.Current.Resolve<IWebHelper>();
+        //    if(webHelper.IsStaticResource(this.Request))
+        //        return;
 
-            //keep alive page requested (we ignore it to prevent creation of guest customer records)
-            string keepAliveUrl = string.Format("{0}keepalive/index", webHelper.GetStoreLocation());
-            if(webHelper.GetThisPageUrl(false).StartsWith(keepAliveUrl, StringComparison.InvariantCultureIgnoreCase))
-                return;
-
-
-            if(webHelper.GetThisPageUrl(false).StartsWith(string.Format("{0}admin", webHelper.GetStoreLocation()),
-                StringComparison.InvariantCultureIgnoreCase)) {
-                //admin area
+        //    //keep alive page requested (we ignore it to prevent creation of guest customer records)
+        //    string keepAliveUrl = string.Format("{0}keepalive/index", webHelper.GetStoreLocation());
+        //    if(webHelper.GetThisPageUrl(false).StartsWith(keepAliveUrl, StringComparison.InvariantCultureIgnoreCase))
+        //        return;
 
 
-                //always set culture to 'en-US'
-                //we set culture of admin area to 'en-US' because current implementation of Telerik grid 
-                //doesn't work well in other cultures
-                //e.g., editing decimal value in russian culture
-                CommonHelper.SetTelerikCulture();
-            }
-            else {
-                //public store
-                var workContext = EngineContext.Current.Resolve<IWorkContext>();
-                var culture = new CultureInfo(workContext.WorkingLanguage.LanguageCulture);
-                Thread.CurrentThread.CurrentCulture = culture;
-                Thread.CurrentThread.CurrentUICulture = culture;
-            }
-        }
+        //    if(webHelper.GetThisPageUrl(false).StartsWith(string.Format("{0}admin", webHelper.GetStoreLocation()),
+        //        StringComparison.InvariantCultureIgnoreCase)) {
+        //        //admin area
+
+
+        //        //always set culture to 'en-US'
+        //        //we set culture of admin area to 'en-US' because current implementation of Telerik grid 
+        //        //doesn't work well in other cultures
+        //        //e.g., editing decimal value in russian culture
+        //        CommonHelper.SetTelerikCulture();
+        //    }
+        //    else {
+        //        //public store
+        //        var workContext = EngineContext.Current.Resolve<IWorkContext>();
+        //        var culture = new CultureInfo(workContext.WorkingLanguage.LanguageCulture);
+        //        Thread.CurrentThread.CurrentCulture = culture;
+        //        Thread.CurrentThread.CurrentUICulture = culture;
+        //    }
+        //}
 
         protected void LogException(Exception exc) {
             if(exc == null)

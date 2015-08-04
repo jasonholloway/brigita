@@ -13,10 +13,10 @@ namespace Brigita.Web.Services
     {
         Lazy<string> _lzLocaleCode;
 
-        public LocaleContext(HttpContext context, HttpRequest request) {
+        public LocaleContext(HttpContext context) {
             _lzLocaleCode = new Lazy<string>(() => context.Items.Contains("locale")
                                                                     ? (string)context.Items["locale"]
-                                                                    : request.UserLanguages.FirstOrDefault() 
+                                                                    : context.Request.UserLanguages.FirstOrDefault() 
                                                                     );
         }
 

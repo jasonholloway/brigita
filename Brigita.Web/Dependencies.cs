@@ -49,15 +49,18 @@ namespace Brigita.Web
     public static class Dependencies
     {
         public static void Register(IDependencyBinder x) {
-            x.Bind<HttpContextBase>(_ =>
-                    HttpContext.Current != null 
-                        ? new HttpContextWrapper(HttpContext.Current) as HttpContextBase
-                        : new FakeHttpContext("~/"));
+            //x.Bind<HttpContextBase>(_ =>
+            //        HttpContext.Current != null 
+            //            ? new HttpContextWrapper(HttpContext.Current) as HttpContextBase
+            //            : new FakeHttpContext("~/"));
 
-            x.Bind(c => c.Resolve<HttpContextBase>().Request);
-            x.Bind(c => c.Resolve<HttpContextBase>().Response);
-            x.Bind(c => c.Resolve<HttpContextBase>().Server);
-            x.Bind(c => c.Resolve<HttpContextBase>().Session);
+            x.Bind<HttpContext>(_ => HttpContext.Current);
+            x.Bind<HttpContextBase>(_ => new HttpContextWrapper(HttpContext.Current));
+
+            x.Bind(c => c.Resolve<HttpContext>().Request);
+            x.Bind(c => c.Resolve<HttpContext>().Response);
+            x.Bind(c => c.Resolve<HttpContext>().Server);
+            x.Bind(c => c.Resolve<HttpContext>().Session);
 
             x.BindSingleton<ICache>(_ => new BrigitaCache(MemoryCache.Default));
             x.Bind<ICacheManager, MemoryCacheManager>();
@@ -115,7 +118,7 @@ namespace Brigita.Web
             x.Bind<IUserAgentHelper, UserAgentHelper>();
             x.Bind<IWebHelper, WebHelper>();
 
-            x.Bind<IWorkContext, WebWorkContext>();
+            /*x.Bind<IWorkContext, WebWorkContext>();*/
             x.Bind<IStoreContext, WebStoreContext>();
 
             x.Bind<ICategories, BrigitaCategories>();
