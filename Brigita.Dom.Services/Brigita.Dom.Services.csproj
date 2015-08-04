@@ -76,6 +76,10 @@
     <Compile Include="Categories\ScopedCategories.cs" />
     <Compile Include="Context\BrigitaWorkContext.cs" />
     <Compile Include="Context\ILocaleContext.cs" />
+    <Compile Include="Context\ILocalizer.cs" />
+    <Compile Include="Context\ILocalizerSource.cs" />
+    <Compile Include="Context\Localizer.cs" />
+    <Compile Include="Context\LocalizerSource.cs" />
     <Compile Include="Media\IPiccies.cs" />
     <Compile Include="Media\Piccy.cs" />
     <Compile Include="Media\Piccies.cs" />

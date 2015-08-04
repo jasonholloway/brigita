@@ -111,6 +111,13 @@ namespace Brigita.Infrastructure
                                 .InstancePerLifetimeScope();
             }
 
+            public void BindGenericSingleton(Type intType, Type impType) {
+                _builder.RegisterGeneric(impType)
+                                .As(intType)
+                                .SingleInstance();
+            }
+
+
             public void BindTransient<T, TImp>() where TImp : T {
                 _builder.RegisterType<TImp>()
                                 .As<T>()

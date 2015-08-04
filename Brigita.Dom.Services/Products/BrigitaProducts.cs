@@ -13,6 +13,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using Nop.Services.Catalog;
 using Brigita.Data;
+using Nop.Core;
+using Brigita.Dom.Services.Context;
 
 namespace Brigita.Dom.Services.Products
 {
@@ -21,12 +23,16 @@ namespace Brigita.Dom.Services.Products
     {
         IRepo<Product> _repo;
         ICategories _cats;
+        IWorkContext _context;
+        ILocalizerSource<Product> _localizerSrc;
 
         //repos should be lazy...
 
-        public BrigitaProducts(IRepo<Product> repo, ICategories cats) {
+        public BrigitaProducts(IRepo<Product> repo, ICategories cats, IWorkContext context, ILocalizerSource<Product> localizerSrc) {
             _repo = repo;
             _cats = cats;
+            _context = context;
+            _localizerSrc = localizerSrc;
         }
 
         static BrigitaProducts() {
@@ -51,6 +57,10 @@ namespace Brigita.Dom.Services.Products
                                     .Take(pageSpec.PageSize)
                                     .ToArray();
             
+            var languageID = _context.WorkingLanguage.ID;
+            var localizer = _localizerSrc.GetLocalizer(languageID);
+            localizer.Localize(products);
+
             return new ListPage<IProduct>(
                                     products,
                                     pageSpec.PageIndex,

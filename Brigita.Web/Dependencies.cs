@@ -80,6 +80,7 @@ namespace Brigita.Web
 
             x.BindSingleton<ILinkProvider, MvcLinkProvider>();
 
+            x.BindGenericSingleton(typeof(ILocalizerSource<>), typeof(LocalizerSource<>));
 
             x.BindGeneric(typeof(IRepo<>), typeof(Repo<>));
 

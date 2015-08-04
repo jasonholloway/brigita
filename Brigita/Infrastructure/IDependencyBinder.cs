@@ -17,6 +17,7 @@ namespace Brigita.Infrastructure
         void BindSingleton<T, TImp>() where TImp : T;
 
         void BindGeneric(Type intType, Type impType);
+        void BindGenericSingleton(Type intType, Type impType);
 
         void BindTransient<T, TImp>() where TImp : T;
         void BindTransient<T>(Func<IDependencyContainer, T> fnFactory);
