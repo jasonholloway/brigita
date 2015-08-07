@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Brigita.Dom.Services.Context
 {
     public interface ILocalizer<TEntity>
+        where TEntity : IEntity
     {
         void Localize(TEntity entity);
         void Localize(IEnumerable<TEntity> entities);

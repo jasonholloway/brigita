@@ -11,10 +11,10 @@ namespace Brigita.Dom.Services.Products
 {
     public interface IProducts
     {
-        ListPage<IProduct> GetProductsByCategory(int categoryID, ListPageSpec pageSpec);
+        ListPage<IProduct> GetProductsByCategory(int categoryID, ListPageSpec<IProduct> pageSpec);
 
-        ListPage<ITinyProduct> GetTinyProductsByCategory(int categoryID, ListPageSpec pageSpec);
+        ListPage<ITinyProduct> GetTinyProductsByCategory(int categoryID, ListPageSpec<ITinyProduct> pageSpec);
         //...
-
+        
     }
 }

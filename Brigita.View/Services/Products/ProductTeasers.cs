@@ -9,6 +9,7 @@ using Brigita.Dom.Services.Products;
 using Brigita.View.Bits;
 using Brigita.View.Products;
 using Brigita.Dom.Services.Media;
+using Brigita.Dom.Products;
 
 namespace Brigita.View.Services.Products
 {
@@ -26,7 +27,7 @@ namespace Brigita.View.Services.Products
             _links = links;
         }
 
-        public ProductTeaserPage GetPage(int categoryID, ListPageSpec pageSpec) 
+        public ProductTeasersModel GetPage(int categoryID, ListPageSpec<ProductTeaser> pageSpec) 
         {            
             var cat = _cats.FindCat(categoryID);
 
@@ -34,7 +35,7 @@ namespace Brigita.View.Services.Products
                 throw new ArgumentException("Bad CategoryID!");
             }
 
-            var teaserPage = new ProductTeaserPage() {                
+            var teaserPage = new ProductTeasersModel() {                
                 CurrentCategoryID = categoryID,
                 CurrentCategoryName = cat.Name
             };
@@ -42,25 +43,39 @@ namespace Brigita.View.Services.Products
 
             var productListPage = _prods.GetTinyProductsByCategory(
                                             categoryID,
-                                            pageSpec 
+                                            pageSpec.ProjectTo<ITinyProduct>()
                                             );
 
+            var projectedPage = productListPage
+                                    .Project(p => new ProductTeaser() {
+                                                        Name = p.Name,
+                                                        Price = p.Price,
+                                                        Link = _links.GetLinkFor(p),
+                                                        Image = p.PictureID != null 
+                                                                    ? _piccies.GetByID((int)p.PictureID) 
+                                                                    : null
+                                                    });
+
             teaserPage.ListPage = new ListPageModel<ProductTeaser>(
-                                    productListPage.Project(
-                                                        p => {
-                                                            return new ProductTeaser() {
-                                                                    Name = p.Name,
-                                                                    Price = p.Price,
-                                                                    Link = _links.GetLinkFor(p),
-                                                                    Image = p.PictureID != null 
-                                                                                ? _piccies.GetByID((int)p.PictureID) 
-                                                                                : null
-                                                            };
-                                                        }),
-                                    null
-                                    );
+                                                        projectedPage,
+                                                        i => _links.GetLinkFor(new ProductTeaserPageSpec(
+                                                                                        categoryID, 
+                                                                                        i, 
+                                                                                        pageSpec.PageSize
+                                                                                        )));
 
             return teaserPage;
         }
+    }
+
+    public class ProductTeaserPageSpec : ListPageSpec<ProductTeaser>
+    {
+        public ProductTeaserPageSpec(int categoryID, int pageIndex, int pageSize)
+            : base(pageIndex, pageSize) 
+        {
+            CategoryID = categoryID;
+        }
+
+        public int CategoryID { get; private set; }
     }
 }

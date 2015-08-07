@@ -1,68 +1,79 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Brigita.Infrastructure.Pages;
+using Brigita.View.Services;
 
 namespace Brigita.View.Bits
 {
 
-    public interface IListPageUrlProvider
+    public abstract class ListPageModel : IListPage
     {
-
+        public int PageIndex { get; protected set; }
+        public int PageCount { get; protected set; }
+        public int PageSize { get; protected set; }
+        public object[] Items { get; protected set; }
+        public LinkSource<int> PageLinks { get; protected set; }
     }
 
 
     public class ListPageModel<TItem> : ListPageModel, IListPage<TItem>
     {
         IListPage<TItem> _inner;
-
-        public ListPageModel(IListPage<TItem> listPage, IListPageUrlProvider urlProv) 
-            : base(listPage, urlProv) 
+        
+        public ListPageModel(IListPage<TItem> listPage, Func<int, Link> fnPageLink) 
         {
             _inner = listPage;
+            
+            PageIndex = _inner.PageIndex;
+            PageCount = _inner.PageCount;
+            PageSize = _inner.PageSize;
+
+            base.Items = _inner.Items.Cast<object>().ToArray();
+
+            PageLinks = new LinkSource<int>(
+                                Enumerable.Range(0, listPage.PageCount),
+                                fnPageLink);
         }
 
-        public new TItem[] Items {
-            get { return _inner.Items; }
-        }
+        public new TItem[] Items { get; private set; }
 
     }
 
-
-
-    public abstract class ListPageModel : IListPage
+    public class LinkSource<TIndex> : IEnumerable<Link>
     {
-        IListPage _inner;
-        IListPageUrlProvider _urlProv;
+        Func<TIndex, Link> _fnLink;
+        IEnumerable<Link> _links;
 
-        protected ListPageModel(IListPage listPage, IListPageUrlProvider urlProv) {
-            _inner = listPage;
-            _urlProv = urlProv;
+        public LinkSource(IEnumerable<TIndex> indices, Func<TIndex, Link> fnLink) 
+        {
+            _fnLink = fnLink;
+            _links = indices.Select(i => GetLink(i)); //would be nice to cache this
         }
 
-        public int PageIndex {
-            get { return _inner.PageIndex; }
+        public Link this[TIndex index] {
+            get { 
+                return GetLink(index);
+            }
         }
 
-        public int PageCount {
-            get { return _inner.PageCount; }
+        public Link GetLink(TIndex index) {
+            return _fnLink(index);
         }
 
-        public int PageSize {
-            get { return _inner.PageSize; }
+        public IEnumerator<Link> GetEnumerator() {
+            return _links.GetEnumerator();
         }
 
-        public object[] Items {
-            get { return _inner.Items; }
-        }
-
-
-        public string GetUrlOfPage(int pageIndex) {
-            throw new NotImplementedException();
+        IEnumerator IEnumerable.GetEnumerator() {
+            return GetEnumerator();
         }
 
     }
+
+
 
 }

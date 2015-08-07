@@ -59,7 +59,7 @@ namespace Brigita.Infrastructure.Pages
 
 
 
-    public class ListPageSpec
+    public class ListPageSpec<TItem>
     {
         public int PageIndex { get; private set; }
         public int PageSize { get; private set; }
@@ -67,6 +67,10 @@ namespace Brigita.Infrastructure.Pages
         public ListPageSpec(int pageIndex, int pageSize) {
             PageIndex = pageIndex;
             PageSize = pageSize;
+        }
+
+        public ListPageSpec<TTarget> ProjectTo<TTarget>() {
+            return new ListPageSpec<TTarget>(PageIndex, PageSize);
         }
     }
 

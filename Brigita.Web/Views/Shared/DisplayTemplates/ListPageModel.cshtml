@@ -1,4 +1,5 @@
 ﻿@using Brigita.View.Bits
+@using Brigita.Web.Infrastructure;
 @model ListPageModel
 <div>
     <ul class="itemList">
@@ -9,8 +10,22 @@
     }
     </ul>
     <ul class="itemListPages">
-    @for(int iPage = 0; iPage < Model.PageCount; iPage++) {
-        <li><a href="blah">@(iPage + 1)</a></li>
+@{
+    //Need to show five in either direction *FOR NOW!*
+
+    int minPage = Model.PageIndex - 5;
+    minPage = minPage < 0 ? 0 : minPage;
+    
+    int maxPage = Model.PageIndex + 5;
+    maxPage = maxPage >= Model.PageCount ? Model.PageCount - 1 : maxPage;
+}
+    @for(int iPage = minPage; iPage <= maxPage; iPage++) {
+        if(iPage == Model.PageIndex) {
+            <li class="currentPageOrdinal">@(iPage + 1)</li>
+        }
+        else { 
+            <li class="otherPageOrdinal"><a href="@Url.MvcLink(Model.PageLinks[iPage])">@(iPage + 1)</a></li>
+        }
     }
     </ul>
 </div>

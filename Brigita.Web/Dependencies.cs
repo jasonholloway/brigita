@@ -77,17 +77,10 @@ namespace Brigita.Web
             x.Bind<ILogger, NullLogger>();
 
 
-
-
-
-
-            x.BindSingleton<ILinkProvider, MvcLinkProvider>();
-
+            x.BindGeneric(typeof(IRepo<>), typeof(Repo<>));
             x.BindGenericSingleton(typeof(ILocalizerSource<>), typeof(LocalizerSource<>));
 
-            x.BindGeneric(typeof(IRepo<>), typeof(Repo<>));
-
-
+            x.Bind<ILinkProvider, LinkProvider>();
 
             x.Bind<IPiccies, Piccies>();
             x.Bind<IPictureService, PictureService>();
@@ -95,7 +88,7 @@ namespace Brigita.Web
             x.Bind<IHomeModelSource, HomeModelSource>();
             x.Bind<IProductTeasers, ProductTeasers>();
             x.Bind<ICatMenuModelSource, CatMenuModelSource>();
-
+            x.Bind<IProductDetailsSource, ProductDetailsSource>();
 
             x.Bind<ILocaleContext, LocaleContext>();
             x.Bind<IWorkContext, BrigitaWorkContext>();

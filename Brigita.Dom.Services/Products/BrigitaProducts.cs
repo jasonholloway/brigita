@@ -41,18 +41,18 @@ namespace Brigita.Dom.Services.Products
 
 
         [Cache("ProductsByCategory")]
-        public ListPage<IProduct> GetProductsByCategory(int categoryID, ListPageSpec pageSpec) 
+        public ListPage<IProduct> GetProductsByCategory(int categoryID, ListPageSpec<IProduct> pageSpec) 
         {          
             var cats = _cats.FindCatFamily(categoryID) //array for EF's sake
                                     .Select(c => c.ID)
                                     .ToArray();
 
             var productCount = _repo.Count(p => p.ProductCategories
-                                                    .Any(c => cats.Contains(c.ID)));
+                                                    .Any(c => cats.Contains(c.CategoryId)));
 
             var products = _repo.Include(p => p.ProductPictures)
                                     .OrderByDescending(p => p.ID)
-                                    .Where(p => p.ProductCategories.Any(c => cats.Contains(c.ID)))
+                                    .Where(p => p.ProductCategories.Any(c => cats.Contains(c.CategoryId)))
                                     .Skip(pageSpec.PageIndex * pageSpec.PageSize)
                                     .Take(pageSpec.PageSize)
                                     .ToArray();
@@ -70,9 +70,11 @@ namespace Brigita.Dom.Services.Products
 
 
         [Cache("TinyProductsByCategory", "ProductsByCategory")]
-        public ListPage<ITinyProduct> GetTinyProductsByCategory(int categoryID, ListPageSpec pageSpec) 
+        public ListPage<ITinyProduct> GetTinyProductsByCategory(int categoryID, ListPageSpec<ITinyProduct> pageSpec) 
         {
-            var products = GetProductsByCategory(categoryID, pageSpec);
+            var products = GetProductsByCategory(categoryID, new ListPageSpec<IProduct>(
+                                                                        pageSpec.PageIndex, 
+                                                                        pageSpec.PageSize));
 
             var tinyProds = products
                             .Select(p => {

@@ -11,32 +11,32 @@ using Nop.Core.Domain.Localization;
 
 namespace Brigita.Dom.Services.Context
 {
-    public class Localizer<TEntity> : ILocalizer<TEntity>
-        where TEntity : BaseEntity
+    public class Localizer<TBaseEntity, TSubject> : ILocalizer<TSubject>
+        where TSubject : IEntity
     {
         IRepo<LocalizedProperty> _repo;
 
         string _entityName;
         int _languageID;
-        ConcurrentDictionary<string, Action<TEntity, string>> _dSetters;
+        ConcurrentDictionary<string, Action<TSubject, string>> _dSetters;
 
 
         public Localizer(int languageID, IRepo<LocalizedProperty> repo) 
         {
             _repo = repo;
-            _entityName = typeof(TEntity).Name;
+            _entityName = typeof(TBaseEntity).Name;
             _languageID = languageID;
-            _dSetters = new ConcurrentDictionary<string, Action<TEntity, string>>();
+            _dSetters = new ConcurrentDictionary<string, Action<TSubject, string>>();
         }
         
 
-        public void Localize(TEntity entity) 
+        public void Localize(TSubject entity) 
         {
             Localize(new[] { entity });
         }
 
 
-        public void Localize(IEnumerable<TEntity> entities) 
+        public void Localize(IEnumerable<TSubject> entities) 
         {
             var ids = entities.Select(e => e.ID)
                                 .ToArray();
@@ -66,14 +66,18 @@ namespace Brigita.Dom.Services.Context
 
 
 
-        static Action<TEntity, string> BuildSetter(string propName) 
+        static Action<TSubject, string> BuildSetter(string propName) 
         {
-            var prop = typeof(TEntity).GetProperty(propName);
+            var prop = typeof(TSubject).GetProperty(propName);
 
-            var exEntity = Expression.Parameter(typeof(TEntity));
+            if(prop == null) {
+                return (a1, a2) => { };
+            }
+
+            var exEntity = Expression.Parameter(typeof(TSubject));
             var exValue = Expression.Parameter(typeof(string));
 
-            var exLambda = Expression.Lambda<Action<TEntity, string>>(
+            var exLambda = Expression.Lambda<Action<TSubject, string>>(
                                         Expression.Call(
                                                     exEntity,
                                                     prop.SetMethod,

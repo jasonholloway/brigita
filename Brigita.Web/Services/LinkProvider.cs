@@ -13,37 +13,20 @@ using Brigita.View.Services;
 
 namespace Brigita.Web.Services
 {
-    public class MvcLinkProvider : ILinkProvider
+    public class LinkProvider : ILinkProvider
     {        
         static Dictionary<Type, object> _dFn = new Dictionary<Type, object>();
 
-        static MvcLinkProvider() {
+        static LinkProvider() {
             var registrar = new LinkRegistrar(_dFn);
             Links.Register(registrar);
         }
-     
-
+                
         public Link GetLinkFor<T>(T obj) {
             var fn = (Func<T, Link>)_dFn[typeof(T)];
             return fn(obj);
         }
-
     }
-
-
-    public class MvcLink : Link
-    {
-        public string ControllerName { get; private set; }
-        public string ActionName { get; private set; }
-        public object RouteValues { get; private set; }
-
-        public MvcLink(string controller, string action, object routeValues) {
-            ControllerName = controller;
-            ActionName = action;
-            RouteValues = routeValues;
-        }
-    }
-
 
 
     public class LinkRegistrar
@@ -57,9 +40,14 @@ namespace Brigita.Web.Services
         public void Register<TModel>(Func<TModel, Link> fn) {
             _dFn[typeof(TModel)] = fn;
         }
-
-
     }
+
+
+
+
+
+
+
 
 
 

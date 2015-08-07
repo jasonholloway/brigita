@@ -9,6 +9,9 @@ using System.Linq;
 using System.Runtime.Caching;
 using System.Text;
 using System.Threading.Tasks;
+using Brigita.Data;
+using Nop.Core;
+using Brigita.Dom.Services.Context;
 
 namespace Brigita.Dom.Services.Categories
 {
@@ -16,16 +19,27 @@ namespace Brigita.Dom.Services.Categories
     public class BrigitaCategories
         : ICategories
     {
-        IRepository<NopCategory> _repo;
+        IRepo<NopCategory> _repo;
+        IWorkContext _workCtx;
+        ILocalizerSource<NopCategory> _localizerSrc;
         
-        public BrigitaCategories(IRepository<NopCategory> repo) {
+        //The WorkContext/LocalizerSource combo should be encapsulated in a single service: would be much neater
+
+        public BrigitaCategories(IRepo<NopCategory> repo, IWorkContext workCtx, ILocalizerSource<NopCategory> localizerSrc) {
             _repo = repo;
+            _workCtx = workCtx;
+            _localizerSrc = localizerSrc;
         }
 
         public ICategory[] All {
-            [Cache("All")]
+            [Cache("All")] //need to cache on locale
             get {
-                return _repo.Table.ToArray();
+                var allCats = _repo.ToArray();
+
+                var localizer = _localizerSrc.GetLocalizer(_workCtx.WorkingLanguage.ID);
+                localizer.Localize(allCats);
+
+                return allCats;
             }
         }
         
@@ -48,7 +62,7 @@ namespace Brigita.Dom.Services.Categories
         }
         
         public ICategory FindCat(int id) {
-            return _repo.GetById(id); //EUUUURRRRRGH!!!!!
+            return _repo.First(c => c.ID == id);
         }
 
         public ICategory[] FindCatFamily(int id) {

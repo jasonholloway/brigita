@@ -147,6 +147,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
     <Compile Include="Dependencies.cs" />
     <Compile Include="Filters\LocaleFilter.cs" />
@@ -160,12 +161,13 @@
     <Compile Include="Infrastructure\HtmlHelperExtensions.cs" />
     <Compile Include="Infrastructure\LinkCollection.cs" />
     <Compile Include="Infrastructure\LocaleRoutes.cs" />
+    <Compile Include="Infrastructure\MvcLink.cs" />
     <Compile Include="Infrastructure\UrlHelperExtensions.cs" />
     <Compile Include="Links.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
     <Compile Include="Services\LocaleContext.cs" />
-    <Compile Include="Services\MvcLinkProvider.cs" />
+    <Compile Include="Services\LinkProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\InstalledPlugins.txt" />
@@ -241,7 +243,9 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -256,11 +260,11 @@
     <Content Include="Views\ProductList\Category.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ListPageModel.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\ProductTeaser.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Images\Thumbs\" />
     <Folder Include="Views\Misc\" />
-    <Folder Include="Views\Products\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

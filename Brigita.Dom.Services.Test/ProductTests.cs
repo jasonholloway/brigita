@@ -21,7 +21,19 @@ namespace Brigita.Dom.Services.Test
 {   
     [TestClass]
     public class ProductTests
-    {                
+    {
+        [TestMethod]
+        public void TeaserPagesByCategory() {
+
+
+
+
+        }
+
+
+
+
+        [Obsolete]
         [TestMethod]
         public void ProductsByCategory() {
             using(var x = new AutoSubstitute()) 

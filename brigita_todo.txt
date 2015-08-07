@@ -1,14 +1,21 @@
 TO DO:
-> Language detection
-> Populate models with localized strings (eugh!)
-> Product detail pages
 > Nice routes via dictionary of titles
+> Localized route shortcuts (ie produkti)
+> Only published products to be displayed
 
 
 DONE:
+> Generate URLs with locale DONE
+> Get page links working nicely DONE
+> Populate db with lots of products to test paging DONE
+> Basic product detail pages DONE
+> Language detection DONE
+> Populate models with localized strings (eugh!) DONE
 > Menu links stack up incorrectly DONE
 > ActiveParent wrongly appearing on active menu item DONE
 > Images to be sourced and templated DONE
+
+
 
 
 

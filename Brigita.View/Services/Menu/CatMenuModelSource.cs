@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Brigita.Dom.Services.Categories;
 using Brigita.View.Menu;
 using Brigita.Infrastructure.Trees;
+using Brigita.Dom.Categories;
 
 namespace Brigita.View.Services.Menu
 {

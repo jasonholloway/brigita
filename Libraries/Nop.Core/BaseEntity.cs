@@ -1,11 +1,12 @@
 using System;
+using Brigita.Dom;
 
 namespace Nop.Core
 {
     /// <summary>
     /// Base class for entities
     /// </summary>
-    public abstract partial class BaseEntity
+    public abstract partial class BaseEntity : IEntity
     {
         /// <summary>
         /// Gets or sets the entity identifier

@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Brigita.Infrastructure.Pages;
 using Brigita.View.Products;
 
 namespace Brigita.View.Services.Products
 {
-    public interface IProductTeasers
+    public interface IProductDetailsSource
     {
-        ProductTeasersModel GetPage(int categoryID, ListPageSpec<ProductTeaser> pageSpec);
+        ProductDetails GetDetails(int productID);   
     }
 }

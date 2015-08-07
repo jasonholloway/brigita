@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,11 +24,12 @@ namespace Brigita.Web.Infrastructure
 
             if(requestContext.RouteData.Values.TryGetValue("locale", out localeObj)) 
             {                    
-                requestContext.HttpContext.Items["locale"] = ((string)localeObj).ToUpper();
+                requestContext.HttpContext.Items["locale"] = ((string)localeObj).ToLower();
                 requestContext.RouteData.Values.Remove("locale");
-
-                //should somehow set thread culture?
             }
+
+            //should somehow set thread culture?
+            //does this actually matter?
 
             return _innerHandler.GetHttpHandler(requestContext);
         }
@@ -83,8 +85,15 @@ namespace Brigita.Web.Infrastructure
 
         public override VirtualPathData GetVirtualPath(RequestContext requestContext, RouteValueDictionary values) 
         {
-            return _routeWithLocale.GetVirtualPath(requestContext, values)
-                    ?? _routeWithoutLocale.GetVirtualPath(requestContext, values);
+            if(values.ContainsKey("locale")) {
+                var result = _routeWithLocale.GetVirtualPath(requestContext, values);
+
+                if(result != null) {
+                    return result;
+                }
+            }
+
+            return _routeWithoutLocale.GetVirtualPath(requestContext, values);
         }
     }
 
