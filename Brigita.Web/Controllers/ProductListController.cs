@@ -8,10 +8,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Brigita.View.Products;
+using Brigita.Queries.Products;
 using Brigita.Infrastructure.Pages;
-using Brigita.View.Bits;
-using Brigita.View.Services.Products;
+using Brigita.Queries.Bits;
+using Brigita.Queries.Products;
 
 namespace Brigita.Web.Controllers
 {

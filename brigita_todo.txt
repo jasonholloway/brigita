@@ -1,4 +1,11 @@
 TO DO:
+
+> Translate to Query bus, and to vertically-sliced folders
+> Price to be displayed, in correct currency taken from locale
+> Shopping cart
+	- investigate how NOP does it.
+		obviously a cookie is used, perhaps even before the user logs in (this would be the best way)
+
 > Nice routes via dictionary of titles
 > Localized route shortcuts (ie produkti)
 > Only published products to be displayed

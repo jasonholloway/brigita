@@ -10,3 +10,21 @@ ul#categoryMenu a.active {
 ul#categoryMenu a.activeParent {
     font-weight: bold;
 }
+
+div#mainCentre {
+    width: 100%;
+    background-color: pink;
+}
+
+div.productTeaser {
+    float: left;
+    width: 180px;
+    border: 2px solid brown;
+    height: 240px;
+}
+
+ul.itemList li {
+    float: left;
+    display: block;
+    list-style: none;
+}

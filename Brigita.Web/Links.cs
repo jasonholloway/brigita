@@ -8,10 +8,10 @@ using System.Web.Mvc;
 using Brigita.Dom.Categories;
 using Brigita.Dom.Products;
 using Brigita.Infrastructure.Pages;
-using Brigita.View;
-using Brigita.View.Products;
-using Brigita.View.Services;
-using Brigita.View.Services.Products;
+using Brigita.Queries;
+using Brigita.Queries.Products;
+using Brigita.Queries;
+using Brigita.Queries.Products;
 using Brigita.Web.Infrastructure;
 using Brigita.Web.Services;
 

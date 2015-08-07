@@ -1,5 +1,5 @@
 ﻿using Brigita.Dom.Services.Categories;
-using Brigita.View.Menu;
+using Brigita.Queries.Menu;
 using Brigita.Infrastructure.Trees;
 using Nop.Core.Domain.Catalog;
 using Nop.Services.Catalog;
@@ -12,7 +12,7 @@ using Brigita.Web.Infrastructure;
 using Brigita.Dom.Services.Pages;
 using Brigita.Dom.Scope;
 using System.Web.Routing;
-using Brigita.View.Services.Menu;
+using Brigita.Queries.Menu;
 
 namespace Brigita.Web.Controllers
 {

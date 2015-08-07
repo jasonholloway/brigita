@@ -79,13 +79,17 @@
   <ItemGroup>
     <Compile Include="BrigitaApplication.cs" />
     <Compile Include="Infrastructure\BrigitaEngine.cs" />
-    <Compile Include="Infrastructure\IDependencyBinder.cs" />
-    <Compile Include="Infrastructure\IDependencyContainer.cs" />
+    <Compile Include="Infrastructure\IRegistrar.cs" />
+    <Compile Include="Infrastructure\IBinder.cs" />
+    <Compile Include="Infrastructure\IResolver.cs" />
+    <Compile Include="Infrastructure\IScanner.cs" />
     <Compile Include="Infrastructure\Pages\ListPage.cs" />
     <Compile Include="Infrastructure\Pages\ListPageExtensions.cs" />
+    <Compile Include="Infrastructure\Scanner.cs" />
     <Compile Include="Infrastructure\Trees\SimpleTree.cs" />
     <Compile Include="Infrastructure\Trees\SimpleTreeExtensions.cs" />
     <Compile Include="Infrastructure\Trees\SimpleTreeNode.cs" />
+    <Compile Include="Infrastructure\TypeEnumereableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

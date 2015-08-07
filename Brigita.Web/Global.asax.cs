@@ -23,6 +23,7 @@ using Brigita.Infrastructure;
 using Nop.Core.Configuration;
 using System.Configuration;
 using Brigita.Dom.Services.Categories;
+using Brigita.Queries;
 
 namespace Brigita.Web
 {
@@ -31,11 +32,14 @@ namespace Brigita.Web
         protected void Application_Start() {
             var engine = new BrigitaEngine();
 
-            engine.Build(Dependencies.Register);
+            engine.BuildContainer(
+                        typeof(MvcApplication).Assembly,
+                        typeof(IQuery).Assembly
+                        );
             
             engine.RunStartUpTasks();
 
-            EngineContext.Replace(engine);
+            EngineContext.Replace(engine); //Is this really needed??
             
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new BrigitaViewEngine());

@@ -8,8 +8,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using Brigita.Dom.Categories;
 using Brigita.Dom.Products;
-using Brigita.View;
-using Brigita.View.Services;
+using Brigita.Queries;
+using Brigita.Queries;
 
 namespace Brigita.Web.Services
 {

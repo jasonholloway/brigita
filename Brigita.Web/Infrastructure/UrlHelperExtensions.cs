@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
-using Brigita.View;
+using Brigita.Queries;
 using Brigita.Web.Services;
 
 namespace Brigita.Web.Infrastructure

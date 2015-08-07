@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Reflection;
 
 namespace Brigita.Infrastructure
 {
@@ -18,6 +19,7 @@ namespace Brigita.Infrastructure
     {
         NopConfig _config;
         ITypeFinder _typeFinder;
+        IScanner _scanner;
 
 
         public ContainerManager ContainerManager { get; private set; }
@@ -28,18 +30,55 @@ namespace Brigita.Infrastructure
         }
 
 
-        public void Build(Action<IDependencyBinder> fnReg) {
-            var b = new ContainerBuilder();
+        public void BuildContainer(params Assembly[] rAssemblies) {
+            BuildContainer(rAssemblies.AsEnumerable());
+        }
 
-            b.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
 
-            b.RegisterInstance(_config).As<NopConfig>().SingleInstance();
-            b.RegisterInstance(this).As<IEngine>().SingleInstance();
-            b.RegisterInstance(_typeFinder).As<ITypeFinder>().SingleInstance();
+        public void BuildContainer(IEnumerable<Assembly> assemblies) 
+        {
+            IContainer container = null;
 
-            fnReg(new ContainerRegistrarAdaptor(b));
+            var x = new ContainerBuilder();
 
-            var container = b.Build();
+            //x.RegisterSource(new AnyConcreteTypeNotAlreadyRegisteredSource());
+
+            x.RegisterInstance(_config)
+                .As<NopConfig>().SingleInstance();
+
+            x.RegisterInstance(this)
+                .As<IEngine>().SingleInstance();
+
+            x.RegisterInstance(_typeFinder)
+                .As<ITypeFinder>().SingleInstance();
+                        
+            var scanner = new Scanner();
+            x.RegisterInstance(scanner)
+                .As<IScanner>().SingleInstance();
+            
+            var binder = new BinderAdaptor(x);
+            x.RegisterInstance(binder)
+                .As<IBinder>().SingleInstance();
+
+
+            x.Register(c => new ResolverAdaptor(c))
+                .As<IResolver>();
+
+            var registrarTypes = scanner.ScanTypes(assemblies)
+                                    .Where(t => !t.IsAbstract 
+                                                && t.IsAssignableTo<IRegistrar>());
+
+            foreach(var registrarType in registrarTypes) {
+                var registrar = (IRegistrar)Activator.CreateInstance(registrarType);
+                registrar.Register(binder, scanner);
+            }
+
+
+
+            container = x.Build();
+
+           
+
 
             ContainerManager = new ContainerManager(container);
 
@@ -51,27 +90,49 @@ namespace Brigita.Infrastructure
 
 
 
-        class ContainerAdaptor : IDependencyContainer
+        class ResolverAdaptor : IResolver
         {
-            IContainer _container;
+            IComponentContext _ctx;
 
-            public ContainerAdaptor(IContainer container) {
-                _container = container;
+            public ResolverAdaptor(IComponentContext ctx) {
+                _ctx = ctx;
             }
 
             public T Resolve<T>() {
-                return _container.Resolve<T>();
+                return _ctx.Resolve<T>();
             }
         }
 
 
-        class ContainerRegistrarAdaptor : IDependencyBinder
+        class BinderAdaptor : IBinder
         {
             ContainerBuilder _builder;
 
-            public ContainerRegistrarAdaptor(ContainerBuilder builder) {
+            public BinderAdaptor(ContainerBuilder builder) {
                 _builder = builder;
             }
+            
+            public void Bind(Type type, object instance) 
+            {
+                _builder.RegisterInstance(instance)
+                                .As(type)
+                                .InstancePerLifetimeScope();     
+            }
+            
+            public void Bind(Type type, Func<IResolver, object> fnFactory) 
+            {
+                _builder.Register(c => fnFactory(new ContCtxAdaptor(c)))
+                                .As(type)
+                                .InstancePerLifetimeScope();
+            }
+
+            public void Bind(Type intType, Type implType) 
+            {
+                _builder.RegisterType(implType)
+                            .As(intType)
+                            .InstancePerLifetimeScope();
+            }
+
 
             public void Bind<T, TImp>() where TImp : T {
                 _builder.RegisterType<TImp>()
@@ -84,7 +145,7 @@ namespace Brigita.Infrastructure
                             .InstancePerLifetimeScope();
             }
 
-            public void Bind<T>(Func<IDependencyContainer, T> fnFactory) {
+            public void Bind<T>(Func<IResolver, T> fnFactory) {
                 _builder.Register<T>(c => fnFactory(new ContCtxAdaptor(c)))
                             .InstancePerLifetimeScope();
             }
@@ -94,7 +155,7 @@ namespace Brigita.Infrastructure
                             .SingleInstance();
             }
 
-            public void BindSingleton<T>(Func<IDependencyContainer, T> fnFactory) {
+            public void BindSingleton<T>(Func<IResolver, T> fnFactory) {
                 _builder.Register<T>(c => fnFactory(new ContCtxAdaptor(c)))
                             .SingleInstance();
             }
@@ -124,13 +185,13 @@ namespace Brigita.Infrastructure
                                 .InstancePerDependency();
             }
 
-            public void BindTransient<T>(Func<IDependencyContainer, T> fnFactory) {
+            public void BindTransient<T>(Func<IResolver, T> fnFactory) {
                 _builder.Register<T>(c => fnFactory(new ContCtxAdaptor(c)))
                             .InstancePerDependency();
             }
 
 
-            class ContCtxAdaptor : IDependencyContainer
+            class ContCtxAdaptor : IResolver
             {
                 IComponentContext _context;
 

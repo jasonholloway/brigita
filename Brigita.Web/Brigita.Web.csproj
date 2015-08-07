@@ -149,7 +149,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ProductListController.cs" />
-    <Compile Include="Dependencies.cs" />
+    <Compile Include="Registrar.cs" />
     <Compile Include="Filters\LocaleFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -277,6 +277,10 @@
       <Project>{b9238e30-f60a-4fbd-ae71-fbcb11e414e5}</Project>
       <Name>Brigita.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Brigita.Queries\Brigita.Queries.csproj">
+      <Project>{efe58778-6439-490c-a9a0-5bce616f1f70}</Project>
+      <Name>Brigita.Queries</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Brigita\Brigita.csproj">
       <Project>{1898ea0a-4e8d-4462-94f3-6d05e6a3d88f}</Project>
       <Name>Brigita</Name>
@@ -288,10 +292,6 @@
     <ProjectReference Include="..\Brigita.Dom.Services\Brigita.Dom.Services.csproj">
       <Project>{f6c49de9-1a3b-42b9-b1e6-60e55e326eec}</Project>
       <Name>Brigita.Dom.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Brigita.View\Brigita.View.csproj">
-      <Project>{efe58778-6439-490c-a9a0-5bce616f1f70}</Project>
-      <Name>Brigita.View</Name>
     </ProjectReference>
     <ProjectReference Include="..\Libraries\Nop.Core\Nop.Core.csproj">
       <Project>{6bda8332-939f-45b7-a25e-7a797260ae59}</Project>

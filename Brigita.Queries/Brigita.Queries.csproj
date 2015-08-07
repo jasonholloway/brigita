@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EFE58778-6439-490C-A9A0-5BCE616F1F70}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Brigita.Queries</RootNamespace>
+    <AssemblyName>Brigita.Queries</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.0.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.4.0.1\lib\net45\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Dapper">
+      <HintPath>..\packages\Dapper.1.8\lib\net40\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DapperWrapper">
+      <HintPath>..\packages\DapperWrapper-Updated.0.3.0.0\lib\net40\DapperWrapper.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Bits\ImageModel.cs" />
+    <Compile Include="Bits\ItemModel.cs" />
+    <Compile Include="Bits\ListPageModel.cs" />
+    <Compile Include="Registrar.cs" />
+    <Compile Include="Home\HomeHandler.cs" />
+    <Compile Include="Home\HomeModel.cs" />
+    <Compile Include="Home\HomeQuery.cs" />
+    <Compile Include="IPagedItemsModel.cs" />
+    <Compile Include="IProductContextModel.cs" />
+    <Compile Include="IQuery.cs" />
+    <Compile Include="IQueryHandler.cs" />
+    <Compile Include="IMediator.cs" />
+    <Compile Include="Link.cs" />
+    <Compile Include="Mediator.cs" />
+    <Compile Include="Menu\CategoryMenuItem.cs" />
+    <Compile Include="Menu\CategoryMenuModel.cs" />
+    <Compile Include="Bits\FaviconModel.cs" />
+    <Compile Include="Products\ProductDetails.cs" />
+    <Compile Include="Products\ProductTeasersModel.cs" />
+    <Compile Include="Products\ProductTeaser.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Home\HomeModelSource.cs" />
+    <Compile Include="Home\IHomeModelSource.cs" />
+    <Compile Include="ILinkProvider.cs" />
+    <Compile Include="Menu\CatMenuModelSource.cs" />
+    <Compile Include="Menu\ICatMenuModelSource.cs" />
+    <Compile Include="Products\IProductDetailsSource.cs" />
+    <Compile Include="Products\IProductTeasers.cs" />
+    <Compile Include="Products\ProductDetailsSource.cs" />
+    <Compile Include="Products\ProductTeasers.cs" />
+    <Compile Include="Products\ProductTeasers2.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Brigita.Data\Brigita.Data.csproj">
+      <Project>{b9238e30-f60a-4fbd-ae71-fbcb11e414e5}</Project>
+      <Name>Brigita.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brigita\Brigita.csproj">
+      <Project>{1898ea0a-4e8d-4462-94f3-6d05e6a3d88f}</Project>
+      <Name>Brigita</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brigita.Dom\Brigita.Dom.csproj">
+      <Project>{c3cdc67c-92c8-4ed7-8ba5-62523aa47fbd}</Project>
+      <Name>Brigita.Dom</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Brigita.Dom.Services\Brigita.Dom.Services.csproj">
+      <Project>{f6c49de9-1a3b-42b9-b1e6-60e55e326eec}</Project>
+      <Name>Brigita.Dom.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Libraries\Nop.Core\Nop.Core.csproj">
+      <Project>{6bda8332-939f-45b7-a25e-7a797260ae59}</Project>
+      <Name>Nop.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Presentation\Nop.Web.Framework\Nop.Web.Framework.csproj">
+      <Project>{75fd4163-333c-4dd5-854d-2ef294e45d94}</Project>
+      <Name>Nop.Web.Framework</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Infrastructure\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
