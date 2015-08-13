@@ -13,7 +13,7 @@ namespace Nop.Services.Catalog
         /// Delete category
         /// </summary>
         /// <param name="category">Category</param>
-        void DeleteCategory(NopCategory category);
+        void DeleteCategory(Category category);
 
         /// <summary>
         /// Gets all categories
@@ -23,7 +23,7 @@ namespace Nop.Services.Catalog
         /// <param name="pageSize">Page size</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Categories</returns>
-        IPagedList<NopCategory> GetAllCategories(string categoryName = "",
+        IPagedList<Category> GetAllCategories(string categoryName = "",
             int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false);
 
         /// <summary>
@@ -32,7 +32,7 @@ namespace Nop.Services.Catalog
         /// <param name="parentCategoryId">Parent category identifier</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Categories</returns>
-        IList<NopCategory> GetAllCategoriesByParentCategoryId(int parentCategoryId,
+        IList<Category> GetAllCategoriesByParentCategoryId(int parentCategoryId,
             bool showHidden = false);
 
         /// <summary>
@@ -40,32 +40,32 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Categories</returns>
-        IList<NopCategory> GetAllCategoriesDisplayedOnHomePage(bool showHidden = false);
+        IList<Category> GetAllCategoriesDisplayedOnHomePage(bool showHidden = false);
                 
         /// <summary>
         /// Gets a category
         /// </summary>
         /// <param name="categoryId">Category identifier</param>
         /// <returns>Category</returns>
-        NopCategory GetCategoryById(int categoryId);
+        Category GetCategoryById(int categoryId);
 
         /// <summary>
         /// Inserts category
         /// </summary>
         /// <param name="category">Category</param>
-        void InsertCategory(NopCategory category);
+        void InsertCategory(Category category);
 
         /// <summary>
         /// Updates the category
         /// </summary>
         /// <param name="category">Category</param>
-        void UpdateCategory(NopCategory category);
+        void UpdateCategory(Category category);
 
         /// <summary>
         /// Update HasDiscountsApplied property (used for performance optimization)
         /// </summary>
         /// <param name="category">Category</param>
-        void UpdateHasDiscountsApplied(NopCategory category);
+        void UpdateHasDiscountsApplied(Category category);
 
         /// <summary>
         /// Deletes a product category mapping

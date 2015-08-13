@@ -43,9 +43,9 @@ namespace Nop.Web.Infrastructure.Cache
         IConsumer<EntityUpdated<ProductManufacturer>>,
         IConsumer<EntityDeleted<ProductManufacturer>>,
         //categories
-        IConsumer<EntityInserted<NopCategory>>,
-        IConsumer<EntityUpdated<NopCategory>>,
-        IConsumer<EntityDeleted<NopCategory>>,
+        IConsumer<EntityInserted<Category>>,
+        IConsumer<EntityUpdated<Category>>,
+        IConsumer<EntityDeleted<Category>>,
         //product categories
         IConsumer<EntityInserted<ProductCategory>>,
         IConsumer<EntityUpdated<ProductCategory>>,
@@ -763,7 +763,7 @@ namespace Nop.Web.Infrastructure.Cache
         }
         
         //categories
-         public void HandleEvent(EntityInserted<NopCategory> eventMessage)
+         public void HandleEvent(EntityInserted<Category> eventMessage)
         {
              _cacheManager.RemoveByPattern(SEARCH_CATEGORIES_PATTERN_KEY);
              _cacheManager.RemoveByPattern(CATEGORY_NAVIGATION_PATTERN_KEY); 
@@ -774,7 +774,7 @@ namespace Nop.Web.Infrastructure.Cache
              _cacheManager.RemoveByPattern(CATEGORY_HOMEPAGE_PATTERN_KEY);
              _cacheManager.RemoveByPattern(SITEMAP_PATTERN_KEY);
         }
-        public void HandleEvent(EntityUpdated<NopCategory> eventMessage)
+        public void HandleEvent(EntityUpdated<Category> eventMessage)
         {
             _cacheManager.RemoveByPattern(SEARCH_CATEGORIES_PATTERN_KEY);
             _cacheManager.RemoveByPattern(PRODUCT_BREADCRUMB_PATTERN_KEY);
@@ -786,7 +786,7 @@ namespace Nop.Web.Infrastructure.Cache
             _cacheManager.RemoveByPattern(CATEGORY_HOMEPAGE_PATTERN_KEY);
             _cacheManager.RemoveByPattern(SITEMAP_PATTERN_KEY);
         }
-        public void HandleEvent(EntityDeleted<NopCategory> eventMessage)
+        public void HandleEvent(EntityDeleted<Category> eventMessage)
         {
             _cacheManager.RemoveByPattern(SEARCH_CATEGORIES_PATTERN_KEY);
             _cacheManager.RemoveByPattern(PRODUCT_BREADCRUMB_PATTERN_KEY);

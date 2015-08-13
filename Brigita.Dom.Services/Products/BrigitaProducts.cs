@@ -23,16 +23,17 @@ namespace Brigita.Dom.Services.Products
     {
         IRepo<Product> _repo;
         ICategories _cats;
-        IWorkContext _context;
-        ILocalizerSource<Product> _localizerSrc;
+        ILocalizer<Product> _localizer;
 
-        //repos should be lazy...
 
-        public BrigitaProducts(IRepo<Product> repo, ICategories cats, IWorkContext context, ILocalizerSource<Product> localizerSrc) {
+        public BrigitaProducts(
+                    IRepo<Product> repo, 
+                    ICategories cats, 
+                    ILocalizer<Product> localizer) 
+        {
             _repo = repo;
             _cats = cats;
-            _context = context;
-            _localizerSrc = localizerSrc;
+            _localizer = localizer;
         }
 
         static BrigitaProducts() {
@@ -57,9 +58,7 @@ namespace Brigita.Dom.Services.Products
                                     .Take(pageSpec.PageSize)
                                     .ToArray();
             
-            var languageID = _context.WorkingLanguage.ID;
-            var localizer = _localizerSrc.GetLocalizer(languageID);
-            localizer.Localize(products);
+            _localizer.Localize(products);
 
             return new ListPage<IProduct>(
                                     products,

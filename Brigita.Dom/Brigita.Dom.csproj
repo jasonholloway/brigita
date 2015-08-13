@@ -45,6 +45,7 @@
     <Compile Include="Categories\IScopedTinyCategory.cs" />
     <Compile Include="Categories\ITinyCategory.cs" />
     <Compile Include="IEntity.cs" />
+    <Compile Include="Locale\LocalizeAsAttribute.cs" />
     <Compile Include="Products\IProduct.cs" />
     <Compile Include="Products\ITinyProduct.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

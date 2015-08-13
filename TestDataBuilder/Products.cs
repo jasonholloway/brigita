@@ -16,7 +16,7 @@ namespace TestDataBuilder
             var ctx = new NopObjectContext("Data Source=JASON-THINK;Initial Catalog=Brigita;Integrated Security=True;Persist Security Info=False");
             var products = ctx.Set<Product>();
             
-            var cats = ctx.Set<NopCategory>().ToArray();
+            var cats = ctx.Set<Category>().ToArray();
             var pic = ctx.Set<Picture>().OrderByDescending(p => p.ID).First();
 
             foreach(var cat in cats) {

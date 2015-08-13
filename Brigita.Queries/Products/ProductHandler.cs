@@ -16,17 +16,14 @@ namespace Brigita.Queries.Products
     public class ProductHandler : IQueryHandler<ProductQuery, ProductModel>
     {
         IRepo<Product> _repo;
-        IWorkContext _workCtx;
-        ILocalizerSource<ProductModel> _localizerSrc;
+        ILocalizer<ProductModel> _localizer;
 
         public ProductHandler(
                     IRepo<Product> repo, 
-                    IWorkContext workCtx, 
-                    ILocalizerSource<ProductModel> localizerSrc) 
+                    ILocalizer<ProductModel> localizer) 
         {
             _repo = repo;
-            _workCtx = workCtx;
-            _localizerSrc = localizerSrc;
+            _localizer = localizer;
         }
 
         static ProductHandler() {
@@ -36,15 +33,14 @@ namespace Brigita.Queries.Products
 
         public ProductModel Enquire(ProductQuery query)
         {
-            var details = _repo.Include(p => p.ProductPictures)
+            var model = _repo.Include(p => p.ProductPictures)
                                 .Where(p => p.ID == query.ProductID)
                                 .Project().To<ProductModel>()
                                 .First();
 
-            var localizer = _localizerSrc.GetLocalizerUsing<Product>(_workCtx.WorkingLanguage.ID);
-            localizer.Localize(details);
+            _localizer.Localize(model);
 
-            return details;
+            return model;
         }
     }
 }

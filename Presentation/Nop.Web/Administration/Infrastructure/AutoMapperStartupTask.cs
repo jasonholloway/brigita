@@ -180,7 +180,7 @@ namespace Nop.Admin.Infrastructure
             Mapper.CreateMap<TopicModel, Topic>();
 
             //category
-            Mapper.CreateMap<NopCategory, CategoryModel>()
+            Mapper.CreateMap<Category, CategoryModel>()
                 .ForMember(dest => dest.AvailableCategoryTemplates, mo => mo.Ignore())
                 .ForMember(dest => dest.Locales, mo => mo.Ignore())
                 .ForMember(dest => dest.Breadcrumb, mo => mo.Ignore())
@@ -193,7 +193,7 @@ namespace Nop.Admin.Infrastructure
                 .ForMember(dest => dest.AvailableStores, mo => mo.Ignore())
                 .ForMember(dest => dest.SelectedStoreIds, mo => mo.Ignore())
                 .ForMember(dest => dest.CustomProperties, mo => mo.Ignore());
-            Mapper.CreateMap<CategoryModel, NopCategory>()
+            Mapper.CreateMap<CategoryModel, Category>()
                 .ForMember(dest => dest.HasDiscountsApplied, mo => mo.Ignore())
                 .ForMember(dest => dest.CreatedOnUtc, mo => mo.Ignore())
                 .ForMember(dest => dest.UpdatedOnUtc, mo => mo.Ignore())

@@ -66,18 +66,21 @@
     </Compile>
     <Compile Include="Categories\ICategories.cs" />
     <Compile Include="Categories\IScopedCategories.cs" />
-    <Compile Include="Categories\Category.cs">
-      <DependentUpon>Category.tt</DependentUpon>
+    <Compile Include="Categories\BrigitaCategory.cs">
+      <DependentUpon>BrigitaCategory.tt</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Categories\ScopedCategories.cs" />
     <Compile Include="Context\BrigitaWorkContext.cs" />
+    <Compile Include="Context\ILocaleCodeProvider.cs" />
     <Compile Include="Context\ILocaleContext.cs" />
     <Compile Include="Context\ILocalizer.cs" />
-    <Compile Include="Context\ILocalizerSource.cs" />
+    <Compile Include="Context\ILocalizerSchemaSource.cs" />
+    <Compile Include="Context\LocaleContext.cs" />
     <Compile Include="Context\Localizer.cs" />
-    <Compile Include="Context\LocalizerSource.cs" />
+    <Compile Include="Context\LocalizerSchema.cs" />
+    <Compile Include="Context\LocalizerSchemaSource.cs" />
     <Compile Include="Media\IPiccies.cs" />
     <Compile Include="Media\Piccy.cs" />
     <Compile Include="Media\Piccies.cs" />
@@ -136,9 +139,9 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ScopedCategory1.cs</LastGenOutput>
     </Content>
-    <Content Include="Categories\Category.tt">
+    <Content Include="Categories\BrigitaCategory.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Category.cs</LastGenOutput>
+      <LastGenOutput>BrigitaCategory.cs</LastGenOutput>
     </Content>
     <Content Include="FodyWeavers.xml" />
     <Content Include="Products\TinyProduct.tt">

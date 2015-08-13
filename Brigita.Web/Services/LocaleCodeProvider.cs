@@ -9,11 +9,11 @@ using Nop.Core.Domain.Localization;
 
 namespace Brigita.Web.Services
 {
-    public class LocaleContext : ILocaleContext
+    public class LocaleCodeProvider : ILocaleCodeProvider
     {
         Lazy<string> _lzLocaleCode;
 
-        public LocaleContext(HttpContext context) {
+        public LocaleCodeProvider(HttpContext context) {
             _lzLocaleCode = new Lazy<string>(() => context.Items.Contains("locale")
                                                                     ? (string)context.Items["locale"]
                                                                     : context.Request.UserLanguages.FirstOrDefault() 

@@ -55,7 +55,7 @@ namespace Nop.Services.Installation
         private readonly IRepository<SpecificationAttribute> _specificationAttributeRepository;
         private readonly IRepository<CheckoutAttribute> _checkoutAttributeRepository;
         private readonly IRepository<ProductAttribute> _productAttributeRepository;
-        private readonly IRepository<NopCategory> _categoryRepository;
+        private readonly IRepository<Category> _categoryRepository;
         private readonly IRepository<Manufacturer> _manufacturerRepository;
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<UrlRecord> _urlRecordRepository;
@@ -98,7 +98,7 @@ namespace Nop.Services.Installation
             IRepository<SpecificationAttribute> specificationAttributeRepository,
             IRepository<CheckoutAttribute> checkoutAttributeRepository,
             IRepository<ProductAttribute> productAttributeRepository,
-            IRepository<NopCategory> categoryRepository,
+            IRepository<Category> categoryRepository,
             IRepository<Manufacturer> manufacturerRepository,
             IRepository<Product> productRepository,
             IRepository<UrlRecord> urlRecordRepository,
@@ -5120,8 +5120,8 @@ namespace Nop.Services.Installation
 
 
             //categories
-            var allCategories = new List<NopCategory>();
-            var categoryBooks = new NopCategory
+            var allCategories = new List<Category>();
+            var categoryBooks = new Category
             {
                 Name = "Books",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5141,7 +5141,7 @@ namespace Nop.Services.Installation
             allCategories.Add(categoryBooks);
             _categoryRepository.Insert(categoryBooks);
 
-            var categoryComputers = new NopCategory
+            var categoryComputers = new Category
             {
                 Name = "Computers",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5159,7 +5159,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryComputers);
 
 
-            var categoryDesktops = new NopCategory
+            var categoryDesktops = new Category
             {
                 Name = "Desktops",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5179,7 +5179,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryDesktops);
 
 
-            var categoryNotebooks = new NopCategory
+            var categoryNotebooks = new Category
             {
                 Name = "Notebooks",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5198,7 +5198,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryNotebooks);
 
 
-            var categoryAccessories = new NopCategory
+            var categoryAccessories = new Category
             {
                 Name = "Accessories",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5218,7 +5218,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryAccessories);
 
 
-            var categorySoftware = new NopCategory
+            var categorySoftware = new Category
             {
                 Name = "Software & Games",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5237,7 +5237,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categorySoftware);
 
             
-            var categoryElectronics = new NopCategory
+            var categoryElectronics = new Category
             {
                 Name = "Electronics",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5255,7 +5255,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryElectronics);
 
 
-            var categoryCameraPhoto = new NopCategory
+            var categoryCameraPhoto = new Category
             {
                 Name = "Camera, photo",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5275,7 +5275,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryCameraPhoto);
 
 
-            var categoryCellPhones = new NopCategory
+            var categoryCellPhones = new Category
             {
                 Name = "Cell phones",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5294,7 +5294,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryCellPhones);
 
 
-            var categoryApparelShoes = new NopCategory
+            var categoryApparelShoes = new Category
             {
                 Name = "Apparel & Shoes",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5314,7 +5314,7 @@ namespace Nop.Services.Installation
 
 
 
-            var categoryDigitalDownloads = new NopCategory
+            var categoryDigitalDownloads = new Category
             {
                 Name = "Digital downloads",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5332,7 +5332,7 @@ namespace Nop.Services.Installation
             _categoryRepository.Insert(categoryDigitalDownloads);
 
 
-            var categoryJewelry = new NopCategory
+            var categoryJewelry = new Category
             {
                 Name = "Jewelry",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,
@@ -5350,7 +5350,7 @@ namespace Nop.Services.Installation
             allCategories.Add(categoryJewelry);
             _categoryRepository.Insert(categoryJewelry);
 
-            var categoryGiftCards = new NopCategory
+            var categoryGiftCards = new Category
             {
                 Name = "Gift Cards",
                 CategoryTemplateId = categoryTemplateInGridAndLines.ID,

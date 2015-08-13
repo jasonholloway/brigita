@@ -24,7 +24,7 @@ namespace Brigita.Dom.Services.Test
         static CategoryTests() {
             var catIDs = new List<int>(new[] { 0 });
 
-            _allCats = Builder<NopCategory>.CreateListOfSize(100)
+            _allCats = Builder<Category>.CreateListOfSize(100)
                                             .All()
                                                 .Do(c => c.ParentCategoryId = Pick<int>.RandomItemFrom(catIDs))
                                                 .Do(c => catIDs.Add(c.ID))
@@ -36,7 +36,7 @@ namespace Brigita.Dom.Services.Test
         [TestMethod]
         public void ArticulateCategoryTree() 
         {
-            var repo = new RepositoryMock<NopCategory>(_allCats.Cast<NopCategory>());
+            var repo = new RepositoryMock<Category>(_allCats.Cast<Category>());
             var cats = new BrigitaCategories(repo);
 
             var catTree = cats.Tree;
@@ -66,7 +66,7 @@ namespace Brigita.Dom.Services.Test
         [TestMethod]
         public void ScopedCategoryTree() 
         {
-            var repo = new RepositoryMock<NopCategory>(_allCats.Cast<NopCategory>());
+            var repo = new RepositoryMock<Category>(_allCats.Cast<Category>());
             var cats = new BrigitaCategories(repo);
             var scopedCats = new ScopedCategories(cats);
             

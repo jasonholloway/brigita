@@ -20,12 +20,12 @@ namespace Nop.Services.Catalog
         /// <param name="parentId">Parent category identifier</param>
         /// <param name="ignoreCategoriesWithoutExistingParent">A value indicating whether categories without parent category in provided category list (source) should be ignored</param>
         /// <returns>Sorted categories</returns>
-        public static IList<NopCategory> SortCategoriesForTree(this IList<NopCategory> source, int parentId = 0, bool ignoreCategoriesWithoutExistingParent = false)
+        public static IList<Category> SortCategoriesForTree(this IList<Category> source, int parentId = 0, bool ignoreCategoriesWithoutExistingParent = false)
         {
             if (source == null)
                 throw new ArgumentNullException("source");
 
-            var result = new List<NopCategory>();
+            var result = new List<Category>();
 
             foreach (var cat in source.Where(c => c.ParentCategoryId == parentId).ToList())
             {
@@ -68,7 +68,7 @@ namespace Nop.Services.Catalog
         /// <param name="separator">Separator</param>
         /// <param name="languageId">Language identifier for localization</param>
         /// <returns>Formatted breadcrumb</returns>
-        public static string GetFormattedBreadCrumb(this NopCategory category,
+        public static string GetFormattedBreadCrumb(this Category category,
             ICategoryService categoryService,
             string separator = ">>", int languageId = 0)
         {
@@ -95,8 +95,8 @@ namespace Nop.Services.Catalog
         /// <param name="separator">Separator</param>
         /// <param name="languageId">Language identifier for localization</param>
         /// <returns>Formatted breadcrumb</returns>
-        public static string GetFormattedBreadCrumb(this NopCategory category,
-            IList<NopCategory> allCategories,
+        public static string GetFormattedBreadCrumb(this Category category,
+            IList<Category> allCategories,
             string separator = ">>", int languageId = 0)
         {
             string result = string.Empty;
@@ -122,7 +122,7 @@ namespace Nop.Services.Catalog
         /// <param name="storeMappingService">Store mapping service</param>
         /// <param name="showHidden">A value indicating whether to load hidden records</param>
         /// <returns>Category breadcrumb </returns>
-        public static IList<NopCategory> GetCategoryBreadCrumb(this NopCategory category,
+        public static IList<Category> GetCategoryBreadCrumb(this Category category,
             ICategoryService categoryService,
             IAclService aclService,
             IStoreMappingService storeMappingService,
@@ -131,7 +131,7 @@ namespace Nop.Services.Catalog
             if (category == null)
                 throw new ArgumentNullException("category");
 
-            var result = new List<NopCategory>();
+            var result = new List<Category>();
 
             //used to prevent circular references
             var alreadyProcessedCategoryIds = new List<int>();
@@ -162,8 +162,8 @@ namespace Nop.Services.Catalog
         /// <param name="storeMappingService">Store mapping service</param>
         /// <param name="showHidden">A value indicating whether to load hidden records</param>
         /// <returns>Category breadcrumb </returns>
-        public static IList<NopCategory> GetCategoryBreadCrumb(this NopCategory category,
-            IList<NopCategory> allCategories,
+        public static IList<Category> GetCategoryBreadCrumb(this Category category,
+            IList<Category> allCategories,
             IAclService aclService,
             IStoreMappingService storeMappingService,
             bool showHidden = false)
@@ -171,7 +171,7 @@ namespace Nop.Services.Catalog
             if (category == null)
                 throw new ArgumentNullException("category");
 
-            var result = new List<NopCategory>();
+            var result = new List<Category>();
 
             //used to prevent circular references
             var alreadyProcessedCategoryIds = new List<int>();

@@ -6,7 +6,7 @@ using System;
 
 namespace Brigita.Dom.Services.Categories {
 
-	public partial class Category : ICategory, ITinyCategory, IEntity
+	public partial class BrigitaCategory : ICategory, ITinyCategory, IEntity
 	{
 		public String Description { get; set; }
 		public Int32 ParentCategoryId { get; set; }

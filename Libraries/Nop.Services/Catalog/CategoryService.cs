@@ -71,7 +71,7 @@ namespace Nop.Services.Catalog
 
         #region Fields
 
-        private readonly IRepository<NopCategory> _categoryRepository;
+        private readonly IRepository<Category> _categoryRepository;
         private readonly IRepository<ProductCategory> _productCategoryRepository;
         private readonly IRepository<Product> _productRepository;
         private readonly IRepository<AclRecord> _aclRepository;
@@ -104,7 +104,7 @@ namespace Nop.Services.Catalog
         /// <param name="aclService">ACL service</param>
         /// <param name="catalogSettings">Catalog settings</param>
         public CategoryService(ICacheManager cacheManager,
-            IRepository<NopCategory> categoryRepository,
+            IRepository<Category> categoryRepository,
             IRepository<ProductCategory> productCategoryRepository,
             IRepository<Product> productRepository,
             IRepository<AclRecord> aclRepository,
@@ -138,7 +138,7 @@ namespace Nop.Services.Catalog
         /// Delete category
         /// </summary>
         /// <param name="category">Category</param>
-        public virtual void DeleteCategory(NopCategory category)
+        public virtual void DeleteCategory(Category category)
         {
             if (category == null)
                 throw new ArgumentNullException("category");
@@ -163,7 +163,7 @@ namespace Nop.Services.Catalog
         /// <param name="pageSize">Page size</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Categories</returns>
-        public virtual IPagedList<NopCategory> GetAllCategories(string categoryName = "", 
+        public virtual IPagedList<Category> GetAllCategories(string categoryName = "", 
             int pageIndex = 0, int pageSize = int.MaxValue, bool showHidden = false)
         {
             var query = _categoryRepository.Table;
@@ -215,7 +215,7 @@ namespace Nop.Services.Catalog
             var sortedCategories = unsortedCategories.SortCategoriesForTree();
 
             //paging
-            return new PagedList<NopCategory>(sortedCategories, pageIndex, pageSize);
+            return new PagedList<Category>(sortedCategories, pageIndex, pageSize);
         }
 
         /// <summary>
@@ -224,7 +224,7 @@ namespace Nop.Services.Catalog
         /// <param name="parentCategoryId">Parent category identifier</param>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Categories</returns>
-        public virtual IList<NopCategory> GetAllCategoriesByParentCategoryId(int parentCategoryId,
+        public virtual IList<Category> GetAllCategoriesByParentCategoryId(int parentCategoryId,
             bool showHidden = false)
         {
             string key = string.Format(CATEGORIES_BY_PARENT_CATEGORY_ID_KEY, parentCategoryId, showHidden, _workContext.CurrentCustomer.ID, _storeContext.CurrentStore.ID);
@@ -282,7 +282,7 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="showHidden">A value indicating whether to show hidden records</param>
         /// <returns>Categories</returns>
-        public virtual IList<NopCategory> GetAllCategoriesDisplayedOnHomePage(bool showHidden = false)
+        public virtual IList<Category> GetAllCategoriesDisplayedOnHomePage(bool showHidden = false)
         {
             var query = from c in _categoryRepository.Table
                         orderby c.DisplayOrder
@@ -307,7 +307,7 @@ namespace Nop.Services.Catalog
         /// </summary>
         /// <param name="categoryId">Category identifier</param>
         /// <returns>Category</returns>
-        public virtual NopCategory GetCategoryById(int categoryId)
+        public virtual Category GetCategoryById(int categoryId)
         {
             if (categoryId == 0)
                 return null;
@@ -320,7 +320,7 @@ namespace Nop.Services.Catalog
         /// Inserts category
         /// </summary>
         /// <param name="category">Category</param>
-        public virtual void InsertCategory(NopCategory category)
+        public virtual void InsertCategory(Category category)
         {
             if (category == null)
                 throw new ArgumentNullException("category");
@@ -339,7 +339,7 @@ namespace Nop.Services.Catalog
         /// Updates the category
         /// </summary>
         /// <param name="category">Category</param>
-        public virtual void UpdateCategory(NopCategory category)
+        public virtual void UpdateCategory(Category category)
         {
             if (category == null)
                 throw new ArgumentNullException("category");
@@ -370,7 +370,7 @@ namespace Nop.Services.Catalog
         /// Update HasDiscountsApplied property (used for performance optimization)
         /// </summary>
         /// <param name="category">Category</param>
-        public virtual void UpdateHasDiscountsApplied(NopCategory category)
+        public virtual void UpdateHasDiscountsApplied(Category category)
         {
             if (category == null)
                 throw new ArgumentNullException("category");

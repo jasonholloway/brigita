@@ -51,7 +51,7 @@ namespace Brigita.Dom.Services.Test
                                                         .Returns(new EnumerableQuery<Product>(products));
 
                 x.Resolve<ICategories>().FindCatFamily(Arg.Is(desiredCategory.ID))
-                                            .Returns(new[] { new Category() { ID = desiredCategory.ID } });
+                                            .Returns(new[] { new BrigitaCategory() { ID = desiredCategory.ID } });
                 
                 var productService = x.Resolve<BrigitaProducts>();
 

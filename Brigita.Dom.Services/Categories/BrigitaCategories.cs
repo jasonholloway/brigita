@@ -1,16 +1,10 @@
 ﻿using Brigita.Dom.Categories;
 using Brigita.Infrastructure.Trees;
 using Brigita.Dom.Services.Cache;
-using Nop.Core.Data;
 using Nop.Core.Domain.Catalog;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.Caching;
-using System.Text;
-using System.Threading.Tasks;
 using Brigita.Data;
-using Nop.Core;
 using Brigita.Dom.Services.Context;
 
 namespace Brigita.Dom.Services.Categories
@@ -19,26 +13,19 @@ namespace Brigita.Dom.Services.Categories
     public class BrigitaCategories
         : ICategories
     {
-        IRepo<NopCategory> _repo;
-        IWorkContext _workCtx;
-        ILocalizerSource<NopCategory> _localizerSrc;
+        IRepo<Category> _repo;
+        ILocalizer<Category> _localizer;
         
-        //The WorkContext/LocalizerSource combo should be encapsulated in a single service: would be much neater
-
-        public BrigitaCategories(IRepo<NopCategory> repo, IWorkContext workCtx, ILocalizerSource<NopCategory> localizerSrc) {
+        public BrigitaCategories(IRepo<Category> repo, ILocalizer<Category> localizer) {
             _repo = repo;
-            _workCtx = workCtx;
-            _localizerSrc = localizerSrc;
+            _localizer = localizer;
         }
 
         public ICategory[] All {
             [Cache("All")] //need to cache on locale
             get {
                 var allCats = _repo.ToArray();
-
-                var localizer = _localizerSrc.GetLocalizer(_workCtx.WorkingLanguage.ID);
-                localizer.Localize(allCats);
-
+                _localizer.Localize(allCats);
                 return allCats;
             }
         }

@@ -2,5 +2,5 @@
 <#@ assembly name="$(SolutionDir)Brigita.Dom\bin\$(ConfigurationName)\Brigita.Dom.dll" #>
 <#@ import namespace="Brigita.Dom.Categories" #>
 <#  GenerateDto<ICategory>(
-					"Brigita.Dom.Services.Categories.Category", 
+					"Brigita.Dom.Services.Categories.BrigitaCategory", 
 					new[] { "System" }); #>

@@ -11,22 +11,21 @@ using Nop.Core.Domain.Localization;
 
 namespace Brigita.Dom.Services.Context
 {
-    public class Localizer<TBaseEntity, TSubject> : ILocalizer<TSubject>
+    public class Localizer<TSubject> : ILocalizer<TSubject>
         where TSubject : IEntity
     {
+        ILocaleContext _locale;
         IRepo<LocalizedProperty> _repo;
+        LocalizerSchema<TSubject> _schema;
 
-        string _entityName;
-        int _languageID;
-        ConcurrentDictionary<string, Action<TSubject, string>> _dSetters;
-
-
-        public Localizer(int languageID, IRepo<LocalizedProperty> repo) 
+        public Localizer(
+                    ILocalizerSchemaSource schemas,
+                    ILocaleContext locale,
+                    IRepo<LocalizedProperty> repo)
         {
+            _locale = locale;
             _repo = repo;
-            _entityName = typeof(TBaseEntity).Name;
-            _languageID = languageID;
-            _dSetters = new ConcurrentDictionary<string, Action<TSubject, string>>();
+            _schema = schemas.GetSchema<TSubject>();
         }
         
 
@@ -38,11 +37,14 @@ namespace Brigita.Dom.Services.Context
 
         public void Localize(IEnumerable<TSubject> entities) 
         {
+            string entityName = _schema.EntityName;
+            int languageID = _locale.CurrentLanguage.ID;
+
             var ids = entities.Select(e => e.ID)
                                 .ToArray();
-            
-            var propVals = _repo.Where(v => v.LocaleKeyGroup == _entityName
-                                                && v.LanguageId == _languageID
+
+            var propVals = _repo.Where(v => v.LocaleKeyGroup == entityName
+                                                && v.LanguageId == languageID
                                                 && ids.Contains(v.EntityId));
             
             var propValsByID = propVals.GroupBy(v => v.ID)
@@ -55,37 +57,10 @@ namespace Brigita.Dom.Services.Context
                 var vals = propValsByID[ent.ID];
 
                 foreach(var val in vals) {
-                    var fnSetter = _dSetters.GetOrAdd(
-                                                val.LocaleKey,
-                                                k => BuildSetter(k));
-
+                    var fnSetter = _schema.GetSetter(val.LocaleKey);
                     fnSetter(ent, val.LocaleValue);
                 }
             }
-        }
-
-
-
-        static Action<TSubject, string> BuildSetter(string propName) 
-        {
-            var prop = typeof(TSubject).GetProperty(propName);
-
-            if(prop == null) {
-                return (a1, a2) => { };
-            }
-
-            var exEntity = Expression.Parameter(typeof(TSubject));
-            var exValue = Expression.Parameter(typeof(string));
-
-            var exLambda = Expression.Lambda<Action<TSubject, string>>(
-                                        Expression.Call(
-                                                    exEntity,
-                                                    prop.SetMethod,
-                                                    exValue ), 
-                                        exEntity, 
-                                        exValue);
-
-            return exLambda.Compile();
         }
 
     }

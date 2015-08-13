@@ -15,12 +15,12 @@ namespace Brigita.Dom.Services.Context
 {
     public class BrigitaWorkContext : IWorkContext
     {
-        ILocaleContext _localeCtx;
+        ILocaleCodeProvider _localeCtx;
         ILanguageService _languages;
 
         Lazy<Language> _lzLanguage;
 
-        public BrigitaWorkContext(ILocaleContext localeCtx, ILanguageService languages) {
+        public BrigitaWorkContext(ILocaleCodeProvider localeCtx, ILanguageService languages) {
             _localeCtx = localeCtx;
             _languages = languages;
 

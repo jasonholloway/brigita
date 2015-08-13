@@ -67,17 +67,17 @@ namespace Nop.Admin.Extensions
         
         #region Category
 
-        public static CategoryModel ToModel(this NopCategory entity)
+        public static CategoryModel ToModel(this Category entity)
         {
-            return entity.MapTo<NopCategory, CategoryModel>();
+            return entity.MapTo<Category, CategoryModel>();
         }
 
-        public static NopCategory ToEntity(this CategoryModel model)
+        public static Category ToEntity(this CategoryModel model)
         {
-            return model.MapTo<CategoryModel, NopCategory>();
+            return model.MapTo<CategoryModel, Category>();
         }
 
-        public static NopCategory ToEntity(this CategoryModel model, NopCategory destination)
+        public static Category ToEntity(this CategoryModel model, Category destination)
         {
             return model.MapTo(destination);
         }

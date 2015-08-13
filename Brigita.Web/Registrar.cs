@@ -77,8 +77,7 @@ namespace Brigita.Web
 
 
             x.BindGeneric(typeof(IRepo<>), typeof(Repo<>));
-            x.BindGenericSingleton(typeof(ILocalizerSource<>), typeof(LocalizerSource<>));
-
+                        
             x.Bind<ILinkProvider, LinkProvider>();
 
             x.Bind<IMediator, Mediator>();
@@ -87,7 +86,15 @@ namespace Brigita.Web
             x.Bind<IPictureService, PictureService>();
 
             x.Bind<ILocaleContext, LocaleContext>();
+            x.Bind<ILocaleCodeProvider, LocaleCodeProvider>();
+
+            x.BindSingleton<ILocalizerSchemaSource, LocalizerSchemaSource>();
+            x.BindGeneric(typeof(ILocalizer<>), typeof(Localizer<>));
+
+
             x.Bind<IWorkContext, BrigitaWorkContext>();
+
+
 
 
             x.Bind<IPageHelper, PageHelper>();
@@ -154,14 +161,13 @@ namespace Brigita.Web
             //all entities taken from the db should be auto cached, 
 
 
-            var controllerTypes = scanner.ScanTypes(this.GetType().Assembly)
-                                            .Where(t => typeof(IController).IsAssignableFrom(t));
+            var controllerTypes = scanner.ScanTypes(typeof(Registrar).Assembly)
+                                            .Where(t => !t.IsAbstract
+                                                        && typeof(IController).IsAssignableFrom(t));
 
             foreach(var type in controllerTypes) {
                 x.Bind(type, type);
             }
-
-
 
         }
 

@@ -166,7 +166,7 @@
     <Compile Include="Links.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Routes.cs" />
-    <Compile Include="Services\LocaleContext.cs" />
+    <Compile Include="Services\LocaleCodeProvider.cs" />
     <Compile Include="Services\LinkProvider.cs" />
   </ItemGroup>
   <ItemGroup>

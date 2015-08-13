@@ -7,8 +7,8 @@ using Nop.Core.Domain.Localization;
 
 namespace Brigita.Dom.Services.Context
 {
-    public interface ILocaleContext
+    public interface ILocaleCodeProvider
     {
-        Language CurrentLanguage { get; }
+        string LocaleCode { get; }
     }
 }

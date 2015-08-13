@@ -5,11 +5,13 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Brigita.Dom;
+using Brigita.Dom.Locale;
 using Brigita.Dom.Services.Media;
 using Nop.Core.Domain.Catalog;
 
 namespace Brigita.Queries.Products
 {
+    [LocalizeAs(typeof(Product))]
     public class ProductModel : IEntity
     {
         public int ID { get; set; }

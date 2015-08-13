@@ -18,7 +18,7 @@ namespace Nop.Web.Extensions
     public static class MappingExtensions
     {
         //category
-        public static CategoryModel ToModel(this NopCategory entity)
+        public static CategoryModel ToModel(this Category entity)
         {
             if (entity == null)
                 return null;
