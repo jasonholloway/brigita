@@ -31,7 +31,7 @@ namespace Brigita.Dom.Services.Context
 
         public Customer CurrentCustomer {
             get {
-                throw new NotImplementedException();
+                return new Customer(); //!!!!!!!!!!!!!!!!!!!!!
             }
             set {
                 throw new NotImplementedException();

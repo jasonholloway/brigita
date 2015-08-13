@@ -18,6 +18,7 @@ namespace Brigita.Web.Controllers
         public HomeController(IMediator mediator) {
             _mediator = mediator;
         }
+        
 
         public ActionResult Index()
         {

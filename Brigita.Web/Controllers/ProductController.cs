@@ -4,24 +4,28 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using Brigita.Queries;
 using Brigita.Queries.Products;
 
 namespace Brigita.Web.Controllers
 {
     public class ProductController : Controller
     {
-        IProductDetailsSource _detailsSrc;
+        IMediator _mediator;
 
-        public ProductController(IProductDetailsSource detailsSrc) {
-            _detailsSrc = detailsSrc;
+        public ProductController(IMediator mediator) {
+            _mediator = mediator;
         }
-
 
         public ActionResult Details(int productID) 
         {
-            var details = _detailsSrc.GetDetails(productID);
+            var query = new ProductQuery() { 
+                                ProductID = productID
+                                };
 
-            return View(details);
+            var model = _mediator.Enquire<ProductQuery, ProductModel>(query);
+
+            return View(model);
         }
 
     }

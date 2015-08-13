@@ -1,7 +1,11 @@
 TO DO:
 
-> Translate to Query bus, and to vertically-sliced folders
+> Localization service to be better encapsulated
+> Localize served teasers
+> ILocalizable interface to replace IEntity
+> Vertically slice folders
 > Price to be displayed, in correct currency taken from locale
+> 404 to be served
 > Shopping cart
 	- investigate how NOP does it.
 		obviously a cookie is used, perhaps even before the user logs in (this would be the best way)
@@ -12,6 +16,7 @@ TO DO:
 
 
 DONE:
+> Translate to query bus DONE
 > Generate URLs with locale DONE
 > Get page links working nicely DONE
 > Populate db with lots of products to test paging DONE

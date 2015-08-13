@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Brigita.Queries.Menu;
 
 namespace Brigita.Queries.Menu
 {
-    public interface ICatMenuModelSource
+    public class MenuQuery : IQuery 
     {
-        CategoryMenuModel GetModel(int activeCatID);
+        public int ActiveCategoryID { get; set; }
     }
 }

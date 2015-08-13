@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Brigita.Dom;
 using Brigita.Dom.Services.Media;
+using Nop.Core.Domain.Catalog;
 
 namespace Brigita.Queries.Products
 {
-    public class ProductDetails : IEntity
+    public class ProductModel : IEntity
     {
         public int ID { get; set; }
         public string Name { get; set; }

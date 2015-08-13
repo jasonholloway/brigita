@@ -53,15 +53,15 @@ namespace Brigita.Infrastructure
                 .As<ITypeFinder>().SingleInstance();
                         
             var scanner = new Scanner();
-            x.RegisterInstance(scanner)
-                .As<IScanner>().SingleInstance();
+            //x.RegisterInstance(scanner)
+            //    .As<IScanner>().SingleInstance();
             
             var binder = new BinderAdaptor(x);
-            x.RegisterInstance(binder)
-                .As<IBinder>().SingleInstance();
+            //x.RegisterInstance(binder)
+            //    .As<IBinder>().SingleInstance();
 
 
-            x.Register(c => new ResolverAdaptor(c))
+            x.Register(c => new ResolverAdaptor(c.Resolve<IComponentContext>()))
                 .As<IResolver>();
 
             var registrarTypes = scanner.ScanTypes(assemblies)
@@ -86,7 +86,6 @@ namespace Brigita.Infrastructure
                                     new AutofacDependencyResolver(ContainerManager.Container)
                                     );
         }
-
 
 
 

@@ -11,14 +11,9 @@ namespace Brigita.Queries
     {
         IResolver _cont;
 
-        public Mediator() {
-            //...
+        public Mediator(IResolver cont) {
+            _cont = cont;
         }
-
-
-        //public Mediator(IResolver cont) {
-        //    _cont = cont;
-        //}
         
         public TResult Enquire<TQuery, TResult>(TQuery query)
             where TQuery : IQuery

@@ -1,8 +1,8 @@
-﻿@using Brigita.View.Menu;
+﻿@using Brigita.Queries.Menu;
 @using Brigita.Infrastructure.Trees;
-@model CategoryMenuModel
+@model MenuModel
 
-@helper Node2ListItems(SimpleTreeNode<CategoryMenuItem> node) {
+@helper Node2ListItems(SimpleTreeNode<MenuItemModel> node) {
     var item = node.Value;
     <li>
         <a href="@Url.MvcLink(item.Link)" class="@(item.IsActive ? "active" : null) @(item.IsActiveParent ? "activeParent" : null)">@item.Name</a>

@@ -13,23 +13,27 @@ using Brigita.Dom.Services.Pages;
 using Brigita.Dom.Scope;
 using System.Web.Routing;
 using Brigita.Queries.Menu;
+using Brigita.Queries;
 
 namespace Brigita.Web.Controllers
 {
     public class MenuController : Controller
-    {        
-        ICatMenuModelSource _catMenuModelSource;
+    {
+        IMediator _mediator;
         
-        public MenuController(ICatMenuModelSource catMenuModelSource) 
+        public MenuController(IMediator mediator) 
         {
-            _catMenuModelSource = catMenuModelSource;
+            _mediator = mediator;
         }
         
         [ChildActionOnly]
         public ActionResult CategoryMenu(int activeCatID = 0) 
         {
-            var model = _catMenuModelSource
-                                .GetModel(activeCatID);
+            var query = new MenuQuery() {
+                               ActiveCategoryID = activeCatID
+                            };
+
+            var model = _mediator.Enquire<MenuQuery, MenuModel>(query);
 
             return View(model);
         }

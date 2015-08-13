@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Brigita.Queries.Menu
 {
-    public class CategoryMenuItem
+    public class MenuItemModel
     {
         public string Name { get; set; }
         public Link Link { get; set; }

@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Brigita.Queries.Bits;
 
-namespace Brigita.Queries.Products
+namespace Brigita.Queries.Teasers
 {
-    public class ProductTeasersModel : IProductContextProvider
+    public class TeaserPageModel : IProductContextProvider
     {
         public int CurrentCategoryID { get; set; }
         public string CurrentCategoryName { get; set; }
-        public ListPageModel<ProductTeaser> ListPage { get; set; }
+        public ListPageModel<TeaserModel> ListPage { get; set; }
     }
 }

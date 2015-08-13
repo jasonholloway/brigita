@@ -62,17 +62,16 @@ namespace Brigita.Web
 //            TaskManager.Instance.Initialize(); //VERY SLOW! IS IT NEEDED FOR NOW???????
 //            TaskManager.Instance.Start();
 
-            if(EngineContext.Current.Resolve<StoreInformationSettings>().DisplayMiniProfilerInPublicStore) {
+
+            var resolver = DependencyResolver.Current.GetService<IResolver>();
+
+            if(resolver.Resolve<StoreInformationSettings>().DisplayMiniProfilerInPublicStore) {
                 GlobalFilters.Filters.Add(new ProfilingActionFilter());
             }
 
-            try {
-                var logger = EngineContext.Current.Resolve<ILogger>();
-                logger.Information("Application started", null, null);
-            }
-            catch(Exception) {
-                //...
-            }
+
+            var logger = resolver.Resolve<ILogger>();
+            logger.Information("Application started", null, null);
         }
 
 

@@ -12,23 +12,27 @@ using Brigita.Queries.Products;
 using Brigita.Infrastructure.Pages;
 using Brigita.Queries.Bits;
 using Brigita.Queries.Products;
+using Brigita.Queries;
+using Brigita.Queries.Teasers;
 
 namespace Brigita.Web.Controllers
 {
-    public class ProductListController : Controller
+    public class TeasersController : Controller
     {
-        IProductTeasers _teasers;
+        IMediator _mediator;
 
-        public ProductListController(IProductTeasers teasers) {
-            _teasers = teasers;
+        public TeasersController(IMediator mediator) {
+            _mediator = mediator;
         }
 
         public ActionResult Category(int categoryID, int pageIndex = 0) 
         {
-            var model = _teasers.GetPage(
-                                    categoryID, 
-                                    new ListPageSpec<ProductTeaser>(pageIndex, 16)
-                                    );
+            var query = new TeaserPageQuery() { 
+                                CategoryID = categoryID,
+                                PageSpec = new ListPageSpec<TeaserModel>(pageIndex, 16)
+                                };
+
+            var model = _mediator.Enquire<TeaserPageQuery, TeaserPageModel>(query);
 
             return View(model);
         }

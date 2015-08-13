@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 using Brigita.Dom.Services.Media;
 using Brigita.Queries.Bits;
 
-namespace Brigita.Queries.Products
+namespace Brigita.Queries.Teasers
 {
-    public class ProductTeaser
+    public class TeaserModel
     {
         public string Name { get; set; }
         public decimal Price { get; set; }

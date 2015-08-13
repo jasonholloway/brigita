@@ -14,6 +14,7 @@ using Brigita.Queries;
 using Brigita.Queries.Products;
 using Brigita.Web.Infrastructure;
 using Brigita.Web.Services;
+using Brigita.Queries.Teasers;
 
 namespace Brigita.Web
 {
@@ -22,13 +23,13 @@ namespace Brigita.Web
         public static void Register(LinkRegistrar x) 
         {
             x.Register<IScopedCategory>(
-                c => new MvcLink("ProductList", "Category", new { CategoryID = c.ID }));
+                c => new MvcLink("Teasers", "Category", new { CategoryID = c.ID }));
             
             x.Register<ITinyProduct>(
                 p => new MvcLink("Product", "Details", new { ProductID = p.ID }));
 
-            x.Register<ProductTeaserPageSpec>(
-                s => new MvcLink("ProductList", "Category", new { CategoryID = s.CategoryID, PageIndex = s.PageIndex }));
+            x.Register<TeaserPageQuery>(
+                q => new MvcLink("Teasers", "Category", new { CategoryID = q.CategoryID, PageIndex = q.PageSpec.PageIndex }));
         
         
             //how to get categoryid? Obvs need more than just the bare, generic model.

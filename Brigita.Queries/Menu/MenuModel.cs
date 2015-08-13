@@ -6,8 +6,8 @@ using System.Web;
 
 namespace Brigita.Queries.Menu
 {
-    public class CategoryMenuModel
+    public class MenuModel
     {
-        public SimpleTree<CategoryMenuItem> MenuItemTree { get; set; }
+        public SimpleTree<MenuItemModel> MenuItemTree { get; set; }
     }
 }

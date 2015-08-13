@@ -55,6 +55,10 @@
     <Compile Include="Bits\ImageModel.cs" />
     <Compile Include="Bits\ItemModel.cs" />
     <Compile Include="Bits\ListPageModel.cs" />
+    <Compile Include="Menu\MenuHandler.cs" />
+    <Compile Include="Menu\MenuQuery.cs" />
+    <Compile Include="Products\ProductHandler.cs" />
+    <Compile Include="Products\ProductQuery.cs" />
     <Compile Include="Registrar.cs" />
     <Compile Include="Home\HomeHandler.cs" />
     <Compile Include="Home\HomeModel.cs" />
@@ -66,23 +70,16 @@
     <Compile Include="IMediator.cs" />
     <Compile Include="Link.cs" />
     <Compile Include="Mediator.cs" />
-    <Compile Include="Menu\CategoryMenuItem.cs" />
-    <Compile Include="Menu\CategoryMenuModel.cs" />
+    <Compile Include="Menu\MenuItemModel.cs" />
+    <Compile Include="Menu\MenuModel.cs" />
     <Compile Include="Bits\FaviconModel.cs" />
-    <Compile Include="Products\ProductDetails.cs" />
-    <Compile Include="Products\ProductTeasersModel.cs" />
-    <Compile Include="Products\ProductTeaser.cs" />
+    <Compile Include="Products\ProductModel.cs" />
+    <Compile Include="Teasers\TeaserPageModel.cs" />
+    <Compile Include="Teasers\TeaserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Home\HomeModelSource.cs" />
-    <Compile Include="Home\IHomeModelSource.cs" />
     <Compile Include="ILinkProvider.cs" />
-    <Compile Include="Menu\CatMenuModelSource.cs" />
-    <Compile Include="Menu\ICatMenuModelSource.cs" />
-    <Compile Include="Products\IProductDetailsSource.cs" />
-    <Compile Include="Products\IProductTeasers.cs" />
-    <Compile Include="Products\ProductDetailsSource.cs" />
-    <Compile Include="Products\ProductTeasers.cs" />
-    <Compile Include="Products\ProductTeasers2.cs" />
+    <Compile Include="Teasers\TeaserPageHandler.cs" />
+    <Compile Include="Teasers\TeaserPageQuery.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

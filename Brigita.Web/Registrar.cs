@@ -30,6 +30,7 @@ using Nop.Services.Stores;
 using Nop.Services.Vendors;
 using Nop.Web.Framework;
 using Nop.Web.Framework.UI;
+using System.Linq;
 using System.Runtime.Caching;
 using System.Web;
 using Brigita.Dom.Services.Pages;
@@ -43,6 +44,8 @@ using Brigita.Dom.Services.Media;
 using Brigita.Data;
 using Nop.Services.Media;
 using Brigita.Dom.Services.Context;
+using System.Web.Mvc;
+using Nop.Core.Domain.Media;
 
 namespace Brigita.Web
 {
@@ -80,14 +83,8 @@ namespace Brigita.Web
 
             x.Bind<IMediator, Mediator>();
 
-
             x.Bind<IPiccies, Piccies>();
             x.Bind<IPictureService, PictureService>();
-
-            x.Bind<IHomeModelSource, HomeModelSource>();
-            x.Bind<IProductTeasers, ProductTeasers>();
-            x.Bind<ICatMenuModelSource, CatMenuModelSource>();
-            x.Bind<IProductDetailsSource, ProductDetailsSource>();
 
             x.Bind<ILocaleContext, LocaleContext>();
             x.Bind<IWorkContext, BrigitaWorkContext>();
@@ -105,6 +102,7 @@ namespace Brigita.Web
             x.Bind(new CommonSettings());
             x.Bind(new CatalogSettings());
             x.Bind(new SeoSettings());
+            x.Bind(new MediaSettings());
             x.Bind<ISettingService, SettingService>();
 
             x.Bind<IUserAgentHelper, UserAgentHelper>();
@@ -154,6 +152,15 @@ namespace Brigita.Web
 
 
             //all entities taken from the db should be auto cached, 
+
+
+            var controllerTypes = scanner.ScanTypes(this.GetType().Assembly)
+                                            .Where(t => typeof(IController).IsAssignableFrom(t));
+
+            foreach(var type in controllerTypes) {
+                x.Bind(type, type);
+            }
+
 
 
         }
