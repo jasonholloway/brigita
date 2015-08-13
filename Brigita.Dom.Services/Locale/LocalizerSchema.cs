@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Brigita.Dom.Locale;
 
-namespace Brigita.Dom.Services.Context
+namespace Brigita.Dom.Services.Locale
 {
     public class LocalizerSchema<TSubject>
     {
@@ -43,7 +43,7 @@ namespace Brigita.Dom.Services.Context
 
             return att != null
                     ? GetEntityName(att.AliasType)
-                    : typeof(TSubject).Name;
+                    : entType.Name;
         }
 
 

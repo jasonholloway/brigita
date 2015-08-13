@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Brigita.Data;
-using Brigita.Dom.Services.Context;
+using Brigita.Dom.Services.Locale;
 using Brigita.Infrastructure.Trees;
 using Nop.Core;
 using Nop.Core.Domain.Catalog;

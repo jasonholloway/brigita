@@ -11,7 +11,7 @@ using Nop.Core.Domain.Tax;
 using Nop.Core.Domain.Vendors;
 using Nop.Services.Localization;
 
-namespace Brigita.Dom.Services.Context
+namespace Brigita.Dom.Services.Locale
 {
     public class BrigitaWorkContext : IWorkContext
     {

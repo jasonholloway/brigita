@@ -72,15 +72,15 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <Compile Include="Categories\ScopedCategories.cs" />
-    <Compile Include="Context\BrigitaWorkContext.cs" />
-    <Compile Include="Context\ILocaleCodeProvider.cs" />
-    <Compile Include="Context\ILocaleContext.cs" />
-    <Compile Include="Context\ILocalizer.cs" />
-    <Compile Include="Context\ILocalizerSchemaSource.cs" />
-    <Compile Include="Context\LocaleContext.cs" />
-    <Compile Include="Context\Localizer.cs" />
-    <Compile Include="Context\LocalizerSchema.cs" />
-    <Compile Include="Context\LocalizerSchemaSource.cs" />
+    <Compile Include="Locale\BrigitaWorkContext.cs" />
+    <Compile Include="Locale\ILocaleCodeProvider.cs" />
+    <Compile Include="Locale\ILocaleContext.cs" />
+    <Compile Include="Locale\ILocalizer.cs" />
+    <Compile Include="Locale\ILocalizerSchemaSource.cs" />
+    <Compile Include="Locale\LocaleContext.cs" />
+    <Compile Include="Locale\Localizer.cs" />
+    <Compile Include="Locale\LocalizerSchema.cs" />
+    <Compile Include="Locale\LocalizerSchemaSource.cs" />
     <Compile Include="Media\IPiccies.cs" />
     <Compile Include="Media\Piccy.cs" />
     <Compile Include="Media\Piccies.cs" />

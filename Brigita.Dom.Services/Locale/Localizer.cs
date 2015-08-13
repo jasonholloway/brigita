@@ -9,7 +9,7 @@ using Brigita.Data;
 using Nop.Core;
 using Nop.Core.Domain.Localization;
 
-namespace Brigita.Dom.Services.Context
+namespace Brigita.Dom.Services.Locale
 {
     public class Localizer<TSubject> : ILocalizer<TSubject>
         where TSubject : IEntity

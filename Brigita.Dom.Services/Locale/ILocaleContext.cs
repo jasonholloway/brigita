@@ -5,10 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using Nop.Core.Domain.Localization;
 
-namespace Brigita.Dom.Services.Context
+namespace Brigita.Dom.Services.Locale
 {
-    public interface ILocaleCodeProvider
+    public interface ILocaleContext
     {
-        string LocaleCode { get; }
+        Language CurrentLanguage { get; }
     }
 }

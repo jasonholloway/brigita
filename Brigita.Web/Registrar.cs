@@ -43,7 +43,7 @@ using Brigita.Queries.Menu;
 using Brigita.Dom.Services.Media;
 using Brigita.Data;
 using Nop.Services.Media;
-using Brigita.Dom.Services.Context;
+using Brigita.Dom.Services.Locale;
 using System.Web.Mvc;
 using Nop.Core.Domain.Media;
 

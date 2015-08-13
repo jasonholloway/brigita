@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using Brigita.Dom.Services.Context;
+using Brigita.Dom.Services.Locale;
 using Nop.Core.Domain.Localization;
 
 namespace Brigita.Web.Services

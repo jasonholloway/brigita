@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Brigita.Data;
 using Nop.Core.Domain.Localization;
 
-namespace Brigita.Dom.Services.Context
+namespace Brigita.Dom.Services.Locale
 {
     public class LocaleContext : ILocaleContext
     {

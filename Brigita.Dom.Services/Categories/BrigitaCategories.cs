@@ -5,7 +5,7 @@ using Nop.Core.Domain.Catalog;
 using System;
 using System.Linq;
 using Brigita.Data;
-using Brigita.Dom.Services.Context;
+using Brigita.Dom.Services.Locale;
 
 namespace Brigita.Dom.Services.Categories
 {
