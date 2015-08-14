@@ -27,7 +27,12 @@ namespace Brigita.Queries.Products
         }
 
         static ProductHandler() {
-            Mapper.CreateMap<Product, ProductModel>();
+            
+//          I was imagining more of an apocalyptic heart-of-darkness kind-of-thing, where, having
+//          been expelled from his language school, he would flee to the wilderness, contract malaria,
+//          through force of deranged personality assume his own jungle fiefdom, grow fat, and more deranged,
+//          and eventually die in an explosion. But yes, there are many dangers that could befall a young man abroad,
+//          and he should be careful.
         }
         
 

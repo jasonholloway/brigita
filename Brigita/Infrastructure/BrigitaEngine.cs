@@ -19,7 +19,7 @@ namespace Brigita.Infrastructure
     {
         NopConfig _config;
         ITypeFinder _typeFinder;
-        IScanner _scanner;
+        IScanner _scanner = new Scanner();
 
 
         public ContainerManager ContainerManager { get; private set; }
@@ -52,10 +52,7 @@ namespace Brigita.Infrastructure
             x.RegisterInstance(_typeFinder)
                 .As<ITypeFinder>().SingleInstance();
                         
-            var scanner = new Scanner();
-            //x.RegisterInstance(scanner)
-            //    .As<IScanner>().SingleInstance();
-            
+
             var binder = new BinderAdaptor(x);
             //x.RegisterInstance(binder)
             //    .As<IBinder>().SingleInstance();
@@ -64,13 +61,13 @@ namespace Brigita.Infrastructure
             x.Register(c => new ResolverAdaptor(c.Resolve<IComponentContext>()))
                 .As<IResolver>();
 
-            var registrarTypes = scanner.ScanTypes(assemblies)
+            var registrarTypes = _scanner.ScanTypes(assemblies)
                                     .Where(t => !t.IsAbstract 
                                                 && t.IsAssignableTo<IRegistrar>());
 
             foreach(var registrarType in registrarTypes) {
                 var registrar = (IRegistrar)Activator.CreateInstance(registrarType);
-                registrar.Register(binder, scanner);
+                registrar.Register(binder, _scanner);
             }
 
 
@@ -86,6 +83,12 @@ namespace Brigita.Infrastructure
                                     new AutofacDependencyResolver(ContainerManager.Container)
                                     );
         }
+
+
+
+
+
+
 
 
 
@@ -211,13 +214,19 @@ namespace Brigita.Infrastructure
 
 
 
+        public void RunStartUpTasks(IEnumerable<Assembly> assemblies) 
+        {
+            var taskTypes = _scanner.ScanTypes(assemblies)
+                                        .Where(t => !t.IsAbstract
+                                                    && typeof(IStartupTask).IsAssignableFrom(t));
 
-        public void RunStartUpTasks() {
-            //Gather start-up tasks
-            //...
+            var tasks = taskTypes
+                            .Select(type => (IStartupTask)Activator.CreateInstance(type))
+                            .OrderBy(task => task.Order);
 
-            //run 'em
-            //...
+            foreach(var task in tasks) {
+                task.Execute();
+            }
         }
 
 

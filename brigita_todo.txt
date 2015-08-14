@@ -1,21 +1,19 @@
 TO DO:
-
-> Localization service to be better encapsulated
-> Localize served teasers
-> ILocalizable interface to replace IEntity
-> Vertically slice folders
 > Price to be displayed, in correct currency taken from locale
 > 404 to be served
 > Shopping cart
 	- investigate how NOP does it.
 		obviously a cookie is used, perhaps even before the user logs in (this would be the best way)
 
+> Vertically slice folders
 > Nice routes via dictionary of titles
 > Localized route shortcuts (ie produkti)
 > Only published products to be displayed
+> ILocalizable interface to replace IEntity
 
 
 DONE:
+> Localization service to be better encapsulated DONE
 > Translate to query bus DONE
 > Generate URLs with locale DONE
 > Get page links working nicely DONE
@@ -26,6 +24,14 @@ DONE:
 > Menu links stack up incorrectly DONE
 > ActiveParent wrongly appearing on active menu item DONE
 > Images to be sourced and templated DONE
+
+
+
+
+
+Question of whether to populate teasers directly from handlers (yes!) or delegate to dom layer.
+
+Almost certainly prefer direct population: less complexity, yes?
 
 
 

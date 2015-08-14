@@ -29,18 +29,20 @@ namespace Brigita.Web
 {
     public class MvcApplication : HttpApplication
     {
-        protected void Application_Start() {
+        protected void Application_Start() 
+        {
             var engine = new BrigitaEngine();
-
-            engine.BuildContainer(
-                        typeof(MvcApplication).Assembly,
-                        typeof(IQuery).Assembly
-                        );
-            
-            engine.RunStartUpTasks();
 
             EngineContext.Replace(engine); //Is this really needed??
             
+            var assembliesToScan = new[] { 
+                                        typeof(MvcApplication).Assembly,
+                                        typeof(IQuery).Assembly
+                                    };
+
+            engine.BuildContainer(assembliesToScan);
+            engine.RunStartUpTasks(assembliesToScan);
+
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new BrigitaViewEngine());
 

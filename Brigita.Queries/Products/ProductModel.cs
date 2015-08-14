@@ -7,6 +7,7 @@ using AutoMapper;
 using Brigita.Dom;
 using Brigita.Dom.Locale;
 using Brigita.Dom.Services.Media;
+using Brigita.Queries.Bits;
 using Nop.Core.Domain.Catalog;
 
 namespace Brigita.Queries.Products
@@ -20,10 +21,11 @@ namespace Brigita.Queries.Products
         public string FullDescription { get; set; }
         public string Sku { get; set; }
         public int TaxCategoryId { get; set; }
-        public decimal Price { get; set; }
-        public decimal OldPrice { get; set; }
-        public decimal? SpecialPrice { get; set; }
-        public decimal AdditionalShippingCharge { get; set; }
         public Piccy Picture { get; set; }
+
+        public PriceModel Price { get; set; }
+        public PriceModel OldPrice { get; set; }
+        public PriceModel SpecialPrice { get; set; }
+        public PriceModel AdditionalShippingCharge { get; set; }
     }
 }

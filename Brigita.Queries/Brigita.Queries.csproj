@@ -52,9 +52,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutoMapperInit.cs" />
     <Compile Include="Bits\ImageModel.cs" />
     <Compile Include="Bits\ItemModel.cs" />
     <Compile Include="Bits\ListPageModel.cs" />
+    <Compile Include="Bits\PriceModel.cs" />
+    <Compile Include="Infrastructure\IModelMapper.cs" />
     <Compile Include="Menu\MenuHandler.cs" />
     <Compile Include="Menu\MenuQuery.cs" />
     <Compile Include="Products\ProductHandler.cs" />
@@ -111,9 +114,7 @@
       <Name>Nop.Web.Framework</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

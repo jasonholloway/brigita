@@ -3,6 +3,7 @@
 <div class="teaser">    
     <a href="@Url.MvcLink(Model.Link)">
         <h3>@Model.Name</h3>
+        <span>@Model.Price</span>
         @if(Model.Image != null) {
             <img src="@Url.Content(Model.Image.Url)" />
         }

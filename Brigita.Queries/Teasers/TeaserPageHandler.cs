@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AutoMapper;
 using Brigita.Dom.Products;
 using Brigita.Dom.Services.Categories;
 using Brigita.Dom.Services.Media;
 using Brigita.Dom.Services.Products;
 using Brigita.Infrastructure.Pages;
 using Brigita.Queries.Bits;
+using Nop.Core.Domain.Catalog;
 
 namespace Brigita.Queries.Teasers
 {
@@ -26,6 +28,13 @@ namespace Brigita.Queries.Teasers
             _piccies = piccies;
             _links = links;
         }
+
+
+
+        static TeaserPageHandler() {
+            
+        }
+
 
         public TeaserPageModel Enquire(TeaserPageQuery query) 
         {
@@ -49,7 +58,7 @@ namespace Brigita.Queries.Teasers
             var projectedPage = productListPage
                                     .Project(p => new TeaserModel() {
                                                         Name = p.Name,
-                                                        Price = p.Price,
+                                                        Price = null, //p.Price,
                                                         Link = _links.GetLinkFor(p),
                                                         Image = p.PictureID != null 
                                                                     ? _piccies.GetByID((int)p.PictureID) 

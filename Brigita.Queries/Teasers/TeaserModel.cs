@@ -11,7 +11,7 @@ namespace Brigita.Queries.Teasers
     public class TeaserModel
     {
         public string Name { get; set; }
-        public decimal Price { get; set; }
+        public PriceModel Price { get; set; }
         public Piccy Image { get; set; }
         public Link Link { get; set; }
     }
