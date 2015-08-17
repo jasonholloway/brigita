@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
+using Brigita.Data;
+using Brigita.Dom.Bits;
 using Brigita.Dom.Products;
 using Brigita.Dom.Services.Categories;
 using Brigita.Dom.Services.Media;
@@ -14,7 +16,37 @@ using Nop.Core.Domain.Catalog;
 
 namespace Brigita.Queries.Teasers
 {
-    public class TeaserPageHandler 
+
+    public class TeaserPageHandler
+        : IQueryHandler<TeaserPageQuery, TeaserPageQuery>
+    {
+        IRepo<Product> _repo;
+
+        public TeaserPageHandler(IRepo<Product> repo) {
+            _repo = repo;
+        }
+        
+        public TeaserPageQuery Enquire(TeaserPageQuery query) {            
+            //Dom shouldn't serve pages, as these are only to be used in queries anyway
+            //Dom should be per-entity as much as possible so as to simplify it.
+
+            //get familial cats
+            //...
+
+            //get page via helper - goddagnabbit - helpers can work, i suppose.
+            //though the usual idea is to get the domain as nice as possible
+            //but i am legislating a shallow domain here, the Dom is being weeded out.
+            //BUT we still have the domain supplied by the Repo<> class - this can 
+            //provide our nice functionality. Or rather, yer Repo IQueryable + provided
+            //extension methods
+            //...
+
+            throw new NotImplementedException();
+        }
+    }
+
+
+    public class TeaserPageHandlerOld
         : IQueryHandler<TeaserPageQuery, TeaserPageModel>
     {
         IProducts _prods;
@@ -22,19 +54,13 @@ namespace Brigita.Queries.Teasers
         IPiccies _piccies;
         ILinkProvider _links; 
 
-        public TeaserPageHandler(IProducts products, ICategories cats, IPiccies piccies, ILinkProvider links) {
+        public TeaserPageHandlerOld(IProducts products, ICategories cats, IPiccies piccies, ILinkProvider links) {
             _prods = products;
             _cats = cats;
             _piccies = piccies;
             _links = links;
         }
-
-
-
-        static TeaserPageHandler() {
-            
-        }
-
+                
 
         public TeaserPageModel Enquire(TeaserPageQuery query) 
         {
@@ -58,7 +84,7 @@ namespace Brigita.Queries.Teasers
             var projectedPage = productListPage
                                     .Project(p => new TeaserModel() {
                                                         Name = p.Name,
-                                                        Price = null, //p.Price,
+                                                        Price = null, 
                                                         Link = _links.GetLinkFor(p),
                                                         Image = p.PictureID != null 
                                                                     ? _piccies.GetByID((int)p.PictureID) 

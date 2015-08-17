@@ -9,7 +9,6 @@ using System.Web.Routing;
 using Brigita.Dom.Categories;
 using Brigita.Dom.Products;
 using Brigita.Queries;
-using Brigita.Queries;
 
 namespace Brigita.Web.Services
 {

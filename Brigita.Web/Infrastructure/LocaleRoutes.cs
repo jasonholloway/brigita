@@ -8,6 +8,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using System.Reflection;
+using System.Threading;
+using System.Globalization;
 
 namespace Brigita.Web.Infrastructure
 {
@@ -19,17 +21,30 @@ namespace Brigita.Web.Infrastructure
             _innerHandler = innerHandler;
         }
 
-        public IHttpHandler GetHttpHandler(RequestContext requestContext) {
-            object localeObj = null;
+        public IHttpHandler GetHttpHandler(RequestContext requestContext) 
+        {
+            string localeCode = "";
 
-            if(requestContext.RouteData.Values.TryGetValue("locale", out localeObj)) 
+            object obj = null;
+
+            if(requestContext.RouteData.Values.TryGetValue("locale", out obj)) 
             {                    
-                requestContext.HttpContext.Items["locale"] = ((string)localeObj).ToLower();
+                //requestContext.HttpContext.Items["locale"] = ((string)localeObj).ToLower();
                 requestContext.RouteData.Values.Remove("locale");
+                localeCode = ((string)obj).ToLower();
+            }
+            else {
+                localeCode = requestContext.HttpContext.Request
+                                                        .UserLanguages
+                                                        .FirstOrDefault();
             }
 
-            //should somehow set thread culture?
-            //does this actually matter?
+            try {
+                Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo(localeCode);
+            }
+            catch(CultureNotFoundException) { }
+
+            Thread.CurrentThread.CurrentUICulture = Thread.CurrentThread.CurrentCulture;
 
             return _innerHandler.GetHttpHandler(requestContext);
         }
@@ -96,6 +111,7 @@ namespace Brigita.Web.Infrastructure
             return _routeWithoutLocale.GetVirtualPath(requestContext, values);
         }
     }
+
 
 
     public static class LocaleRouteExtensions

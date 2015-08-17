@@ -78,6 +78,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrigitaApplication.cs" />
+    <Compile Include="Infrastructure\Accessors\Accessor.cs" />
+    <Compile Include="Infrastructure\Accessors\Accessors.cs" />
+    <Compile Include="Infrastructure\Accessors\AccessorSource.cs" />
+    <Compile Include="Infrastructure\Accessors\IAccessor.cs" />
     <Compile Include="Infrastructure\BrigitaEngine.cs" />
     <Compile Include="Infrastructure\IRegistrar.cs" />
     <Compile Include="Infrastructure\IBinder.cs" />

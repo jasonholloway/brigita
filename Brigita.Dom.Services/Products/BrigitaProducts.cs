@@ -14,7 +14,7 @@ using AutoMapper;
 using Nop.Services.Catalog;
 using Brigita.Data;
 using Nop.Core;
-using Brigita.Dom.Services.Locale;
+using Brigita.Dom.Services.Localization;
 
 namespace Brigita.Dom.Services.Products
 {

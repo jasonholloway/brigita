@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Brigita.Dom.Services.Locale
+namespace Brigita.Dom.Services.Localization
 {
     public interface ILocalizer<TEntity>
         where TEntity : IEntity

@@ -61,6 +61,10 @@ namespace Brigita.Web
                 );
 
 
+            
+
+
+
 //            TaskManager.Instance.Initialize(); //VERY SLOW! IS IT NEEDED FOR NOW???????
 //            TaskManager.Instance.Start();
 

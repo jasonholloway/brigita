@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using Brigita.Dom.Services.Locale;
+using Brigita.Dom.Services.Localization;
 using Nop.Core.Domain.Localization;
 
 namespace Brigita.Web.Services
 {
+    [Obsolete]
     public class LocaleCodeProvider : ILocaleCodeProvider
     {
         Lazy<string> _lzLocaleCode;

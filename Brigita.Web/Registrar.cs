@@ -43,7 +43,7 @@ using Brigita.Queries.Menu;
 using Brigita.Dom.Services.Media;
 using Brigita.Data;
 using Nop.Services.Media;
-using Brigita.Dom.Services.Locale;
+using Brigita.Dom.Services.Localization;
 using System.Web.Mvc;
 using Nop.Core.Domain.Media;
 
@@ -87,9 +87,10 @@ namespace Brigita.Web
 
             x.Bind<ILocaleContext, LocaleContext>();
             x.Bind<ILocaleCodeProvider, LocaleCodeProvider>();
-
-            x.BindSingleton<ILocalizerSchemaSource, LocalizerSchemaSource>();
+            
             x.BindGeneric(typeof(ILocalizer<>), typeof(Localizer<>));
+            x.BindGeneric(typeof(IStringLocalizer<>), typeof(StringLocalizer<>));
+            x.BindGeneric(typeof(ICurrencyLocalizer<>), typeof(CurrencyLocalizer<>));
 
 
             x.Bind<IWorkContext, BrigitaWorkContext>();

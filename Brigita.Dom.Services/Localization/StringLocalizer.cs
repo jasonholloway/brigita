@@ -6,28 +6,49 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Brigita.Data;
+using Brigita.Dom.Locale;
+using Brigita.Infrastructure.Accessors;
 using Nop.Core;
 using Nop.Core.Domain.Localization;
 
-namespace Brigita.Dom.Services.Locale
+namespace Brigita.Dom.Services.Localization
 {
-    public class Localizer<TSubject> : ILocalizer<TSubject>
+    public class StringLocalizer<TSubject> 
+        : IStringLocalizer<TSubject>
         where TSubject : IEntity
     {
+        static string _entityName;
+
+        static StringLocalizer() {
+            _entityName = GetEntityName(typeof(TSubject));
+        }
+
+        static string GetEntityName(Type entType) {
+            var att = entType
+                        .GetCustomAttributes(typeof(LocalizeAsAttribute), false)
+                        .Cast<LocalizeAsAttribute>()
+                        .FirstOrDefault();
+
+            return att != null
+                    ? GetEntityName(att.AliasType)
+                    : entType.Name;
+        }
+
+        /*******************************************************************************/
+        
+
         ILocaleContext _locale;
         IRepo<LocalizedProperty> _repo;
-        LocalizerSchema<TSubject> _schema;
 
-        public Localizer(
-                    ILocalizerSchemaSource schemas,
+
+        public StringLocalizer(
                     ILocaleContext locale,
                     IRepo<LocalizedProperty> repo)
         {
             _locale = locale;
             _repo = repo;
-            _schema = schemas.GetSchema<TSubject>();
         }
-        
+                
 
         public void Localize(TSubject entity) 
         {
@@ -37,13 +58,12 @@ namespace Brigita.Dom.Services.Locale
 
         public void Localize(IEnumerable<TSubject> entities) 
         {
-            string entityName = _schema.EntityName;
-            int languageID = _locale.CurrentLanguage.ID;
+            int languageID = _locale.Language.ID;
 
             var ids = entities.Select(e => e.ID)
                                 .ToArray();
 
-            var propVals = _repo.Where(v => v.LocaleKeyGroup == entityName
+            var propVals = _repo.Where(v => v.LocaleKeyGroup == _entityName
                                                 && v.LanguageId == languageID
                                                 && ids.Contains(v.EntityId));
             
@@ -57,8 +77,8 @@ namespace Brigita.Dom.Services.Locale
                 var vals = propValsByID[ent.ID];
 
                 foreach(var val in vals) {
-                    var fnSetter = _schema.GetSetter(val.LocaleKey);
-                    fnSetter(ent, val.LocaleValue);
+                    var accessor = Accessors.Get<TSubject, string>(val.LocaleKey);
+                    accessor.SetValue(ent, val.LocaleValue);
                 }
             }
         }

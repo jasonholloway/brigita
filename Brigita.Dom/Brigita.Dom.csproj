@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bits\CurrencyValue.cs" />
     <Compile Include="Categories\ICategory.cs" />
     <Compile Include="Categories\IScopedCategory.cs" />
     <Compile Include="Categories\IScopedTinyCategory.cs" />
