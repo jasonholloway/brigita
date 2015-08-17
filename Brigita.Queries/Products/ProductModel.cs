@@ -22,11 +22,26 @@ namespace Brigita.Queries.Products
         public string FullDescription { get; set; }
         public string Sku { get; set; }
         public int TaxCategoryId { get; set; }
-        public Piccy Picture { get; set; }
+        public Pic Picture { get; set; }
 
         public CurrencyValue Price { get; set; }
         public CurrencyValue OldPrice { get; set; }
         public CurrencyValue SpecialPrice { get; set; }
         public CurrencyValue AdditionalShippingCharge { get; set; }
+
+
+        public class MapConfig : StartupTask
+        {
+            public override void Run() {
+                Mapper.CreateMap<Product, ProductModel>()
+                        .ForMember(m => m.Picture, x => x.MapFrom(p => p.ProductPictures.Any()
+                                                                        ? new Pic() { Id = p.ProductPictures.Select(pp => pp.PictureId).FirstOrDefault() }
+                                                                        : null));
+            }
+        }
+
     }
 }
+        
+
+

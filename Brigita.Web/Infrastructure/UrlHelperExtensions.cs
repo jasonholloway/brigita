@@ -3,6 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Routing;
@@ -21,12 +22,10 @@ namespace Brigita.Web.Infrastructure
         {
             var dVals = new RouteValueDictionary(link.RouteValues);
 
-            var httpCtx = @this.RequestContext.HttpContext;
-
-            if(httpCtx.Items.Contains("locale")) {                
-                var locale = (string)httpCtx.Items["locale"];
-                dVals.Add("locale", locale.ToLower());
-            }
+            dVals.Add(
+                    "locale", 
+                    Thread.CurrentThread.CurrentCulture.TwoLetterISOLanguageName.ToLower()
+                    );
 
             return @this.Action(link.ActionName, link.ControllerName, dVals);
         }

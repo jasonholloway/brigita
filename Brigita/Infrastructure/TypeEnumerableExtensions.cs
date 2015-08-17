@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Brigita.Infrastructure
 {
-    public static class TypeEnumereableExtensions
+    public static class TypeEnumerableExtensions
     {
         public static IEnumerable<Type> GetConcreteImpls(this IEnumerable<Type> @this, Type intType) 
         {

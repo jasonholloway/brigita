@@ -4,8 +4,8 @@
     <a href="@Url.MvcLink(Model.Link)">
         <h3>@Model.Name</h3>
         <span class="teaserPrice">@Html.Currency(Model.Price)</span>
-        @if(Model.Image != null) {
-            <img src="@Url.Content(Model.Image.Url)" />
+        @if(Model.Picture != null && !string.IsNullOrWhiteSpace(Model.Picture.Url)) {
+            <img src="@Url.Content(Model.Picture.Url)" />
         }
     </a>
 </div>

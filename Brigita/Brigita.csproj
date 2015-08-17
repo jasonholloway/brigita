@@ -83,18 +83,21 @@
     <Compile Include="Infrastructure\Accessors\AccessorSource.cs" />
     <Compile Include="Infrastructure\Accessors\IAccessor.cs" />
     <Compile Include="Infrastructure\BrigitaEngine.cs" />
+    <Compile Include="Infrastructure\Finalization\IFinalizable.cs" />
     <Compile Include="Infrastructure\IRegistrar.cs" />
     <Compile Include="Infrastructure\IBinder.cs" />
     <Compile Include="Infrastructure\IResolver.cs" />
     <Compile Include="Infrastructure\IScanner.cs" />
     <Compile Include="Infrastructure\Pages\ListPage.cs" />
     <Compile Include="Infrastructure\Pages\ListPageExtensions.cs" />
+    <Compile Include="Infrastructure\Pages\QueryableExtensions.cs" />
     <Compile Include="Infrastructure\Scanner.cs" />
     <Compile Include="Infrastructure\Trees\SimpleTree.cs" />
     <Compile Include="Infrastructure\Trees\SimpleTreeExtensions.cs" />
     <Compile Include="Infrastructure\Trees\SimpleTreeNode.cs" />
-    <Compile Include="Infrastructure\TypeEnumereableExtensions.cs" />
+    <Compile Include="Infrastructure\TypeEnumerableExtensions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StartUpTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Brigita.Dom\Brigita.Dom.csproj">

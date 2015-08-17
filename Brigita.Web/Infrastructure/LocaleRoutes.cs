@@ -79,7 +79,7 @@ namespace Brigita.Web.Infrastructure
                                         defaults,
                                         constraints,
                                         tokens,
-                                        routeHandler);
+                                        new LocaleRouteHandler(routeHandler));
 
             if(namespaces != null && namespaces.Any()) {
                 _routeWithLocale.DataTokens["Namespaces"] = namespaces;
@@ -111,6 +111,8 @@ namespace Brigita.Web.Infrastructure
             return _routeWithoutLocale.GetVirtualPath(requestContext, values);
         }
     }
+
+
 
 
 

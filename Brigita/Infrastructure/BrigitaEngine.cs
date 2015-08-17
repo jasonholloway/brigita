@@ -225,7 +225,7 @@ namespace Brigita.Infrastructure
                             .OrderBy(task => task.Order);
 
             foreach(var task in tasks) {
-                task.Execute();
+                task.Run();
             }
         }
 

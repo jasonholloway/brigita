@@ -12,14 +12,16 @@ using System.Reflection;
 using System.Linq.Expressions;
 using AutoMapper.Mappers;
 using Brigita.Dom.Bits;
+using Brigita.Queries.Teasers;
+using Brigita.Dom.Services.Media;
 
 
 namespace Brigita.Queries
 {
     
-    public class AutoMapperInit : IStartupTask
+    public class AutoMapperInit : StartupTask
     {
-        public void Execute() 
+        public override void Run() 
         {
             Mapper.CreateMap<decimal, CurrencyValue>()
                 .ProjectUsing(d => new CurrencyValue() { Amount = d, Rate = 1M });
@@ -29,13 +31,7 @@ namespace Brigita.Queries
                                     ? new CurrencyValue() { Amount = (decimal)d, Rate = 1M } 
                                     : null);
 
-            
-            Mapper.CreateMap<Product, ProductModel>();
-            
-        }
 
-        public int Order {
-            get { return 0; }
         }
     }
 }

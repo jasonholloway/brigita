@@ -1,7 +1,9 @@
 TO DO:
-> Rework teaser page handler - direct repo access
-> Price to be displayed
-	- via some helper method probably
+	
+> Finalization stage - model to be crawled, and finalizers to be applied
+	- including localization - StringLocalizer and CurrencyLocalizer no longer to be under parasol of Localizer
+	- would neaten handlers a fair whack
+
 > Shopping cart
 	- investigate how NOP does it.
 		obviously a cookie is used, perhaps even before the user logs in (this would be the best way)
@@ -14,8 +16,11 @@ TO DO:
 > Only published products to be displayed
 > ILocalizable interface to replace IEntity
 
-
 DONE:
+> Pics to be projected across too (in general? - don't think this is possible) DONE
+> Many IStartUpTasks (using new abstract base class); each model to have such class nested, declaring relevant mapping rules DONE
+> Rework teaser page handler - direct repo access DONE
+> Price to be displayed DONE
 > Set ambient thread culture DONE
 > Html.CurrencyValue needs finishing DONE
 > Currency localization DONE

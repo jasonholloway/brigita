@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Brigita.Infrastructure.Finalization;
 
-namespace Brigita.Queries
+namespace Brigita.Infrastructure.Finalization
 {
-    public abstract class Link
+    public interface IFinalizable
     {
-        //...
-
+        bool IsFinal { get; }
     }
 }

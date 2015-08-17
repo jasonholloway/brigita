@@ -82,7 +82,7 @@ namespace Brigita.Web
 
             x.Bind<IMediator, Mediator>();
 
-            x.Bind<IPiccies, Piccies>();
+            x.Bind<IPicSource, PicSource>();
             x.Bind<IPictureService, PictureService>();
 
             x.Bind<ILocaleContext, LocaleContext>();

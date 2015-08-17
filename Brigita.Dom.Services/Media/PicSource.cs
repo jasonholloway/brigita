@@ -10,21 +10,21 @@ using Nop.Services.Media;
 
 namespace Brigita.Dom.Services.Media
 {
-    public class Piccies : IPiccies 
+    public class PicSource : IPicSource 
     {
         IPictureService _pics;
         IRepo<Picture> _picRepo;
 
-        public Piccies(IPictureService pics, IRepo<Picture> picRepo) {
+        public PicSource(IPictureService pics, IRepo<Picture> picRepo) {
             _pics = pics;
             _picRepo = picRepo;
         }
 
         //To be cached here!
-        public Piccy GetByID(int pictureID) 
+        public Pic GetByID(int pictureID) 
         {
             var piccy = _picRepo
-                            .Select(p => new Piccy() {
+                            .Select(p => new Pic() {
                                 Id = p.ID,
                                 AltText = p.TitleAttribute,
                                 Url = null

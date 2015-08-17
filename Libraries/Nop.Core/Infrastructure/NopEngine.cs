@@ -35,7 +35,7 @@ namespace Nop.Core.Infrastructure
             //sort
             startUpTasks = startUpTasks.AsQueryable().OrderBy(st => st.Order).ToList();
             foreach (var startUpTask in startUpTasks)
-                startUpTask.Execute();
+                startUpTask.Run();
         }
 
         /// <summary>

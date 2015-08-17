@@ -82,9 +82,9 @@
     <Compile Include="Localization\LocaleContext.cs" />
     <Compile Include="Localization\Localizer.cs" />
     <Compile Include="Localization\StringLocalizer.cs" />
-    <Compile Include="Media\IPiccies.cs" />
-    <Compile Include="Media\Piccy.cs" />
-    <Compile Include="Media\Piccies.cs" />
+    <Compile Include="Media\IPicSource.cs" />
+    <Compile Include="Media\Pic.cs" />
+    <Compile Include="Media\PicSource.cs" />
     <Compile Include="Pages\ILinkHelper.cs" />
     <Compile Include="Pages\IPageHelper.cs" />
     <Compile Include="Pages\LinkHelper.cs" />

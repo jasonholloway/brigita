@@ -6,7 +6,7 @@ namespace Nop.Data
 {
     public class EfStartUpTask : IStartupTask
     {
-        public void Execute()
+        public void Run()
         {
             var settings = EngineContext.Current.Resolve<DataSettings>();
             if (settings != null && settings.IsValid())

@@ -55,7 +55,7 @@ namespace Nop.Admin.Infrastructure
 {
     public class AutoMapperStartupTask : IStartupTask
     {
-        public void Execute()
+        public void Run()
         {
             //TODO remove 'CreatedOnUtc' ignore mappings because now presentation layer models have 'CreatedOn' property and core entities have 'CreatedOnUtc' property (distinct names)
             

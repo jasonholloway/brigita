@@ -8,7 +8,7 @@
         /// <summary>
         /// Execute task
         /// </summary>
-        void Execute();
+        void Run();
 
         /// <summary>
         /// Order

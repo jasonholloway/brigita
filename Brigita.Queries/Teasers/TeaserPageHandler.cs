@@ -13,96 +13,133 @@ using Brigita.Dom.Services.Products;
 using Brigita.Infrastructure.Pages;
 using Brigita.Queries.Bits;
 using Nop.Core.Domain.Catalog;
+using AutoMapper.QueryableExtensions;
+using Brigita.Dom.Services.Localization;
 
 namespace Brigita.Queries.Teasers
 {
-
     public class TeaserPageHandler
-        : IQueryHandler<TeaserPageQuery, TeaserPageQuery>
-    {
-        IRepo<Product> _repo;
-
-        public TeaserPageHandler(IRepo<Product> repo) {
-            _repo = repo;
-        }
-        
-        public TeaserPageQuery Enquire(TeaserPageQuery query) {            
-            //Dom shouldn't serve pages, as these are only to be used in queries anyway
-            //Dom should be per-entity as much as possible so as to simplify it.
-
-            //get familial cats
-            //...
-
-            //get page via helper - goddagnabbit - helpers can work, i suppose.
-            //though the usual idea is to get the domain as nice as possible
-            //but i am legislating a shallow domain here, the Dom is being weeded out.
-            //BUT we still have the domain supplied by the Repo<> class - this can 
-            //provide our nice functionality. Or rather, yer Repo IQueryable + provided
-            //extension methods
-            //...
-
-            throw new NotImplementedException();
-        }
-    }
-
-
-    public class TeaserPageHandlerOld
         : IQueryHandler<TeaserPageQuery, TeaserPageModel>
     {
-        IProducts _prods;
+        IRepo<Product> _repo;
         ICategories _cats;
-        IPiccies _piccies;
-        ILinkProvider _links; 
+        ILinkProvider _links;
+        IPicSource _pics;
+        ILocalizer<TeaserModel> _localizer;
 
-        public TeaserPageHandlerOld(IProducts products, ICategories cats, IPiccies piccies, ILinkProvider links) {
-            _prods = products;
+        public TeaserPageHandler(
+                    IRepo<Product> repo, 
+                    ICategories cats, 
+                    ILinkProvider links, 
+                    IPicSource pics,
+                    ILocalizer<TeaserModel> localizer) 
+        {
+            _repo = repo;
             _cats = cats;
-            _piccies = piccies;
             _links = links;
+            _pics = pics;
+            _localizer = localizer;
         }
-                
-
+        
         public TeaserPageModel Enquire(TeaserPageQuery query) 
         {
-            var cat = _cats.FindCat(query.CategoryID);
+            var familyOfCats = _cats.FindCatFamily(query.CategoryID);
 
-            if(cat == null) {
-                throw new ArgumentException("Bad CategoryID!");
+            var primeCat = familyOfCats.First(c => c.ID == query.CategoryID);
+
+            var catFamilyIDs = familyOfCats.Select(c => c.ID).ToArray();
+
+            var teaserPage = _repo.Include(p => p.ProductPictures)
+                                    .Where(p => p.ProductCategories
+                                                    .Any(c => catFamilyIDs.Contains(c.CategoryId)))
+                                    .ProjectTo<TeaserModel>()
+                                    .GetPage(query.PageSpec.PageIndex, query.PageSpec.PageSize);
+
+
+            //finalisation of model should be done by finalisation service
+            foreach(var teaser in teaserPage.Items) {
+                teaser.Link = _links.GetLinkFor(teaser);
+
+                if(teaser.Picture != null) {
+                    teaser.Picture = _pics.GetByID(teaser.Picture.Id);
+                }
             }
 
-            var teaserPage = new TeaserPageModel() {                
-                CurrentCategoryID = query.CategoryID,
-                CurrentCategoryName = cat.Name
+            _localizer.Localize(teaserPage.Items);
+
+
+            return new TeaserPageModel() {
+                CurrentCategoryID = primeCat.ID,
+                CurrentCategoryName = primeCat.Name,
+                ListPage = new ListPageModel<TeaserModel>(
+                                    teaserPage,
+                                    i => _links.GetLinkFor(new TeaserPageQuery() { 
+                                                                    CategoryID = primeCat.ID,
+                                                                    PageSpec = new ListPageSpec<TeaserModel>(i, teaserPage.PageSize)
+                                                                    })
+                                    )
             };
-
-
-            var productListPage = _prods.GetTinyProductsByCategory(
-                                            query.CategoryID,
-                                            query.PageSpec.ProjectTo<ITinyProduct>()
-                                            );
-
-            var projectedPage = productListPage
-                                    .Project(p => new TeaserModel() {
-                                                        Name = p.Name,
-                                                        Price = null, 
-                                                        Link = _links.GetLinkFor(p),
-                                                        Image = p.PictureID != null 
-                                                                    ? _piccies.GetByID((int)p.PictureID) 
-                                                                    : null
-                                                    });
-
-            teaserPage.ListPage = new ListPageModel<TeaserModel>(
-                                                        projectedPage,
-                                                        i => _links.GetLinkFor(new TeaserPageQuery() {
-                                                                                    CategoryID = query.CategoryID,
-                                                                                    PageSpec = new ListPageSpec<TeaserModel>(i, query.PageSpec.PageSize)
-                                                                                    }));
-            
-            return teaserPage;
         }
-
-
-
-
     }
+
+
+    //public class TeaserPageHandlerOld
+    //    : IQueryHandler<TeaserPageQuery, TeaserPageModel>
+    //{
+    //    IProducts _prods;
+    //    ICategories _cats;
+    //    IPiccies _piccies;
+    //    ILinkProvider _links; 
+
+    //    public TeaserPageHandlerOld(IProducts products, ICategories cats, IPiccies piccies, ILinkProvider links) {
+    //        _prods = products;
+    //        _cats = cats;
+    //        _piccies = piccies;
+    //        _links = links;
+    //    }
+                
+
+    //    public TeaserPageModel Enquire(TeaserPageQuery query) 
+    //    {
+    //        var cat = _cats.FindCat(query.CategoryID);
+
+    //        if(cat == null) {
+    //            throw new ArgumentException("Bad CategoryID!");
+    //        }
+
+    //        var teaserPage = new TeaserPageModel() {                
+    //            CurrentCategoryID = query.CategoryID,
+    //            CurrentCategoryName = cat.Name
+    //        };
+
+
+    //        var productListPage = _prods.GetTinyProductsByCategory(
+    //                                        query.CategoryID,
+    //                                        query.PageSpec.ProjectTo<ITinyProduct>()
+    //                                        );
+
+    //        var projectedPage = productListPage
+    //                                .Project(p => new TeaserModel() {
+    //                                                    Name = p.Name,
+    //                                                    Price = null, 
+    //                                                    Link = _links.GetLinkFor(p),
+    //                                                    Image = p.PictureID != null 
+    //                                                                ? _piccies.GetByID((int)p.PictureID) 
+    //                                                                : null
+    //                                                });
+
+    //        teaserPage.ListPage = new ListPageModel<TeaserModel>(
+    //                                                    projectedPage,
+    //                                                    i => _links.GetLinkFor(new TeaserPageQuery() {
+    //                                                                                CategoryID = query.CategoryID,
+    //                                                                                PageSpec = new ListPageSpec<TeaserModel>(i, query.PageSpec.PageSize)
+    //                                                                                }));
+            
+    //        return teaserPage;
+    //    }
+
+
+
+
+    //}
 }
